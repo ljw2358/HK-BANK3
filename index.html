@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK WorldBank - hkwb.world (Global Web3 Digital Banking)</title>
+    <title>HK WorldBank - hkwb.world (Global Web3 Digital Banking Platform)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -17,7 +17,8 @@
                         cyberCard: '#1a0b2e',
                         cyberPurple: '#9333ea',
                         cyberCyan: '#06b6d4',
-                        cyberPink: '#ec4899'
+                        cyberPink: '#ec4899',
+                        cyberDeep: '#0f051e'
                     }
                 }
             }
@@ -33,20 +34,20 @@
         .cyber-card {
             background: linear-gradient(135deg, rgba(26, 11, 46, 0.95) 0%, rgba(15, 5, 30, 0.98) 100%);
             border: 1px solid rgba(147, 51, 234, 0.35);
-            box-shadow: 0 0 20px rgba(147, 51, 234, 0.15);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.15);
+            backdrop-filter: blur(12px);
         }
         .cyber-card:hover {
-            border-color: rgba(6, 182, 212, 0.6);
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+            border-color: rgba(6, 182, 212, 0.7);
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
         }
         .neon-text-cyan {
-            text-shadow: 0 0 10px rgba(6, 182, 212, 0.7);
+            text-shadow: 0 0 12px rgba(6, 182, 212, 0.75);
         }
         .neon-text-purple {
-            text-shadow: 0 0 10px rgba(147, 51, 234, 0.7);
+            text-shadow: 0 0 12px rgba(147, 51, 234, 0.75);
         }
-        /* Custom Scrollbar */
+        /* Custom Scrollbar for Cyber Aesthetic */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -60,17 +61,24 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #06b6d4;
         }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(6, 182, 212, 0.8); }
+        }
+        .glow-effect {
+            animation: pulseGlow 3s infinite;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
 
-    <!-- ========================================== -->
-    <!-- 1. SECURITY GATEWAY MODAL (INITIAL ENTRY) -->
-    <!-- ========================================== -->
-    <div id="security-gateway-modal" class="fixed inset-0 z-50 bg-[#0b0218]/95 flex items-center justify-center p-4">
-        <div class="cyber-card p-6 md:p-8 rounded-3xl max-w-md w-full text-center space-y-6 border border-cyan-500/40 shadow-2xl">
+    <!-- ========================================================================= -->
+    <!-- 1. SECURITY GATEWAY OVERLAY MODAL (INITIAL ENTRY) -->
+    <!-- ========================================================================= -->
+    <div id="security-gateway-modal" class="fixed inset-0 z-50 bg-[#0b0218]/98 flex items-center justify-center p-4">
+        <div class="cyber-card p-6 md:p-8 rounded-3xl max-w-md w-full text-center space-y-6 border border-cyan-500/50 shadow-2xl">
             <div class="space-y-2">
-                <div class="inline-block p-3 bg-cyan-950/80 rounded-2xl border border-cyan-500/50 text-cyan-400 mb-2">
+                <div class="inline-block p-3.5 bg-cyan-950/80 rounded-2xl border border-cyan-500/50 text-cyan-400 mb-2 glow-effect">
                     <i class="fa-solid fa-shield-halved text-3xl"></i>
                 </div>
                 <h2 class="text-2xl font-extrabold text-cyan-400 neon-text-cyan">HK WorldBank 보안 게이트웨이</h2>
@@ -96,15 +104,16 @@
                 </button>
             </div>
 
-            <div class="text-[11px] text-purple-400 pt-2 border-t border-purple-800/50">
-                탈중앙화 신원증명(DID) 및 블록체인 보안 프로토콜 가동중
+            <div class="text-[11px] text-purple-400 pt-3 border-t border-purple-800/50 flex items-center justify-center space-x-1">
+                <i class="fa-solid fa-circle-check text-cyan-400"></i>
+                <span>탈중앙화 신원증명(DID) 및 블록체인 보안 프로토콜 가동중</span>
             </div>
         </div>
     </div>
 
-    <!-- ========================================== -->
+    <!-- ========================================================================= -->
     <!-- 2. MAIN CONTAINER & LAYOUT STRUCTURE -->
-    <!-- ========================================== -->
+    <!-- ========================================================================= -->
     <div class="max-w-md mx-auto w-full p-4 flex-1 flex flex-col justify-between">
         
         <!-- HEADER -->
@@ -124,6 +133,8 @@
                     <option value="ja">🇯🇵 日本語 (Japanese)</option>
                     <option value="fr">🇫🇷 Français (French)</option>
                     <option value="es">🇪🇸 Español (Spanish)</option>
+                    <option value="de">🇩🇪 Deutsch (German)</option>
+                    <option value="ru">🇷🇺 Русский (Russian)</option>
                 </select>
             </div>
         </header>
@@ -309,9 +320,9 @@
 
     </div>
 
-    <!-- ========================================== -->
+    <!-- ========================================================================= -->
     <!-- 3. INTERACTIVE MODALS FOR FULL EXPERIENCE -->
-    <!-- ========================================== -->
+    <!-- ========================================================================= -->
     
     <!-- Pinny Chat Modal -->
     <div id="pinny-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
@@ -351,9 +362,9 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
+    <!-- ========================================================================= -->
     <!-- 4. JAVASCRIPT LOGIC & INTERACTIVITY -->
-    <!-- ========================================== -->
+    <!-- ========================================================================= -->
     <script>
         // Security Gateway Handler
         function handleSecurityEntry(mode) {
