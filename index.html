@@ -6,13 +6,13 @@
   <title>HK-WORLD | HK WorldBank · HK-BANK</title>
   <style>
     :root {
-      --bg: #060913;
-      --surface: #0d1424;
+      --bg: #050811;
+      --surface: #0c1322;
       --card: #121c30;
-      --card-2: #182540;
-      --border: #253657;
+      --card-2: #182642;
+      --border: #26385c;
       --text: #f8fafc;
-      --muted: #9fb0cc;
+      --muted: #9eb0ce;
       --gold: #f5b942;
       --accent: #38bdf8;
       --accent-soft: rgba(56, 189, 248, 0.14);
@@ -25,12 +25,12 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
       background:
-        radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.18), transparent 42%),
-        radial-gradient(circle at 85% 12%, rgba(245, 185, 66, 0.16), transparent 42%),
+        radial-gradient(circle at 15% 8%, rgba(56, 189, 248, 0.2), transparent 42%),
+        radial-gradient(circle at 85% 12%, rgba(245, 185, 66, 0.18), transparent 44%),
         var(--bg);
       color: var(--text);
       line-height: 1.5;
-      padding: 20px;
+      padding: 16px;
       min-height: 100vh;
     }
 
@@ -44,8 +44,8 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 14px;
-      padding: 18px 22px;
+      gap: 12px;
+      padding: 16px 20px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -53,7 +53,7 @@
     }
 
     .brand-title {
-      font-size: 1.7rem;
+      font-size: 1.65rem;
       font-weight: 900;
       letter-spacing: 0.04em;
       background: linear-gradient(90deg, #ffffff, var(--gold));
@@ -62,7 +62,7 @@
     }
 
     .ref-id {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--accent);
       font-weight: 700;
       margin-top: 2px;
@@ -72,7 +72,14 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .header-actions {
+        width: auto;
+      }
     }
 
     select, input, button {
@@ -82,7 +89,11 @@
       border: 1px solid var(--border);
       background: var(--card);
       color: var(--text);
-      padding: 9px 13px;
+      padding: 9px 12px;
+    }
+
+    .header-actions select {
+      flex: 1 1 180px;
     }
 
     select:focus, input:focus {
@@ -92,7 +103,7 @@
 
     button {
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       transition: 0.15s ease;
     }
 
@@ -116,18 +127,18 @@
     }
 
     .hero {
-      padding: 34px 24px;
+      padding: 28px 20px;
       border-radius: 18px;
       background:
-        linear-gradient(135deg, rgba(18, 28, 48, 0.95), rgba(9, 15, 29, 0.96)),
-        radial-gradient(circle at top right, rgba(245, 185, 66, 0.18), transparent 55%);
-      border: 1px solid rgba(245, 185, 66, 0.3);
-      margin-bottom: 16px;
+        linear-gradient(135deg, rgba(18, 28, 48, 0.95), rgba(8, 13, 25, 0.97)),
+        radial-gradient(circle at top right, rgba(245, 185, 66, 0.22), transparent 55%);
+      border: 1px solid rgba(245, 185, 66, 0.34);
+      margin-bottom: 14px;
       text-align: center;
     }
 
     .hero h1 {
-      font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+      font-size: clamp(1.5rem, 3.4vw, 2.45rem);
       font-weight: 900;
       margin-bottom: 10px;
       letter-spacing: -0.02em;
@@ -140,10 +151,10 @@
     }
 
     .hero p {
-      max-width: 780px;
+      max-width: 800px;
       margin: 0 auto;
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.92rem;
     }
 
     .banner {
@@ -152,37 +163,52 @@
       justify-content: space-between;
       align-items: center;
       gap: 10px;
-      padding: 13px 18px;
+      padding: 13px 16px;
       background: var(--accent-soft);
       border: 1px solid rgba(56, 189, 248, 0.35);
       border-radius: 12px;
       margin-bottom: 20px;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
     }
 
     .lang-chip {
       display: inline-block;
-      padding: 2px 9px;
+      padding: 3px 9px;
       border-radius: 999px;
       font-size: 0.76rem;
       font-weight: 700;
-      background: rgba(56, 189, 248, 0.18);
+      background: rgba(56, 189, 248, 0.2);
       color: var(--accent);
-      margin-left: 6px;
+    }
+
+    .bank-chip {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      background: rgba(245, 185, 66, 0.2);
+      color: var(--gold);
     }
 
     .pill {
       padding: 3px 10px;
       border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      background: rgba(245, 158, 11, 0.2);
+      font-size: 0.76rem;
+      font-weight: 800;
+      background: rgba(245, 158, 11, 0.22);
       color: var(--warn);
-      margin-left: 6px;
     }
 
     .pill.ok {
-      background: rgba(34, 197, 94, 0.2);
+      background: rgba(34, 197, 94, 0.22);
       color: var(--ok);
     }
 
@@ -200,12 +226,13 @@
     }
 
     .section-title {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 800;
       padding-left: 10px;
       border-left: 4px solid var(--gold);
     }
 
+    /* 모바일에서도 컬러, 로고, 한 줄 설명이 유지되는 2x5 카드 */
     .grid-2x5 {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -217,26 +244,59 @@
     }
 
     .mod-btn {
-      background: var(--card);
+      background: linear-gradient(160deg, var(--card), #0d1526);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 15px 12px;
-      text-align: center;
-      font-size: 0.98rem;
-      font-weight: 800;
+      border-radius: 14px;
+      padding: 14px 12px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
     }
 
     .mod-btn:hover, .mod-btn.active {
-      background: var(--card-2);
+      background: linear-gradient(160deg, var(--card-2), #12203b);
       border-color: var(--gold);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .mod-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      font-size: 0.95rem;
+      background: rgba(56, 189, 248, 0.16);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .mod-btn.active .mod-icon {
+      background: rgba(245, 185, 66, 0.22);
       color: var(--gold);
+      border-color: rgba(245, 185, 66, 0.5);
+    }
+
+    .mod-name {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .mod-desc {
+      font-size: 0.76rem;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.35;
     }
 
     .process-box {
       margin-top: 14px;
       background: var(--surface);
       border: 1px solid var(--accent);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 18px;
     }
 
@@ -263,7 +323,7 @@
     .step {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 9px;
+      border-radius: 10px;
       padding: 9px 11px;
       font-size: 0.8rem;
     }
@@ -334,7 +394,7 @@
       display: flex;
       justify-content: space-between;
       gap: 8px;
-      padding: 5px 0;
+      padding: 6px 0;
       border-bottom: 1px dashed rgba(158, 176, 206, 0.2);
     }
 
@@ -360,7 +420,7 @@
       color: var(--text);
       text-decoration: none;
       margin-left: 14px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     footer a:hover {
@@ -398,10 +458,10 @@
     </section>
 
     <div class="banner">
-      <div>
+      <div class="badge-row">
         <strong id="aiTitle">AI 삐니</strong>
         <span id="langBadge" class="lang-chip">60개국어 · 한국어 (KO)</span>
-        <span id="hkBankBadge" class="lang-chip">HK-BANK: 1년 만기 (13% 가변)</span>
+        <span id="hkBankBadge" class="bank-chip">HK-BANK: 1년 만기 (13% 가변)</span>
         <span id="modePill" class="pill">둘러보기 모드 (미인증)</span>
       </div>
       <div id="modeText" style="color: var(--muted);">
@@ -632,16 +692,16 @@
     };
 
     const MODS = [
-      { id: "wallet", title: "지갑연결", steps: [["1. 주소 입력", "파이 지갑 주소 확인"], ["2. 인증 대조", "KYC/KYB 상태 확인"], ["3. 추천인 연동", "ljw2358 연결"], ["4. 잔액 조회", "PI·HK 잔액 동기화"]] },
-      { id: "transfer", title: "송금", steps: [["1. 수신자 지정", "받는 지갑 주소 입력"], ["2. 수량 입력", "전송 PI 수량 지정"], ["3. 내역 확인", "수수료·주소 검증"], ["4. 송금 실행", "즉시 전송 처리"]] },
-      { id: "payment", title: "결제", steps: [["1. 결제처 확인", "가맹점·서비스 선택"], ["2. 금액 산정", "결제 HK 수량 확인"], ["3. 인증 승인", "지갑 결제 승인"], ["4. 완료 처리", "결제 내역 반영"]] },
-      { id: "deposit", title: "예치", steps: [["1. 원금 입력", "예치 HK/PI 입력"], ["2. 기간 선택", "6개월미만~3년 선택"], ["3. 이율 계산", "8.5%~24%·중도 8.5%"], ["4. 예치 체결", "예치 계약 등록"]] },
-      { id: "reward", title: "보상", steps: [["1. 활동 집계", "생태계 기여 조회"], ["2. 보상 확인", "수령 가능 HK 확인"], ["3. 청구 신청", "보상 수령 요청"], ["4. 지갑 입금", "보상 잔액 반영"]] },
-      { id: "ubi", title: "기본소득", steps: [["1. UBI 재원", "순이익 30% 배분"], ["2. 대상 확인", "인증 회원 확인"], ["3. 수령 신청", "기본소득 청구"], ["4. 지급 완료", "지갑 UBI 반영"]] },
-      { id: "swap", title: "토큰스왑", steps: [["1. 방향 선택", "PI↔HK 선택"], ["2. 1:1 환산", "1:1 비율 적용"], ["3. 수량 확인", "교환 수량 검토"], ["4. 스왑 실행", "1:1 토큰 교환"]] },
-      { id: "dex", title: "DEX 스왑", steps: [["1. 풀 선택", "DEX 거래 페어 선택"], ["2. 수량 입력", "교환 수량 입력"], ["3. 비율 확인", "풀 시세 반영"], ["4. 체결 실행", "DEX 스왑 완료"]] },
-      { id: "lp", title: "LP 스테이킹", steps: [["1. 풀 지정", "유동성 풀 선택"], ["2. 수량 입력", "공급 HK 입력"], ["3. LP 발행", "LP 포지션 생성"], ["4. 스테이킹", "수익률 누적 시작"]] },
-      { id: "pi", title: "PI 수량", steps: [["1. 계정 조회", "지갑·계정 확인"], ["2. 보유 분류", "가용·예치·LP 구분"], ["3. 1:1 대조", "HK 토큰 연동 확인"], ["4. 최신 갱신", "실시간 수량 갱신"]] }
+      { id: "wallet", icon: "◈", title: "지갑연결", desc: "파이 지갑 · ljw2358 연동", steps: [["1. 주소 입력", "파이 지갑 주소 확인"], ["2. 인증 대조", "KYC/KYB 상태 확인"], ["3. 추천인 연동", "ljw2358 연결"], ["4. 잔액 조회", "PI·HK 잔액 동기화"]] },
+      { id: "transfer", icon: "⇄", title: "송금", desc: "개척자 실시간 전송", steps: [["1. 수신자 지정", "받는 지갑 주소 입력"], ["2. 수량 입력", "전송 PI 수량 지정"], ["3. 내역 확인", "수수료·주소 검증"], ["4. 송금 실행", "즉시 전송 처리"]] },
+      { id: "payment", icon: "▣", title: "결제", desc: "HK·PI 즉시 정산", steps: [["1. 결제처 확인", "가맹점·서비스 선택"], ["2. 금액 산정", "결제 HK 수량 확인"], ["3. 인증 승인", "지갑 결제 승인"], ["4. 완료 처리", "결제 내역 반영"]] },
+      { id: "deposit", icon: "◫", title: "예치", desc: "8.5%~24% · 중도 8.5%", steps: [["1. 원금 입력", "예치 HK/PI 입력"], ["2. 기간 선택", "6개월미만~3년 선택"], ["3. 이율 계산", "8.5%~24%·중도 8.5%"], ["4. 예치 체결", "예치 계약 등록"]] },
+      { id: "reward", icon: "✦", title: "보상", desc: "생태계 기여 리워드", steps: [["1. 활동 집계", "생태계 기여 조회"], ["2. 보상 확인", "수령 가능 HK 확인"], ["3. 청구 신청", "보상 수령 요청"], ["4. 지갑 입금", "보상 잔액 반영"]] },
+      { id: "ubi", icon: "◎", title: "기본소득", desc: "순이익 30% UBI 분배", steps: [["1. UBI 재원", "순이익 30% 배분"], ["2. 대상 확인", "인증 회원 확인"], ["3. 수령 신청", "기본소득 청구"], ["4. 지급 완료", "지갑 UBI 반영"]] },
+      { id: "swap", icon: "⟲", title: "토큰스왑", desc: "PI ↔ HK 1:1 교환", steps: [["1. 방향 선택", "PI↔HK 선택"], ["2. 1:1 환산", "1:1 비율 적용"], ["3. 수량 확인", "교환 수량 검토"], ["4. 스왑 실행", "1:1 토큰 교환"]] },
+      { id: "dex", icon: "❖", title: "DEX 스왑", desc: "탈중앙 풀 유동성 교환", steps: [["1. 풀 선택", "DEX 거래 페어 선택"], ["2. 수량 입력", "교환 수량 입력"], ["3. 비율 확인", "풀 시세 반영"], ["4. 체결 실행", "DEX 스왑 완료"]] },
+      { id: "lp", icon: "⬢", title: "LP 스테이킹", desc: "유동성 공급 및 수익", steps: [["1. 풀 지정", "유동성 풀 선택"], ["2. 수량 입력", "공급 HK 입력"], ["3. LP 발행", "LP 포지션 생성"], ["4. 스테이킹", "수익률 누적 시작"]] },
+      { id: "pi", icon: "π", title: "PI 수량", desc: "보유 PI 및 1:1 현황", steps: [["1. 계정 조회", "지갑·계정 확인"], ["2. 보유 분류", "가용·예치·LP 구분"], ["3. 1:1 대조", "HK 토큰 연동 확인"], ["4. 최신 갱신", "실시간 수량 갱신"]] }
     ];
 
     const state = {
@@ -750,7 +810,11 @@
       MODS.forEach((m) => {
         const btn = document.createElement("button");
         btn.className = `mod-btn ${state.activeId === m.id ? "active" : ""}`;
-        btn.textContent = m.title;
+        btn.innerHTML = `
+          <span class="mod-icon">${m.icon}</span>
+          <span class="mod-name">${m.title}</span>
+          <span class="mod-desc">${m.desc}</span>
+        `;
         btn.onclick = () => selectMod(m.id);
         grid.appendChild(btn);
       });
