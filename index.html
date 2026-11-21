@@ -6,13 +6,13 @@
   <title>HK-WORLD | HK WorldBank · HK-BANK</title>
   <style>
     :root {
-      --bg: #070b14;
-      --surface: #0e1524;
-      --card: #131d31;
-      --card-2: #192640;
-      --border: #273859;
-      --text: #f5f8fc;
-      --muted: #9eb0ce;
+      --bg: #060913;
+      --surface: #0d1424;
+      --card: #121c30;
+      --card-2: #182540;
+      --border: #253657;
+      --text: #f8fafc;
+      --muted: #9fb0cc;
       --gold: #f5b942;
       --accent: #38bdf8;
       --accent-soft: rgba(56, 189, 248, 0.14);
@@ -25,8 +25,8 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
       background:
-        radial-gradient(circle at 12% 8%, rgba(56, 189, 248, 0.14), transparent 38%),
-        radial-gradient(circle at 88% 12%, rgba(245, 185, 66, 0.12), transparent 40%),
+        radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.18), transparent 42%),
+        radial-gradient(circle at 85% 12%, rgba(245, 185, 66, 0.16), transparent 42%),
         var(--bg);
       color: var(--text);
       line-height: 1.5;
@@ -35,7 +35,7 @@
     }
 
     .container {
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
     }
 
@@ -48,12 +48,12 @@
       padding: 18px 22px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 16px;
       margin-bottom: 14px;
     }
 
     .brand-title {
-      font-size: 1.65rem;
+      font-size: 1.7rem;
       font-weight: 900;
       letter-spacing: 0.04em;
       background: linear-gradient(90deg, #ffffff, var(--gold));
@@ -78,11 +78,11 @@
     select, input, button {
       font-family: inherit;
       font-size: 0.88rem;
-      border-radius: 9px;
+      border-radius: 10px;
       border: 1px solid var(--border);
       background: var(--card);
       color: var(--text);
-      padding: 8px 12px;
+      padding: 9px 13px;
     }
 
     select:focus, input:focus {
@@ -115,6 +115,37 @@
       font-weight: 800;
     }
 
+    .hero {
+      padding: 34px 24px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(18, 28, 48, 0.95), rgba(9, 15, 29, 0.96)),
+        radial-gradient(circle at top right, rgba(245, 185, 66, 0.18), transparent 55%);
+      border: 1px solid rgba(245, 185, 66, 0.3);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, #38bdf8, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
     .banner {
       display: flex;
       flex-wrap: wrap;
@@ -131,7 +162,7 @@
 
     .lang-chip {
       display: inline-block;
-      padding: 2px 8px;
+      padding: 2px 9px;
       border-radius: 999px;
       font-size: 0.76rem;
       font-weight: 700;
@@ -188,7 +219,7 @@
     .mod-btn {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 11px;
+      border-radius: 12px;
       padding: 15px 12px;
       text-align: center;
       font-size: 0.98rem;
@@ -283,7 +314,7 @@
     .title-card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 16px;
     }
 
@@ -346,15 +377,31 @@
       </div>
 
       <div class="header-actions">
+        <select id="hkBankDropdown" aria-label="HK-BANK 상품 선택" onchange="onHkBankDropdownChange()">
+          <option value="0.06|1년 미만 (6% 가변)">HK-BANK · 1년 미만 6% (가변)</option>
+          <option value="0.13|1년 만기 (13% 가변)" selected>HK-BANK · 1년 만기 13% (가변)</option>
+          <option value="0.16|2년 만기 (16% 가변)">HK-BANK · 2년 만기 16% (가변)</option>
+          <option value="0.20|3년 만기 (20% 가변)">HK-BANK · 3년 만기 20% (가변)</option>
+        </select>
+
         <select id="langSelect" aria-label="60개국어 선택" onchange="onLangChange()"></select>
         <button id="kycBtn" class="gold" onclick="toggleKyc()">KYC / KYB 인증 전환</button>
       </div>
     </header>
 
+    <section class="hero">
+      <h1>인류와 기술이 공존하는 <span>차세대 디지털 금융 혁신</span></h1>
+      <p>
+        HK WorldBank(파이코인 1:1 HK 토큰 연동 · 10대 핵심 모듈 · 순이익 배분 30% UBI / 30% 경영비 / 최대 30% HK 사회재단)과
+        무점포 인터넷뱅킹 HK-BANK 가변 금리를 한곳에 통합한 글로벌 플랫폼입니다.
+      </p>
+    </section>
+
     <div class="banner">
       <div>
         <strong id="aiTitle">AI 삐니</strong>
         <span id="langBadge" class="lang-chip">60개국어 · 한국어 (KO)</span>
+        <span id="hkBankBadge" class="lang-chip">HK-BANK: 1년 만기 (13% 가변)</span>
         <span id="modePill" class="pill">둘러보기 모드 (미인증)</span>
       </div>
       <div id="modeText" style="color: var(--muted);">
@@ -388,12 +435,12 @@
         <div class="title-card">
           <h3 id="cardProfitTitle">순이익 배분 (30 / 30 / 최대 30)</h3>
           <ul class="kv-list">
-            <li><span id="lblUbi">UBI (기본소득)</span><strong>30% (최저·최고 30%)</strong></li>
-            <li><span id="lblBiz">회사 경영비</span><strong>30%</strong></li>
-            <li><span id="lblFoundation">HK 사회재단</span><strong>최대 30% (회사 인수 등)</strong></li>
+            <li><span>UBI (기본소득)</span><strong>30% (최저·최고 30%)</strong></li>
+            <li><span>회사 경영비</span><strong>30%</strong></li>
+            <li><span>HK 사회재단</span><strong>최대 30% (회사 인수 등)</strong></li>
           </ul>
           <div class="field" style="margin-top: 10px;">
-            <label id="lblProfitCalc">순이익 계산 (원)</label>
+            <label>순이익 계산 (원)</label>
             <input type="number" id="netProfit" value="100000000" step="1000000" oninput="calcProfit()" />
           </div>
           <div id="profitOut" style="margin-top: 8px; font-size: 0.82rem; color: var(--muted);"></div>
@@ -402,24 +449,33 @@
         <div class="title-card">
           <h3 id="cardDepositTitle">HK WorldBank 예치 · 중도해지</h3>
           <ul class="kv-list">
-            <li><span id="lblUnder6m">6개월 미만</span><strong>8.5%</strong></li>
-            <li><span id="lbl12m">12개월</span><strong>15.5%</strong></li>
-            <li><span id="lbl2y">2년</span><strong>19%</strong></li>
-            <li><span id="lbl3y">3년</span><strong>24%</strong></li>
-            <li><span id="lblEarly">중도 해지 이율</span><strong>8.5%</strong></li>
+            <li><span>6개월 미만</span><strong>8.5%</strong></li>
+            <li><span>12개월</span><strong>15.5%</strong></li>
+            <li><span>2년</span><strong>19%</strong></li>
+            <li><span>3년</span><strong>24%</strong></li>
+            <li><span>중도 해지 이율</span><strong>8.5%</strong></li>
           </ul>
         </div>
 
         <div class="title-card">
           <h3 id="cardHkBankTitle">HK-BANK 무점포 인터넷뱅킹 (가변)</h3>
+          <div class="field" style="margin-bottom: 8px;">
+            <label>상품 / 이율 선택 (드롭다운)</label>
+            <select id="hkBankCardSelect" onchange="syncHkBankSelect(this.value)">
+              <option value="0.06|1년 미만 (6% 가변)">1년 미만 · 6% (가변)</option>
+              <option value="0.13|1년 만기 (13% 가변)" selected>1년 만기 · 13% (가변)</option>
+              <option value="0.16|2년 만기 (16% 가변)">2년 만기 · 16% (가변)</option>
+              <option value="0.20|3년 만기 (20% 가변)">3년 만기 · 20% (가변)</option>
+            </select>
+          </div>
           <ul class="kv-list">
-            <li><span id="lblBankUnder1y">1년 미만</span><strong>6% (가변)</strong></li>
-            <li><span id="lblBank1y">1년 만기</span><strong>13% (가변)</strong></li>
-            <li><span id="lblBank2y">2년 만기</span><strong>16% (가변)</strong></li>
-            <li><span id="lblBank3y">3년 만기</span><strong>20% (가변)</strong></li>
+            <li><span>1년 미만</span><strong>6% (가변)</strong></li>
+            <li><span>1년 만기</span><strong>13% (가변)</strong></li>
+            <li><span>2년 만기</span><strong>16% (가변)</strong></li>
+            <li><span>3년 만기</span><strong>20% (가변)</strong></li>
           </ul>
           <div class="field" style="margin-top: 10px;">
-            <label id="lblBankCalc">예치금 계산 (원 · 1년 13% 기준)</label>
+            <label>예치금 계산 (원)</label>
             <input type="number" id="bankAmt" value="10000000" step="100000" oninput="calcBank()" />
           </div>
           <div id="bankOut" style="margin-top: 8px; font-size: 0.82rem; color: var(--ok); font-weight: 700;"></div>
@@ -593,6 +649,8 @@
       activeId: "wallet",
       langCode: "ko",
       langLabel: "한국어 (KO)",
+      bankRate: 0.13,
+      bankLabel: "1년 만기 (13% 가변)",
       wallet: "",
       pi: 1250,
       hk: 1250,
@@ -639,6 +697,20 @@
       state.langCode = code;
       state.langLabel = label;
       applyLanguageUI();
+    }
+
+    function onHkBankDropdownChange() {
+      syncHkBankSelect(document.getElementById("hkBankDropdown").value);
+    }
+
+    function syncHkBankSelect(rawVal) {
+      const [rateStr, label] = rawVal.split("|");
+      state.bankRate = parseFloat(rateStr) || 0.13;
+      state.bankLabel = label;
+      document.getElementById("hkBankDropdown").value = rawVal;
+      document.getElementById("hkBankCardSelect").value = rawVal;
+      document.getElementById("hkBankBadge").textContent = `HK-BANK: ${state.bankLabel}`;
+      calcBank();
     }
 
     function toggleKyc() {
@@ -896,16 +968,16 @@
     function calcBank() {
       const a = parseFloat(document.getElementById("bankAmt").value || 0);
       document.getElementById("bankOut").textContent =
-        `연 13% 가변 기준 예상 이자: +${(a * 0.13).toLocaleString()}원`;
+        `${state.bankLabel} 기준 예상 이자: +${(a * state.bankRate).toLocaleString()}원`;
     }
 
     initLang();
     renderModGrid();
     selectMod("wallet");
     applyLanguageUI();
+    syncHkBankSelect("0.13|1년 만기 (13% 가변)");
     renderSummary();
     calcProfit();
-    calcBank();
   </script>
 </body>
 </html>
