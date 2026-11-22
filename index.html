@@ -6,16 +6,19 @@
   <title>HKWB 글로벌 인터넷 뱅킹</title>
   <style>
     :root {
-      --bg-canvas: #f5f9ff;
-      --bg-card: #ffffff;
-      --bg-soft: #eef5ff;
-      --blue-royal: #1d4ed8;
-      --blue-navy: #172554;
-      --blue-ice: #e0eeff;
-      --blue-line: #c9defc;
-      --ink-primary: #0f172a;
-      --ink-secondary: #475569;
-      --ink-muted: #64748b;
+      --bg-deep: #120624;
+      --bg-purple: #1e0b3a;
+      --bg-card: #29104d;
+      --bg-card-hover: #38166b;
+      --accent-purple: #7c3aed;
+      --gold-bright: #fde047;
+      --gold-main: #facc15;
+      --gold-warm: #eab308;
+      --text-white: #ffffff;
+      --text-soft: #e9d5ff;
+      --text-muted: #c4b5fd;
+      --border-gold: rgba(250, 204, 21, 0.34);
+      --border-purple: rgba(168, 85, 247, 0.52);
     }
 
     * {
@@ -26,81 +29,102 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "Pretendard", sans-serif;
-      background: radial-gradient(circle at top, #ffffff 0%, var(--bg-canvas) 100%);
-      color: var(--ink-primary);
+      background: radial-gradient(circle at 50% 0%, #3f0e82 0%, var(--bg-purple) 45%, var(--bg-deep) 100%);
+      color: var(--text-white);
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 20px 14px 64px;
+      padding: 22px 14px 64px;
     }
 
-    .wrap {
+    .bank-shell {
       width: 100%;
-      max-width: 960px;
+      max-width: 1040px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 20px;
     }
 
     /* 상단 헤더 */
-    .topbar {
+    .top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--blue-line);
-      border-radius: 20px;
+      background: rgba(30, 11, 58, 0.92);
+      border: 1px solid var(--border-gold);
+      border-radius: 22px;
       padding: 14px 22px;
-      box-shadow: 0 10px 30px rgba(29, 78, 216, 0.06);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.48);
       position: relative;
-      z-index: 80;
+      z-index: 70;
     }
 
-    .id-group {
+    .brand-mark {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+    }
+
+    .logo-emblem {
+      width: 40px;
+      height: 40px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-warm) 100%);
+      color: var(--bg-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.98rem;
+      box-shadow: 0 0 18px rgba(250, 204, 21, 0.35);
+    }
+
+    .brand-texts {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
       font-weight: 800;
-      font-size: 1.02rem;
-      color: var(--blue-navy);
+      color: var(--gold-main);
+      letter-spacing: 0.04em;
     }
 
-    .pulse-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--blue-royal);
-      box-shadow: 0 0 0 5px rgba(29, 78, 216, 0.14);
+    .id-label {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--text-white);
     }
 
-    .top-right {
+    .header-controls {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .lang-chip {
-      background: var(--bg-soft);
-      color: var(--blue-royal);
-      border: 1px solid var(--blue-line);
+    .lang-pill {
+      background: var(--bg-card);
+      color: var(--gold-bright);
+      border: 1px solid var(--gold-main);
       border-radius: 999px;
-      padding: 7px 14px;
+      padding: 7px 15px;
       font-size: 0.8rem;
       font-weight: 800;
       cursor: pointer;
     }
 
-    .lang-chip:hover {
-      background: var(--blue-ice);
+    .lang-pill:hover {
+      background: var(--bg-card-hover);
     }
 
-    .burger-btn {
+    .menu-btn {
       width: 42px;
       height: 42px;
       border-radius: 13px;
-      background: var(--bg-soft);
-      border: 1px solid var(--blue-line);
+      background: var(--bg-card);
+      border: 1px solid var(--gold-main);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -109,226 +133,231 @@
       cursor: pointer;
     }
 
-    .burger-btn span {
+    .menu-btn span {
       width: 18px;
       height: 2px;
-      background: var(--blue-navy);
+      background: var(--gold-bright);
       border-radius: 2px;
     }
 
-    .nav-drawer {
+    .nav-menu {
       display: none;
       position: absolute;
       top: 70px;
       right: 0;
-      width: 270px;
-      background: var(--bg-card);
-      border: 1px solid var(--blue-line);
+      width: 280px;
+      background: var(--bg-purple);
+      border: 1.5px solid var(--gold-main);
       border-radius: 18px;
       padding: 8px;
-      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
-      z-index: 90;
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.78);
+      z-index: 80;
     }
 
-    .nav-drawer.open {
+    .nav-menu.open {
       display: block;
     }
 
-    .drawer-item {
+    .nav-btn {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: var(--text-white);
+      font-size: 0.94rem;
+      font-weight: 800;
+      text-align: left;
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      text-decoration: none;
-      color: var(--ink-primary);
-      font-size: 0.92rem;
-      font-weight: 700;
       cursor: pointer;
-      border: none;
-      background: transparent;
-      width: 100%;
-      text-align: left;
+      text-decoration: none;
     }
 
-    .drawer-item:hover {
-      background: var(--bg-soft);
-      color: var(--blue-royal);
+    .nav-btn:hover {
+      background: var(--bg-card-hover);
+      color: var(--gold-bright);
     }
 
     /* 백서 박스 */
-    .doc-panel {
+    .whitepaper-card {
       display: none;
-      background: var(--bg-card);
-      border: 1.5px solid var(--blue-royal);
+      background: var(--bg-purple);
+      border: 1.5px solid var(--gold-main);
       border-radius: 22px;
-      padding: 22px 24px;
-      box-shadow: 0 12px 28px rgba(29, 78, 216, 0.08);
+      padding: 20px 24px;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
     }
 
-    .doc-panel.open {
+    .whitepaper-card.open {
       display: block;
     }
 
-    .doc-panel h3 {
-      color: var(--blue-navy);
-      font-size: 1.08rem;
+    .whitepaper-card h3 {
+      color: var(--gold-bright);
+      font-size: 1.1rem;
       font-weight: 900;
       margin-bottom: 10px;
     }
 
-    .doc-panel p {
-      color: var(--ink-secondary);
+    .whitepaper-card p {
+      color: var(--text-soft);
       font-size: 0.9rem;
       line-height: 1.6;
       margin-bottom: 6px;
     }
 
     /* 웅장한 메인 히어로 */
-    .hero-stage {
-      background: linear-gradient(145deg, #ffffff 0%, #f7faff 65%, #edf4ff 100%);
-      border: 1px solid var(--blue-line);
+    .hero-panel {
+      background: linear-gradient(145deg, rgba(65, 15, 134, 0.92) 0%, rgba(27, 9, 53, 0.98) 100%);
+      border: 1.5px solid var(--border-gold);
       border-radius: 30px;
       padding: 34px 28px;
-      box-shadow: 0 18px 44px rgba(29, 78, 216, 0.08);
       display: grid;
-      grid-template-columns: 1.25fr 0.9fr;
+      grid-template-columns: 1.32fr 0.95fr;
       gap: 24px;
       align-items: center;
+      box-shadow: 0 24px 54px rgba(0, 0, 0, 0.58);
     }
 
-    .badge-strip {
+    .hero-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 14px;
     }
 
-    .pill-blue {
-      background: var(--blue-ice);
-      color: var(--blue-royal);
+    .gold-pill {
+      background: rgba(250, 204, 21, 0.15);
+      color: var(--gold-bright);
+      border: 1px solid rgba(250, 204, 21, 0.55);
+      border-radius: 999px;
+      padding: 5px 13px;
       font-size: 0.78rem;
       font-weight: 800;
-      padding: 6px 13px;
-      border-radius: 999px;
     }
 
-    .hero-heading {
-      font-size: 2.15rem;
+    .hero-title {
+      font-size: 2.4rem;
       font-weight: 900;
       line-height: 1.2;
-      letter-spacing: -0.02em;
-      color: var(--ink-primary);
+      color: var(--gold-bright);
       margin-bottom: 12px;
+      text-shadow: 0 4px 22px rgba(250, 204, 21, 0.22);
     }
 
-    .hero-heading span {
-      color: var(--blue-royal);
+    .hero-title span {
+      color: var(--text-white);
     }
 
-    .hero-sub {
+    .hero-desc {
       font-size: 0.96rem;
-      line-height: 1.62;
-      color: var(--ink-secondary);
+      line-height: 1.64;
+      color: var(--text-soft);
       margin-bottom: 22px;
     }
 
-    .hero-buttons {
+    .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
-    .btn-fill {
-      background: var(--blue-royal);
-      color: #ffffff;
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-warm) 100%);
+      color: var(--bg-deep);
       border: none;
-      border-radius: 15px;
-      padding: 15px 22px;
-      font-size: 0.98rem;
-      font-weight: 800;
+      border-radius: 16px;
+      padding: 15px 24px;
+      font-size: 1rem;
+      font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 10px 22px rgba(29, 78, 216, 0.22);
+      box-shadow: 0 10px 26px rgba(250, 204, 21, 0.3);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .btn-fill:hover {
-      background: var(--blue-navy);
+    .btn-gold:hover {
+      filter: brightness(1.06);
     }
 
-    .btn-ghost {
-      background: #ffffff;
-      color: var(--blue-royal);
-      border: 1.5px solid var(--blue-royal);
-      border-radius: 15px;
+    .btn-purple {
+      background: var(--bg-card);
+      color: var(--gold-bright);
+      border: 1.5px solid var(--gold-main);
+      border-radius: 16px;
       padding: 14px 20px;
       font-size: 0.95rem;
       font-weight: 800;
       cursor: pointer;
     }
 
-    .btn-ghost:hover {
-      background: var(--bg-soft);
+    .btn-purple:hover {
+      background: var(--bg-card-hover);
     }
 
-    /* 계좌 하이라이트 카드 */
-    .vault-card {
-      background: #ffffff;
-      border: 1px solid var(--blue-line);
+    /* 계좌 카드 */
+    .balance-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
       border-radius: 24px;
       padding: 22px;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
 
-    .vault-top {
+    .balance-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.8rem;
       font-weight: 800;
-      color: var(--ink-muted);
+      color: var(--text-muted);
     }
 
-    .vault-tag {
-      background: var(--bg-soft);
-      color: var(--blue-royal);
+    .ref-tag {
+      background: rgba(250, 204, 21, 0.15);
+      color: var(--gold-bright);
       padding: 4px 10px;
       border-radius: 999px;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
     }
 
-    .vault-amount {
-      font-size: 1.75rem;
+    .balance-number {
+      font-size: 1.85rem;
       font-weight: 900;
-      color: var(--blue-navy);
+      color: var(--gold-bright);
       letter-spacing: -0.02em;
     }
 
-    .vault-meta {
-      background: var(--bg-soft);
+    .policy-box {
+      background: rgba(18, 6, 36, 0.72);
+      border: 1px solid rgba(250, 204, 21, 0.22);
       border-radius: 16px;
-      padding: 13px 15px;
+      padding: 14px;
       font-size: 0.84rem;
-      color: var(--ink-secondary);
-      line-height: 1.5;
+      line-height: 1.58;
+      color: var(--text-soft);
     }
 
-    .vault-meta strong {
-      color: var(--blue-royal);
+    .policy-box strong {
+      color: var(--gold-main);
     }
 
     /* 2행 5열 10대 핵심 금융 모듈 */
-    .grid-section {
-      background: var(--bg-card);
-      border: 1px solid var(--blue-line);
-      border-radius: 26px;
-      padding: 24px 22px;
-      box-shadow: 0 12px 30px rgba(29, 78, 216, 0.05);
+    .modules-wrap {
+      background: rgba(30, 11, 58, 0.92);
+      border: 1px solid var(--border-gold);
+      border-radius: 28px;
+      padding: 24px 20px;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.45);
     }
 
-    .section-head {
+    .modules-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -337,32 +366,33 @@
       flex-wrap: wrap;
     }
 
-    .section-title {
-      font-size: 1.2rem;
+    .modules-heading {
+      font-size: 1.25rem;
       font-weight: 900;
-      color: var(--ink-primary);
+      color: var(--gold-bright);
     }
 
-    .section-badge {
-      background: var(--blue-ice);
-      color: var(--blue-royal);
+    .grid-tag {
+      background: var(--bg-card);
+      color: var(--gold-main);
+      border: 1px solid var(--border-gold);
+      border-radius: 999px;
+      padding: 5px 13px;
       font-size: 0.76rem;
       font-weight: 800;
-      padding: 6px 12px;
-      border-radius: 999px;
     }
 
-    .modules-2x5 {
+    .grid-2x5 {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 12px;
     }
 
-    .mod-tile {
-      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-      border: 1px solid var(--blue-line);
-      border-radius: 18px;
-      padding: 18px 12px;
+    .mod-item {
+      background: var(--bg-card);
+      border: 1px solid rgba(250, 204, 21, 0.24);
+      border-radius: 20px;
+      padding: 18px 10px;
       text-align: center;
       cursor: pointer;
       display: flex;
@@ -370,341 +400,427 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
     }
 
-    .mod-tile:hover {
-      background: var(--bg-soft);
-      border-color: var(--blue-royal);
+    .mod-item:hover,
+    .mod-item.active {
+      background: var(--bg-card-hover);
+      border-color: var(--gold-bright);
       transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
     }
 
-    .mod-num {
-      font-size: 0.72rem;
+    .mod-logo {
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+
+    .mod-code {
+      font-size: 0.7rem;
       font-weight: 900;
-      color: var(--blue-royal);
-      letter-spacing: 0.04em;
+      color: var(--gold-main);
     }
 
-    .mod-label {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--ink-primary);
+    .mod-title {
+      font-size: 0.94rem;
+      font-weight: 900;
+      color: var(--text-white);
       word-break: keep-all;
     }
 
-    /* 하단 작업 & 웹3 전환 패널 */
-    .bottom-grid {
+    /* 하단 실행 패널 & 웹3 전환 */
+    .lower-grid {
       display: grid;
-      grid-template-columns: 1.25fr 0.95fr;
-      gap: 16px;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 18px;
     }
 
-    .work-box, .web3-box {
-      background: var(--bg-card);
-      border: 1px solid var(--blue-line);
-      border-radius: 22px;
-      padding: 20px;
+    .exec-card, .web3-card {
+      background: rgba(30, 11, 58, 0.94);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 24px;
+      padding: 22px;
     }
 
-    .box-title {
-      font-size: 1rem;
+    .exec-title {
+      font-size: 1.15rem;
       font-weight: 900;
-      color: var(--blue-navy);
+      color: var(--gold-bright);
       margin-bottom: 6px;
     }
 
-    .box-desc {
-      font-size: 0.86rem;
-      color: var(--ink-secondary);
+    .exec-desc {
+      font-size: 0.88rem;
+      color: var(--text-soft);
       line-height: 1.55;
       margin-bottom: 14px;
     }
 
-    .control-bar {
+    .field-stack {
       display: flex;
+      flex-direction: column;
       gap: 10px;
     }
 
-    .num-input {
-      flex: 1;
-      border: 1px solid var(--blue-line);
-      border-radius: 13px;
-      padding: 12px 14px;
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: var(--ink-primary);
-      background: var(--bg-soft);
-    }
-
-    .run-btn {
-      background: var(--blue-royal);
-      color: #ffffff;
-      border: none;
-      border-radius: 13px;
-      padding: 0 20px;
-      font-size: 0.92rem;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .run-btn:hover {
-      background: var(--blue-navy);
-    }
-
-    .web3-trigger {
+    .field-input {
       width: 100%;
-      background: var(--bg-soft);
-      color: var(--blue-royal);
-      border: 1.5px solid var(--blue-royal);
+      background: var(--bg-deep);
+      border: 1px solid var(--border-purple);
       border-radius: 14px;
-      padding: 13px 16px;
-      font-size: 0.92rem;
-      font-weight: 800;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .field-input:focus {
+      outline: none;
+      border-color: var(--gold-bright);
+    }
+
+    .exec-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .exec-btn {
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-warm) 100%);
+      color: var(--bg-deep);
+      border: none;
+      border-radius: 14px;
+      padding: 13px 22px;
+      font-size: 0.95rem;
+      font-weight: 900;
       cursor: pointer;
+      white-space: nowrap;
     }
 
-    .web3-trigger:hover {
-      background: var(--blue-royal);
-      color: #ffffff;
+    .exec-btn:hover {
+      filter: brightness(1.06);
     }
 
-    /* 상태 피드 */
-    .feed-bar {
-      background: #ffffff;
-      border: 1px solid var(--blue-line);
+    .web3-go-btn {
+      width: 100%;
+      background: var(--bg-card);
+      color: var(--gold-bright);
+      border: 1.5px solid var(--gold-main);
+      border-radius: 15px;
+      padding: 14px 16px;
+      font-size: 0.96rem;
+      font-weight: 900;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .web3-go-btn:hover {
+      background: var(--gold-main);
+      color: var(--bg-deep);
+    }
+
+    /* 상태 표시줄 */
+    .status-line {
+      background: rgba(18, 6, 36, 0.92);
+      border: 1px solid var(--border-gold);
       border-radius: 18px;
-      padding: 14px 18px;
+      padding: 15px 18px;
       font-family: monospace;
       font-size: 0.86rem;
-      color: var(--blue-royal);
+      color: var(--gold-bright);
       font-weight: 700;
       word-break: break-all;
     }
 
-    @media (max-width: 820px) {
-      .hero-stage,
-      .bottom-grid {
+    @media (max-width: 860px) {
+      .hero-panel,
+      .lower-grid {
         grid-template-columns: 1fr;
       }
 
-      .modules-2x5 {
+      .grid-2x5 {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .hero-heading {
-        font-size: 1.65rem;
+      .hero-title {
+        font-size: 1.75rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="topbar">
-      <div class="id-group">
-        <span class="pulse-dot"></span>
-        <span>ID: ljw2358</span>
+  <div class="bank-shell">
+    <header class="top-bar">
+      <div class="brand-mark">
+        <div class="logo-emblem">HK</div>
+        <div class="brand-texts">
+          <span class="brand-sub">HKWB · 60개국 글로벌 뱅킹</span>
+          <span class="id-label">ID: ljw2358</span>
+        </div>
       </div>
 
-      <div class="top-right">
-        <button class="lang-chip" id="langChip" onclick="switchLang()">KO · 60개국</button>
-        <button class="burger-btn" onclick="toggleDrawer(event)" aria-label="메뉴 열기">
+      <div class="header-controls">
+        <button class="lang-pill" id="langBtn" onclick="cycleLang()">KO · 60개국</button>
+        <button class="menu-btn" onclick="toggleNav(event)" aria-label="메뉴 열기">
           <span></span>
           <span></span>
           <span></span>
         </button>
       </div>
 
-      <nav class="nav-drawer" id="navDrawer">
-        <button class="drawer-item" onclick="toggleWhitepaper()">
+      <nav class="nav-menu" id="navMenu">
+        <button class="nav-btn" onclick="enterInternetBank()">
+          <span>🏦</span>
+          <span>인터넷 뱅킹 진입하기</span>
+        </button>
+        <button class="nav-btn" onclick="toggleDoc()">
           <span>📖</span>
           <span>공식 백서 (Whitepaper)</span>
         </button>
-        <button class="drawer-item" onclick="goWeb3Bank()">
+        <button class="nav-btn" onclick="openWeb3Bank()">
           <span>🌐</span>
           <span>웹3 디지털 뱅크로 가기</span>
         </button>
-        <a href="#modulesSection" class="drawer-item" onclick="closeDrawer()">
-          <span>🏦</span>
+        <a href="#modulesSection" class="nav-btn" onclick="closeNav()">
+          <span>⚡</span>
           <span>10대 핵심 금융 모듈</span>
         </a>
-        <button class="drawer-item" onclick="showKycInfo()">
+        <button class="nav-btn" onclick="checkSecurity()">
           <span>🛡️</span>
           <span>KYC / KYB 보안 인증</span>
         </button>
       </nav>
     </header>
 
-    <section class="doc-panel" id="docPanel">
+    <section class="whitepaper-card" id="whitepaperCard">
       <h3>HKWB 글로벌 인터넷 뱅킹 백서 요약</h3>
-      <p>• 전 세계 60개국을 잇는 세련되고 신뢰감 있는 글로벌 인터넷 뱅킹 플랫폼</p>
+      <p>• 전 세계 60개국을 잇는 찐보라 &amp; 골드 감성의 글로벌 인터넷 뱅킹 플랫폼</p>
       <p>• 순이익 배분: UBI 30%, 회사 경영비 30%, HK 사회재단 최대 30%</p>
-      <p>• 추천인 ID(ljw2358) 등록 시 UBI 수령 우선순위 적용 · KYC/KYB 인증 기반 운영</p>
-      <p>• 문의: support@hkwb.world</p>
+      <p>• 추천인 ID(ljw2358) 등록 시 UBI 수령 우선순위 적용 · KYC/KYB 인증 필수</p>
+      <p>• 고객 지원: support@hkwb.world</p>
     </section>
 
-    <section class="hero-stage">
+    <section class="hero-panel">
       <div>
-        <div class="badge-strip">
-          <span class="pill-blue">HKWB 인터넷 뱅킹</span>
-          <span class="pill-blue">글로벌 60개국 지원</span>
-          <span class="pill-blue">UBI 30% 우선 배정</span>
+        <div class="hero-badges">
+          <span class="gold-pill">HKWB 인터넷 뱅킹</span>
+          <span class="gold-pill">글로벌 60개국</span>
+          <span class="gold-pill">UBI 30% 우선 배정</span>
         </div>
-        <h1 class="hero-heading">80억의 마음을 움직이는<br><span>HKWB</span> 글로벌 뱅킹</h1>
-        <p class="hero-sub">
-          화이트의 투명한 품격과 블루의 깊은 신뢰를 담은 차세대 인터넷 뱅킹입니다. 계좌 조회, 송금, 예치, 대출, 결제, 지원금과 리워드까지 한눈에 빠르게 처리하세요.
+        <h1 class="hero-title"><span>HKWB</span> 글로벌<br>인터넷 뱅킹</h1>
+        <p class="hero-desc">
+          깊은 찐보라와 선명한 노란색 포인트로 완성한 차세대 인터넷 뱅킹입니다. 인터넷 뱅킹 진입하기로 HK-BANK3에 바로 접속하거나 아래 10대 금융 모듈을 이용해 보세요.
         </p>
-        <div class="hero-buttons">
-          <button class="btn-fill" onclick="focusTransfer()">인터넷 뱅킹 바로 이용 →</button>
-          <button class="btn-ghost" onclick="goWeb3Bank()">웹3 디지털 뱅크로 가기</button>
+        <div class="hero-cta">
+          <button class="btn-gold" onclick="enterInternetBank()">
+            인터넷 뱅킹 진입하기 →
+          </button>
+          <button class="btn-purple" onclick="openWeb3Bank()">
+            웹3 디지털 뱅크로 가기
+          </button>
         </div>
       </div>
 
-      <div class="vault-card">
-        <div class="vault-top">
-          <span>HKWB 주계좌 잔액</span>
-          <span class="vault-tag">추천인 ljw2358</span>
+      <div class="balance-panel">
+        <div class="balance-head">
+          <span>HKWB 통합 계좌 잔액</span>
+          <span class="ref-tag">추천인 ljw2358</span>
         </div>
-        <div class="vault-amount" id="vaultAmount">1,250,000.00 HKW</div>
-        <div class="vault-meta">
-          <strong>예치·적립 가변 이율:</strong> 6.0% ~ 8.5% (AI 시장 연동)<br />
-          <strong>순이익 분배:</strong> UBI 30% · 경영비 30% · 사회재단 최대 30%
+        <div class="balance-number" id="balanceView">1,250,000.00 HKW</div>
+        <div class="policy-box">
+          • <strong>가변 이율:</strong> 연 6.0% ~ 8.5% (AI 시장 연동)<br />
+          • <strong>순이익 분배:</strong> UBI 30% · 경영비 30% · 사회재단 최대 30%
         </div>
       </div>
     </section>
 
-    <section class="grid-section" id="modulesSection">
-      <div class="section-head">
-        <h2 class="section-title">10대 핵심 금융 모듈</h2>
-        <span class="section-badge">2행 5열 구성</span>
+    <section class="modules-wrap" id="modulesSection">
+      <div class="modules-top">
+        <h2 class="modules-heading">10대 핵심 금융 모듈</h2>
+        <span class="grid-tag">2행 5열 로고 그리드</span>
       </div>
-      <div class="modules-2x5" id="modulesBoard"></div>
+      <div class="grid-2x5" id="modulesGrid"></div>
     </section>
 
-    <div class="bottom-grid">
-      <section class="work-box">
-        <div class="box-title" id="workTitle">[MOD-01] 계좌 조회 실행</div>
-        <p class="box-desc" id="workDesc">
-          원하시는 금액을 입력하고 실행 버튼을 누르면 계좌 시뮬레이션 결과가 즉시 반영됩니다.
+    <div class="lower-grid">
+      <section class="exec-card">
+        <div class="exec-title" id="execTitle">[MOD-02] 송금 실행</div>
+        <p class="exec-desc" id="execDesc">
+          송금 받는 사람과 금액을 입력한 뒤 실행 버튼을 눌러 주세요.
         </p>
-        <div class="control-bar">
-          <input type="number" id="workInput" class="num-input" value="10000" min="1" />
-          <button class="run-btn" onclick="runWork()">실행</button>
+        <div class="field-stack">
+          <input
+            type="text"
+            id="recipientInput"
+            class="field-input"
+            placeholder="송금 받는 사람 (예: 홍길동 / 계좌번호 또는 ID)"
+          />
+          <div class="exec-row">
+            <input
+              type="number"
+              id="amountInput"
+              class="field-input"
+              value="10000"
+              min="1"
+              placeholder="금액 입력"
+            />
+            <button class="exec-btn" id="execBtn" onclick="runModuleAction()">송금 실행</button>
+          </div>
         </div>
       </section>
 
-      <section class="web3-box">
-        <div class="box-title">웹3 디지털 뱅크 전환</div>
-        <p class="box-desc">
-          지갑 연결, 스왑, 덱스 스왑, LP 스테이킹, 파이 수량 등 웹3 금융 공간으로 이동하려면 아래 버튼을 눌러주세요.
+      <section class="web3-card">
+        <div class="exec-title">인터넷 뱅킹 &amp; 웹3 연결</div>
+        <p class="exec-desc">
+          HK-BANK3 인터넷 뱅킹 또는 웹3 디지털 뱅크 화면으로 바로 이동합니다.
         </p>
-        <button class="web3-trigger" onclick="goWeb3Bank()">
+        <button class="web3-go-btn" onclick="enterInternetBank()">
+          인터넷 뱅킹 진입하기 (HK-BANK3) →
+        </button>
+        <button class="web3-go-btn" onclick="openWeb3Bank()">
           웹3 디지털 뱅크로 가기 →
         </button>
       </section>
     </div>
 
-    <div class="feed-bar" id="feedBar">
-      &gt; HKWB 글로벌 인터넷 뱅킹 준비 완료 · ID: ljw2358
+    <div class="status-line" id="statusLine">
+      &gt; HKWB 인터넷 뱅킹 준비 완료 · ID: ljw2358 · 진입 주소: ljw2358.github.io/HK-BANK3
     </div>
   </div>
 
   <script>
+    const INTERNET_BANK_URL = "https://ljw2358.github.io/HK-BANK3/";
     const WEB3_BANK_URL = "https://ljw2358.github.io/HK-BANK/";
-    const LANG_LIST = ["KO · 60개국", "EN · 60 Countries", "JA · 60カ国", "ZH · 60国", "ES · 60 Países"];
+    const LANGS = ["KO · 60개국", "EN · 60 Countries", "JA · 60カ国", "ZH · 60国", "ES · 60 Países"];
     let langIdx = 0;
-    let currentBalance = 1250000;
-    let activeMod = { code: "01", name: "계좌 조회" };
+    let balance = 1250000;
+    let currentMod = { code: "02", name: "송금", needsRecipient: true };
 
-    const BANK_MODULES = [
-      { code: "01", name: "계좌 조회", desc: "주계좌 및 연결 계좌의 실시간 잔액과 거래 내역을 조회합니다." },
-      { code: "02", name: "송금", desc: "국내외 계좌로 빠르고 안전하게 자금을 이체합니다." },
-      { code: "03", name: "예치", desc: "6개월·1년·2년·3년 가변 금리 예치 상품을 관리합니다." },
-      { code: "04", name: "적립", desc: "목돈 마련을 위한 정기 적립 및 자동 이체 플랜을 운영합니다." },
-      { code: "05", name: "대출", desc: "신용 및 자산 기반 금융 한도와 상환 일정을 확인합니다." },
-      { code: "06", name: "결제", desc: "국내외 가맹점 및 온라인 계좌 결제를 간편하게 실행합니다." },
-      { code: "07", name: "지원금", desc: "UBI 기본소득 및 회원 대상 지원금 배정 현황을 확인합니다." },
-      { code: "08", name: "리워드", desc: "금융 활동 및 커뮤니티 참여 적립 혜택을 조회합니다." },
-      { code: "09", name: "보안 인증", desc: "OTP, 본인 확인, KYC/KYB 인증 상태를 점검합니다." },
-      { code: "10", name: "글로벌 환전", desc: "60개국 통화 환율과 해외 금융 서비스를 확인합니다." }
+    const MODULES = [
+      { code: "01", logo: "💳", name: "계좌 조회", desc: "계좌 잔액과 입출금 내역을 조회합니다.", needsRecipient: false },
+      { code: "02", logo: "💸", name: "송금", desc: "송금 받는 사람과 금액을 입력해 송금을 실행합니다.", needsRecipient: true },
+      { code: "03", logo: "🏛️", name: "예치", desc: "가변 이율 예치 상품 금액을 입력하고 실행합니다.", needsRecipient: false },
+      { code: "04", logo: "🌱", name: "적립", desc: "정기 적립 금액을 입력하고 적립을 실행합니다.", needsRecipient: false },
+      { code: "05", logo: "📋", name: "대출", desc: "대출 한도 조회 및 신청 금액을 확인합니다.", needsRecipient: false },
+      { code: "06", logo: "🧾", name: "결제", desc: "결제처 또는 금액을 입력해 결제를 실행합니다.", needsRecipient: true },
+      { code: "07", logo: "🎁", name: "지원금", desc: "UBI 30% 및 지원금 배정 내역을 확인합니다.", needsRecipient: false },
+      { code: "08", logo: "🏆", name: "리워드", desc: "누적 리워드 혜택을 조회하고 반영합니다.", needsRecipient: false },
+      { code: "09", logo: "🔐", name: "보안 인증", desc: "OTP 및 KYC/KYB 인증 상태를 점검합니다.", needsRecipient: false },
+      { code: "10", logo: "🌍", name: "글로벌 환전", desc: "60개국 통화 환전 금액을 입력하고 실행합니다.", needsRecipient: false }
     ];
 
-    function renderBankModules() {
-      const board = document.getElementById("modulesBoard");
-      board.innerHTML = BANK_MODULES.map((m) => `
-        <button class="mod-tile" onclick="chooseModule('${m.code}', '${m.name}', '${m.desc}')">
-          <span class="mod-num">MOD-${m.code}</span>
-          <span class="mod-label">${m.name}</span>
+    function drawModules() {
+      const grid = document.getElementById("modulesGrid");
+      grid.innerHTML = MODULES.map((m) => `
+        <button
+          class="mod-item ${m.code === currentMod.code ? "active" : ""}"
+          onclick="selectModule('${m.code}', '${m.name}', '${m.desc}', ${m.needsRecipient})"
+        >
+          <span class="mod-logo">${m.logo}</span>
+          <span class="mod-code">MOD-${m.code}</span>
+          <span class="mod-title">${m.name}</span>
         </button>
       `).join("");
     }
 
-    function chooseModule(code, name, desc) {
-      activeMod = { code, name };
-      document.getElementById("workTitle").textContent = `[MOD-${code}] ${name} 실행`;
-      document.getElementById("workDesc").textContent = desc;
-      setFeed(`[MOD-${code}] ${name} 모듈이 선택되었습니다.`);
+    function selectModule(code, name, desc, needsRecipient) {
+      currentMod = { code, name, needsRecipient };
+      document.getElementById("execTitle").textContent = `[MOD-${code}] ${name} 실행`;
+      document.getElementById("execDesc").textContent = desc;
+      document.getElementById("execBtn").textContent = `${name} 실행`;
+
+      const recipientInput = document.getElementById("recipientInput");
+      recipientInput.style.display = needsRecipient ? "block" : "none";
+      recipientInput.placeholder =
+        name === "결제"
+          ? "결제처 또는 받는 분 입력"
+          : "송금 받는 사람 (예: 홍길동 / 계좌번호 또는 ID)";
+
+      drawModules();
+      setStatus(`[MOD-${code}] ${name} 선택됨`);
     }
 
-    function runWork() {
-      const val = Number(document.getElementById("workInput").value);
-      if (!val || val <= 0) {
-        setFeed("0보다 큰 금액을 입력해 주세요.");
+    function runModuleAction() {
+      const amount = Number(document.getElementById("amountInput").value);
+      const recipient = document.getElementById("recipientInput").value.trim();
+
+      if (!amount || amount <= 0) {
+        setStatus("0보다 큰 금액을 입력해 주세요.");
         return;
       }
-      currentBalance += val;
-      document.getElementById("vaultAmount").textContent =
-        currentBalance.toLocaleString("ko-KR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " HKW";
-      setFeed(`[${activeMod.name}] 처리 완료 (+${val.toLocaleString("ko-KR")} HKW 반영)`);
+
+      if (currentMod.needsRecipient && !recipient) {
+        setStatus(`${currentMod.name} 받는 사람을 입력해 주세요.`);
+        document.getElementById("recipientInput").focus();
+        return;
+      }
+
+      if (currentMod.code === "02" || currentMod.code === "06") {
+        balance = Math.max(0, balance - amount);
+      } else {
+        balance += amount;
+      }
+
+      document.getElementById("balanceView").textContent =
+        balance.toLocaleString("ko-KR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " HKW";
+
+      if (currentMod.needsRecipient) {
+        setStatus(
+          `[${currentMod.name} 완료] 받는 분: ${recipient} · 금액: ${amount.toLocaleString("ko-KR")} HKW`
+        );
+      } else {
+        setStatus(`[${currentMod.name} 완료] ${amount.toLocaleString("ko-KR")} HKW 처리됨`);
+      }
     }
 
-    function goWeb3Bank() {
-      setFeed("웹3 디지털 뱅크로 이동합니다...");
+    function enterInternetBank() {
+      setStatus("인터넷 뱅킹(ljw2358.github.io/HK-BANK3)으로 이동합니다...");
+      window.location.href = INTERNET_BANK_URL;
+    }
+
+    function openWeb3Bank() {
+      setStatus("웹3 디지털 뱅크로 이동합니다...");
       window.location.href = WEB3_BANK_URL;
     }
 
-    function focusTransfer() {
-      chooseModule("02", "송금", "국내외 계좌로 빠르고 안전하게 자금을 이체합니다.");
-      document.getElementById("workInput").focus();
-    }
-
-    function toggleDrawer(e) {
+    function toggleNav(e) {
       if (e) e.stopPropagation();
-      document.getElementById("navDrawer").classList.toggle("open");
+      document.getElementById("navMenu").classList.toggle("open");
     }
 
-    function closeDrawer() {
-      document.getElementById("navDrawer").classList.remove("open");
+    function closeNav() {
+      document.getElementById("navMenu").classList.remove("open");
     }
 
-    function toggleWhitepaper() {
-      closeDrawer();
-      document.getElementById("docPanel").classList.toggle("open");
-      setFeed("HKWB 공식 백서 요약을 열었습니다.");
+    function toggleDoc() {
+      closeNav();
+      document.getElementById("whitepaperCard").classList.toggle("open");
+      setStatus("HKWB 공식 백서 요약을 열었습니다.");
     }
 
-    function switchLang() {
-      langIdx = (langIdx + 1) % LANG_LIST.length;
-      document.getElementById("langChip").textContent = LANG_LIST[langIdx];
-      setFeed(`언어 표시가 ${LANG_LIST[langIdx]} (으)로 변경되었습니다.`);
+    function cycleLang() {
+      langIdx = (langIdx + 1) % LANGS.length;
+      document.getElementById("langBtn").textContent = LANGS[langIdx];
+      setStatus(`언어 표시 변경: ${LANGS[langIdx]}`);
     }
 
-    function showKycInfo() {
-      closeDrawer();
-      setFeed("KYC / KYB 인증 안내: 미인증 방문자는 읽기 전용으로 운영됩니다.");
+    function checkSecurity() {
+      closeNav();
+      setStatus("KYC / KYB 보안 인증 점검 완료 · ljw2358");
     }
 
-    function setFeed(msg) {
-      document.getElementById("feedBar").textContent = "> " + msg;
+    function setStatus(msg) {
+      document.getElementById("statusLine").textContent = "> " + msg;
     }
 
     document.addEventListener("click", (e) => {
-      if (!e.target.closest(".topbar")) {
-        closeDrawer();
+      if (!e.target.closest(".top-bar")) {
+        closeNav();
       }
     });
 
-    renderBankModules();
+    drawModules();
+    selectModule("02", "송금", "송금 받는 사람과 금액을 입력해 송금을 실행합니다.", true);
   </script>
 </body>
 </html>
