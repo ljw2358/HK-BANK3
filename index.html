@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HKWB 글로벌 뱅킹 · HK-BANK3</title>
+  <title>HKWB 글로벌 뱅킹 허브</title>
   <style>
     :root {
-      --bg-navy: #142246;
-      --bg-purple: #281754;
-      --bg-card: #1d2d5c;
-      --bg-card-hover: #2c2169;
+      --bg-deep: #0a1128;
+      --bg-blue: #102042;
+      --bg-card: #193060;
+      --bg-card-hover: #214080;
       --gold-bright: #fde047;
       --gold-main: #facc15;
       --gold-warm: #eab308;
       --text-white: #ffffff;
-      --text-soft: #e2e8f0;
-      --text-muted: #cbd5e1;
-      --border-gold: rgba(250, 204, 21, 0.78);
+      --text-soft: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-gold: rgba(250, 204, 21, 0.6);
+      --border-glow: rgba(56, 189, 248, 0.4);
     }
 
     * {
@@ -27,7 +28,7 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "Pretendard", sans-serif;
-      background: linear-gradient(155deg, #2b1d66 0%, #1d3269 52%, #132145 100%);
+      background: radial-gradient(circle at 50% 0%, #1e3a8a 0%, var(--bg-blue) 50%, var(--bg-deep) 100%);
       color: var(--text-white);
       min-height: 100vh;
       display: flex;
@@ -48,11 +49,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(20, 34, 70, 0.92);
+      background: rgba(16, 32, 66, 0.95);
       border: 1.5px solid var(--border-gold);
       border-radius: 22px;
       padding: 14px 22px;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.42);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
       position: relative;
       z-index: 70;
     }
@@ -66,15 +67,15 @@
     .logo-emblem {
       width: 40px;
       height: 40px;
-      border-radius: 13px;
+      border-radius: 12px;
       background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-warm) 100%);
-      color: #111b38;
+      color: var(--bg-deep);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 0.98rem;
-      box-shadow: 0 0 16px rgba(250, 204, 21, 0.35);
+      font-size: 0.95rem;
+      box-shadow: 0 0 16px rgba(250, 204, 21, 0.4);
     }
 
     .brand-texts {
@@ -86,7 +87,7 @@
     .brand-sub {
       font-size: 0.72rem;
       font-weight: 800;
-      color: var(--gold-bright);
+      color: var(--gold-main);
       letter-spacing: 0.04em;
     }
 
@@ -103,7 +104,7 @@
     }
 
     .lang-pill {
-      background: rgba(40, 23, 84, 0.9);
+      background: var(--bg-card);
       color: var(--gold-bright);
       border: 1px solid var(--gold-main);
       border-radius: 999px;
@@ -121,7 +122,7 @@
       width: 42px;
       height: 42px;
       border-radius: 13px;
-      background: rgba(40, 23, 84, 0.9);
+      background: var(--bg-card);
       border: 1px solid var(--gold-main);
       display: flex;
       flex-direction: column;
@@ -143,12 +144,12 @@
       position: absolute;
       top: 70px;
       right: 0;
-      width: 290px;
-      background: #182752;
+      width: 280px;
+      background: var(--bg-blue);
       border: 1.5px solid var(--gold-main);
       border-radius: 18px;
       padding: 8px;
-      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.65);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.8);
       z-index: 80;
     }
 
@@ -174,18 +175,18 @@
     }
 
     .nav-btn:hover {
-      background: rgba(250, 204, 21, 0.14);
+      background: var(--bg-card-hover);
       color: var(--gold-bright);
     }
 
     /* 백서 박스 */
     .whitepaper-card {
       display: none;
-      background: rgba(22, 37, 78, 0.95);
+      background: var(--bg-blue);
       border: 1.5px solid var(--gold-main);
       border-radius: 22px;
       padding: 20px 24px;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
     }
 
     .whitepaper-card.open {
@@ -208,15 +209,15 @@
 
     /* 웅장한 메인 히어로 */
     .hero-panel {
-      background: linear-gradient(145deg, #2b447a 0%, #24336b 52%, #2b1d5e 100%);
-      border: 2px solid var(--border-gold);
-      border-radius: 28px;
+      background: linear-gradient(145deg, #1e3a8a 0%, var(--bg-card) 50%, #0c1a36 100%);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 30px;
       padding: 34px 28px;
       display: grid;
       grid-template-columns: 1.32fr 0.95fr;
       gap: 24px;
       align-items: center;
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.48);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.6);
     }
 
     .hero-badges {
@@ -227,9 +228,9 @@
     }
 
     .gold-pill {
-      background: rgba(250, 204, 21, 0.16);
+      background: rgba(250, 204, 21, 0.15);
       color: var(--gold-bright);
-      border: 1px solid rgba(250, 204, 21, 0.65);
+      border: 1px solid var(--border-gold);
       border-radius: 999px;
       padding: 5px 13px;
       font-size: 0.78rem;
@@ -237,12 +238,12 @@
     }
 
     .hero-title {
-      font-size: 2.3rem;
+      font-size: 2.35rem;
       font-weight: 900;
-      line-height: 1.24;
+      line-height: 1.25;
       color: var(--text-white);
       margin-bottom: 12px;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     }
 
     .hero-title span {
@@ -262,42 +263,49 @@
       gap: 12px;
     }
 
-    .btn-lilac {
-      background: linear-gradient(90deg, #c29af8 0%, #a578f2 100%);
-      color: var(--text-white);
-      border: 1.5px solid rgba(253, 224, 71, 0.65);
-      border-radius: 999px;
+    .btn-main {
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-warm) 100%);
+      color: var(--bg-deep);
+      border: none;
+      border-radius: 16px;
       padding: 15px 24px;
-      font-size: 0.96rem;
-      font-weight: 900;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(165, 120, 242, 0.32);
-    }
-
-    .btn-lilac:hover {
-      filter: brightness(1.06);
-    }
-
-    .btn-mint {
-      background: linear-gradient(90deg, #5ce1e6 0%, #4dd0e1 100%);
-      color: #0f172a;
-      border: 1.5px solid rgba(253, 224, 71, 0.7);
-      border-radius: 999px;
-      padding: 15px 26px;
       font-size: 0.98rem;
       font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 10px 26px rgba(92, 225, 230, 0.34);
+      box-shadow: 0 10px 24px rgba(250, 204, 21, 0.3);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .btn-mint:hover {
-      filter: brightness(1.06);
+    .btn-main:hover {
+      filter: brightness(1.08);
+    }
+
+    .btn-sub {
+      background: var(--bg-card);
+      color: var(--gold-bright);
+      border: 1.5px solid var(--gold-main);
+      border-radius: 16px;
+      padding: 14px 20px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-sub:hover {
+      background: var(--bg-card-hover);
     }
 
     /* 계좌 카드 */
     .balance-panel {
-      background: rgba(19, 31, 66, 0.88);
-      border: 1.5px solid var(--border-gold);
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
       border-radius: 24px;
       padding: 22px;
       display: flex;
@@ -315,7 +323,7 @@
     }
 
     .ref-tag {
-      background: rgba(250, 204, 21, 0.16);
+      background: rgba(250, 204, 21, 0.15);
       color: var(--gold-bright);
       padding: 4px 10px;
       border-radius: 999px;
@@ -330,8 +338,8 @@
     }
 
     .policy-box {
-      background: rgba(28, 22, 68, 0.85);
-      border: 1px solid rgba(250, 204, 21, 0.3);
+      background: rgba(10, 17, 40, 0.7);
+      border: 1px solid rgba(250, 204, 21, 0.2);
       border-radius: 16px;
       padding: 14px;
       font-size: 0.84rem;
@@ -340,16 +348,16 @@
     }
 
     .policy-box strong {
-      color: var(--gold-bright);
+      color: var(--gold-main);
     }
 
     /* 2행 5열 10대 핵심 금융 모듈 */
     .modules-wrap {
-      background: rgba(25, 36, 78, 0.92);
-      border: 1.5px solid var(--border-gold);
+      background: var(--bg-blue);
+      border: 1px solid var(--border-gold);
       border-radius: 28px;
       padding: 24px 20px;
-      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.5);
     }
 
     .modules-top {
@@ -368,9 +376,9 @@
     }
 
     .grid-tag {
-      background: rgba(40, 23, 84, 0.9);
-      color: var(--gold-bright);
-      border: 1px solid rgba(250, 204, 21, 0.45);
+      background: var(--bg-card);
+      color: var(--gold-main);
+      border: 1px solid var(--border-gold);
       border-radius: 999px;
       padding: 5px 13px;
       font-size: 0.76rem;
@@ -384,8 +392,8 @@
     }
 
     .mod-item {
-      background: rgba(20, 34, 70, 0.9);
-      border: 1px solid rgba(250, 204, 21, 0.35);
+      background: var(--bg-card);
+      border: 1px solid rgba(250, 204, 21, 0.25);
       border-radius: 20px;
       padding: 18px 10px;
       text-align: center;
@@ -400,10 +408,10 @@
 
     .mod-item:hover,
     .mod-item.active {
-      background: rgba(52, 32, 105, 0.95);
+      background: var(--bg-card-hover);
       border-color: var(--gold-bright);
       transform: translateY(-3px);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.38);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
     }
 
     .mod-logo {
@@ -414,7 +422,7 @@
     .mod-code {
       font-size: 0.7rem;
       font-weight: 900;
-      color: var(--gold-bright);
+      color: var(--gold-main);
     }
 
     .mod-title {
@@ -432,7 +440,7 @@
     }
 
     .exec-card, .web3-card {
-      background: rgba(25, 36, 78, 0.94);
+      background: var(--bg-blue);
       border: 1.5px solid var(--border-gold);
       border-radius: 24px;
       padding: 22px;
@@ -460,8 +468,8 @@
 
     .field-input {
       width: 100%;
-      background: rgba(15, 25, 54, 0.95);
-      border: 1px solid rgba(250, 204, 21, 0.4);
+      background: var(--bg-deep);
+      border: 1px solid var(--border-glow);
       border-radius: 14px;
       padding: 12px 14px;
       font-size: 0.95rem;
@@ -482,7 +490,7 @@
 
     .exec-btn {
       background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-warm) 100%);
-      color: #111b38;
+      color: var(--bg-deep);
       border: none;
       border-radius: 14px;
       padding: 13px 22px;
@@ -493,12 +501,12 @@
     }
 
     .exec-btn:hover {
-      filter: brightness(1.06);
+      filter: brightness(1.08);
     }
 
     .link-action-btn {
       width: 100%;
-      background: rgba(40, 23, 84, 0.92);
+      background: var(--bg-card);
       color: var(--gold-bright);
       border: 1.5px solid var(--gold-main);
       border-radius: 15px;
@@ -511,13 +519,13 @@
 
     .link-action-btn:hover {
       background: var(--gold-main);
-      color: #111b38;
+      color: var(--bg-deep);
     }
 
     /* 상태 표시줄 */
     .status-line {
-      background: rgba(17, 27, 56, 0.95);
-      border: 1.5px solid var(--border-gold);
+      background: #0a1128;
+      border: 1px solid var(--border-gold);
       border-radius: 18px;
       padding: 15px 18px;
       font-family: monospace;
@@ -549,7 +557,7 @@
       <div class="brand-mark">
         <div class="logo-emblem">HK</div>
         <div class="brand-texts">
-          <span class="brand-sub">HKWB · HK-BANK3 글로벌 뱅킹</span>
+          <span class="brand-sub">HKWB · 글로벌 뱅킹 허브</span>
           <span class="id-label">ID: ljw2358</span>
         </div>
       </div>
@@ -564,13 +572,13 @@
       </div>
 
       <nav class="nav-menu" id="navMenu">
-        <button class="nav-btn" onclick="openHkWorldBank()">
-          <span>🌐</span>
-          <span>HK-WORLDBANK 들어가기</span>
-        </button>
         <button class="nav-btn" onclick="enterInternetBank()">
           <span>🏦</span>
           <span>인터넷 뱅킹 진입하기</span>
+        </button>
+        <button class="nav-btn" onclick="openHkWorldBank()">
+          <span>🌐</span>
+          <span>HK-WORLDBANK 들어가기</span>
         </button>
         <button class="nav-btn" onclick="toggleDoc()">
           <span>📖</span>
@@ -589,7 +597,7 @@
 
     <section class="whitepaper-card" id="whitepaperCard">
       <h3>HKWB 글로벌 뱅킹 백서 요약</h3>
-      <p>• 전 세계 60개국을 잇는 네이비·퍼플 &amp; 골드 감성의 글로벌 금융 플랫폼</p>
+      <p>• 전 세계 60개국을 잇는 딥 블루 &amp; 골드 감성의 글로벌 금융 플랫폼</p>
       <p>• 순이익 배분: UBI 30%, 회사 경영비 30%, HK 사회재단 최대 30%</p>
       <p>• 추천인 ID(ljw2358) 등록 시 UBI 수령 우선순위 적용 · KYC/KYB 인증 필수</p>
       <p>• 고객 지원: support@hkwb.world</p>
@@ -598,20 +606,20 @@
     <section class="hero-panel">
       <div>
         <div class="hero-badges">
-          <span class="gold-pill">HK-BANK3 인터넷 뱅킹</span>
+          <span class="gold-pill">HKWB 글로벌 뱅킹</span>
           <span class="gold-pill">HK-WORLDBANK 연동</span>
           <span class="gold-pill">UBI 30% 우선 배정</span>
         </div>
         <h1 class="hero-title">인류와 기술이 공존하는<br><span>HKWB</span> 글로벌 금융 플랫폼</h1>
         <p class="hero-desc">
-          오른쪽 버튼을 누르면 <strong>HK-WORLDBANK</strong>로 바로 들어가고, 왼쪽 버튼으로 <strong>HK-BANK3</strong> 인터넷 뱅킹에 진입하거나 아래 10대 금융 모듈을 이용할 수 있습니다.
+          화면 속 깊은 블루 톤에 맞춰 구성한 차세대 금융 플랫폼입니다. 아래 <strong>인터넷 뱅킹 진입하기</strong> 버튼을 누르면 <strong>HK-WORLDBANK</strong>로 바로 이동합니다.
         </p>
         <div class="hero-cta">
-          <button class="btn-lilac" onclick="enterInternetBank()">
+          <button class="btn-main" onclick="enterInternetBank()">
             인터넷 뱅킹 진입하기 →
           </button>
-          <button class="btn-mint" onclick="openHkWorldBank()">
-            HK-WORLDBANK 들어가기 →
+          <button class="btn-sub" onclick="openHkWorldBank()">
+            HK-WORLDBANK 들어가기
           </button>
         </div>
       </div>
@@ -665,27 +673,26 @@
       </section>
 
       <section class="web3-card">
-        <div class="exec-title">HK-WORLDBANK &amp; 뱅킹 연결</div>
+        <div class="exec-title">플랫폼 빠른 이동</div>
         <p class="exec-desc">
-          원하시는 플랫폼으로 바로 이동합니다.
+          인터넷 뱅킹 진입하기 버튼을 누르면 HK-WORLDBANK로 즉시 이동합니다.
         </p>
+        <button class="link-action-btn" onclick="enterInternetBank()">
+          인터넷 뱅킹 진입하기 (HK-WORLDBANK) →
+        </button>
         <button class="link-action-btn" onclick="openHkWorldBank()">
           HK-WORLDBANK 들어가기 →
-        </button>
-        <button class="link-action-btn" onclick="enterInternetBank()">
-          인터넷 뱅킹 진입하기 (HK-BANK3) →
         </button>
       </section>
     </div>
 
     <div class="status-line" id="statusLine">
-      &gt; HK-BANK3 준비 완료 · ID: ljw2358 · HK-WORLDBANK: ljw2358.github.io/HK-WORLDBANK
+      &gt; HKWB 준비 완료 · ID: ljw2358 · 연결 주소: ljw2358.github.io/HK-WORLDBANK
     </div>
   </div>
 
   <script>
     const HK_WORLDBANK_URL = "https://ljw2358.github.io/HK-WORLDBANK/";
-    const INTERNET_BANK_URL = "https://ljw2358.github.io/HK-BANK3/";
     const LANGS = ["KO · 60개국", "EN · 60 Countries", "JA · 60カ国", "ZH · 60国", "ES · 60 Países"];
     let langIdx = 0;
     let balance = 1250000;
@@ -768,14 +775,14 @@
       }
     }
 
-    function openHkWorldBank() {
-      setStatus("HK-WORLDBANK로 이동합니다...");
+    function enterInternetBank() {
+      setStatus("인터넷 뱅킹 진입 → HK-WORLDBANK로 이동합니다...");
       window.location.href = HK_WORLDBANK_URL;
     }
 
-    function enterInternetBank() {
-      setStatus("인터넷 뱅킹(ljw2358.github.io/HK-BANK3)으로 이동합니다...");
-      window.location.href = INTERNET_BANK_URL;
+    function openHkWorldBank() {
+      setStatus("HK-WORLDBANK로 이동합니다...");
+      window.location.href = HK_WORLDBANK_URL;
     }
 
     function toggleNav(e) {
