@@ -1,588 +1,310 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HKWB | Global Digital Internet Banking</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
-            background-color: #070314;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-        .grand-bg {
-            background:
-                radial-gradient(circle at 15% 10%, rgba(109, 40, 217, 0.45) 0%, transparent 45%),
-                radial-gradient(circle at 85% 15%, rgba(234, 179, 8, 0.18) 0%, transparent 40%),
-                radial-gradient(circle at 50% 65%, rgba(76, 29, 149, 0.35) 0%, #070314 75%);
-        }
-        .glass-panel {
-            background: rgba(24, 14, 54, 0.58);
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(250, 204, 21, 0.24);
-        }
-        .glass-panel:hover {
-            border-color: rgba(250, 204, 21, 0.65);
-            box-shadow: 0 12px 36px rgba(109, 40, 217, 0.35);
-        }
-        .gold-text {
-            background: linear-gradient(135deg, #fde047 0%, #facc15 45%, #eab308 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .btn-imperial {
-            background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 65%, #3b0764 100%);
-            border: 1px solid rgba(250, 204, 21, 0.75);
-            box-shadow: 0 0 28px rgba(124, 58, 237, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-        }
-        .btn-imperial:hover {
-            background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 65%, #4c1d95 100%);
-            box-shadow: 0 0 38px rgba(250, 204, 21, 0.45);
-            transform: translateY(-2px);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HKWB 차세대 인터넷 뱅킹</title>
+  <style>
+    :root {
+      --bg-main: #0b0714;
+      --bg-card: #160f29;
+      --bg-card-soft: #1f153a;
+      --border-purple: #7c3aed;
+      --accent-purple: #9333ea;
+      --accent-gold: #f5b942;
+      --text-main: #ffffff;
+      --text-sub: #c4b5fd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top, #221347 0%, var(--bg-main) 65%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    /* 상단 헤더: ID: ljw2358 */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid rgba(147, 51, 234, 0.45);
+      border-radius: 14px;
+      background: rgba(22, 15, 41, 0.85);
+      margin-bottom: 24px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .user-id {
+      font-weight: 700;
+      color: var(--accent-gold);
+      font-size: 0.95rem;
+    }
+
+    .status-pill {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      background: rgba(124, 58, 237, 0.2);
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(167, 139, 250, 0.35);
+    }
+
+    /* 히어로 영역 */
+    .hero {
+      background: linear-gradient(135deg, rgba(109, 40, 217, 0.28), rgba(22, 15, 41, 0.95));
+      border: 1px solid rgba(167, 139, 250, 0.4);
+      border-radius: 20px;
+      padding: 28px 22px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .hero p {
+      color: var(--text-sub);
+      font-size: 0.98rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent-purple), var(--accent-gold));
+      color: #0b0714;
+      font-weight: 800;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 22px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .btn-secondary {
+      background: var(--bg-card-soft);
+      color: var(--text-main);
+      font-weight: 700;
+      border: 1px solid var(--border-purple);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    /* 요약 카드 3종 */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(124, 58, 237, 0.45);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .card-label {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-bottom: 6px;
+    }
+
+    .card-value {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: #ddd6fe;
+    }
+
+    /* 10대 핵심 분산 금융 모듈 */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #ffffff;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .module-btn {
+      width: 100%;
+      text-align: left;
+      background: var(--bg-card-soft);
+      border: 1px solid rgba(147, 51, 234, 0.45);
+      border-radius: 14px;
+      padding: 14px 16px;
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .module-btn:hover {
+      border-color: var(--accent-gold);
+      background: #2a1c4f;
+    }
+
+    .module-num {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--accent-gold);
+      margin-bottom: 4px;
+    }
+
+    .notice-box {
+      margin-top: 24px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(245, 185, 66, 0.1);
+      border: 1px solid rgba(245, 185, 66, 0.4);
+      color: #fde68a;
+      font-size: 0.88rem;
+    }
+  </style>
 </head>
-<body class="grand-bg min-h-screen flex flex-col justify-between">
-
-    <!-- 상단 헤더 -->
-    <header class="sticky top-0 z-50 border-b border-purple-800/40 bg-[#0b0520]/80 backdrop-blur-xl px-4 sm:px-8 py-4">
-        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
-            <!-- 브랜드 로고 -->
-            <div class="flex items-center space-x-3">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-950 border border-yellow-400/60 flex items-center justify-center shadow-lg">
-                    <i class="fa-solid fa-crown text-yellow-400 text-lg"></i>
-                </div>
-                <div>
-                    <div class="flex items-center space-x-2">
-                        <span class="text-2xl font-black tracking-wider text-white">HKWB</span>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-yellow-400/15 text-yellow-300 border border-yellow-400/40 font-bold">60 LANGS</span>
-                    </div>
-                    <p class="text-[11px] text-purple-300 tracking-wide" data-i18n="tagline">Global Digital Internet Banking & Web3 Core</p>
-                </div>
-            </div>
-
-            <!-- 우측: 60개국 언어 선택기 + ID: ljw2358 -->
-            <div class="flex items-center space-x-3 sm:space-x-4">
-                <div class="flex items-center space-x-2 bg-purple-950/90 border border-yellow-400/40 rounded-xl px-3 py-1.5">
-                    <i class="fa-solid fa-globe text-yellow-400 text-sm"></i>
-                    <select id="languageSelect" aria-label="Select Language" class="bg-transparent text-xs sm:text-sm text-yellow-300 font-semibold focus:outline-none cursor-pointer max-w-[175px] sm:max-w-none">
-                        <!-- 60개국 언어 옵션이 스크립트로 자동 채워집니다 -->
-                    </select>
-                </div>
-                <div class="text-xs bg-purple-900/50 border border-purple-600/40 px-3 py-2 rounded-xl text-purple-200">
-                    ID: <span class="text-yellow-400 font-mono font-bold">ljw2358</span>
-                </div>
-            </div>
-        </div>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <div class="user-id">ID: ljw2358</div>
+      <div class="status-pill">둘러보기 모드 (KYC/KYB 인증 후 거래 가능)</div>
     </header>
 
-    <!-- 메인 히어로 & 핵심 대작품 섹션 -->
-    <main class="flex-1 px-4 sm:px-8 py-12 sm:py-20">
-        <div class="max-w-7xl mx-auto">
+    <section class="hero">
+      <h1>HKWB 차세대 인터넷 뱅킹</h1>
+      <p>
+        HKWB 인터넷 뱅킹은 HK-BANK와 하나로 연결됩니다. 디지털 OTP 보안, AGI/ASI 가변 금리 엔진,
+        투명한 UBI 분배 및 파이 거래소와 글로벌 계좌직불과 함께합니다.
+      </p>
+      <div class="btn-row">
+        <button type="button" class="btn-primary" onclick="enterInternetBanking()">
+          인터넷 뱅킹 진입하기 (HK-BANK)
+        </button>
+        <button type="button" class="btn-secondary" onclick="showKycNotice()">
+          디지털 OTP &amp; KYC/KYB 확인
+        </button>
+      </div>
+    </section>
 
-            <!-- 상단 배지 & 메인 타이틀 -->
-            <div class="text-center max-w-4xl mx-auto mb-14">
-                <div class="inline-flex items-center px-4 py-2 rounded-full bg-purple-900/60 border border-yellow-400/35 text-yellow-300 text-xs font-semibold mb-6">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-ping"></span>
-                    <span data-i18n="badgeStatus">Digital OTP & Internet Banking Gateway Ready · KYC/KYB Protected</span>
-                </div>
+    <section class="grid-3">
+      <div class="card">
+        <div class="card-label">글로벌 다국어 지원</div>
+        <div class="card-value">60 개국어</div>
+        <div class="card-desc">Active Language (60): 한국어 (Korean)</div>
+      </div>
+      <div class="card">
+        <div class="card-label">순이익 배분 원칙</div>
+        <div class="card-value">UBI 30% · 경영비 30% · 재단 최대 30%</div>
+        <div class="card-desc">추천인 ljw2358 우선 UBI · 재단은 전략 투자자본 용도</div>
+      </div>
+      <div class="card">
+        <div class="card-label">기간별 예치 &amp; LP 금리</div>
+        <div class="card-value">AGI/ASI 가변 · 6%~8.5%</div>
+        <div class="card-desc">6개월·1년·2년·3년 가변 금리 적용 / 중도해지 시 6%~8.5%</div>
+      </div>
+    </section>
 
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight mb-6">
-                    <span class="block text-white" data-i18n="heroLine1">Borderless Digital Banking</span>
-                    <span class="block gold-text mt-1" data-i18n="heroLine2">For 60 Global Nations</span>
-                </h1>
+    <section>
+      <h2 class="section-title">10대 핵심 분산 금융 모듈</h2>
+      <div class="modules-grid" id="modulesGrid"></div>
+    </section>
 
-                <p class="text-purple-200/90 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-10" data-i18n="heroDesc">
-                    Connect seamlessly with HKWB Internet Banking and HK-BANK3. Built for global pioneers with Digital OTP security, AGI/ASI dynamic yield intelligence, and transparent UBI & foundation governance.
-                </p>
-
-                <!-- 주요 진입 버튼 (HK-BANK3 연결) -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://ljw2358.github.io/HK-BANK3/"
-                       class="w-full sm:w-auto px-9 py-4 rounded-2xl btn-imperial text-white font-extrabold text-base sm:text-lg tracking-wide transition-all duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-landmark-dome text-yellow-300 mr-3 text-xl"></i>
-                        <span data-i18n="btnBanking">Enter Internet Banking (HK-BANK3)</span>
-                    </a>
-
-                    <button type="button" onclick="openOtpModal()"
-                            class="w-full sm:w-auto px-7 py-4 rounded-2xl glass-panel text-yellow-300 hover:text-white font-bold text-base transition-all duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-shield-keyhole mr-2.5"></i>
-                        <span data-i18n="btnOtp">Digital OTP & KYC/KYB Check</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 글로벌 지표 & 배분 구조 요약 -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
-                <div class="glass-panel rounded-3xl p-6">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs uppercase tracking-wider text-purple-300 font-semibold" data-i18n="stat1Label">Global Localization</span>
-                        <i class="fa-solid fa-earth-americas text-yellow-400 text-xl"></i>
-                    </div>
-                    <div class="text-3xl font-black text-white mb-1"><span id="activeLangCount">60</span> <span class="text-yellow-400 text-lg" data-i18n="stat1Unit">Languages</span></div>
-                    <p class="text-xs text-purple-300" id="currentLangBanner" data-i18n="stat1Sub">Active Language: 한국어 (KO)</p>
-                </div>
-
-                <div class="glass-panel rounded-3xl p-6">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs uppercase tracking-wider text-purple-300 font-semibold" data-i18n="stat2Label">Net Profit Allocation</span>
-                        <i class="fa-solid fa-scale-balanced text-yellow-400 text-xl"></i>
-                    </div>
-                    <div class="text-2xl sm:text-3xl font-black text-white mb-1" data-i18n="stat2Value">30% UBI · 30% Ops · 30% Fund</div>
-                    <p class="text-xs text-purple-300" data-i18n="stat2Sub">Referral ljw2358 priority UBI · Foundation for strategic capital</p>
-                </div>
-
-                <div class="glass-panel rounded-3xl p-6">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs uppercase tracking-wider text-purple-300 font-semibold" data-i18n="stat3Label">Dynamic Yield & Early Exit</span>
-                        <i class="fa-solid fa-chart-line text-yellow-400 text-xl"></i>
-                    </div>
-                    <div class="text-2xl sm:text-3xl font-black text-yellow-300 mb-1" data-i18n="stat3Value">AGI/ASI Variable · 6%~8.5%</div>
-                    <p class="text-xs text-purple-300" data-i18n="stat3Sub">6m / 1y / 2y / 3y terms · Early withdrawal rate 6%–8.5%</p>
-                </div>
-            </div>
-
-            <!-- 10대 분산 금융 모듈 그리드 -->
-            <div class="mb-8">
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2">
-                    <div>
-                        <p class="text-xs uppercase tracking-widest text-yellow-400 font-bold mb-1" data-i18n="modKicker">10 DISTRIBUTED FINANCIAL MODULES</p>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white" data-i18n="modTitle">10 Core Decentralized Banking Modules</h2>
-                    </div>
-                    <p class="text-xs text-purple-300" data-i18n="modNote">Testnet & Mainnet supported · Read-only preview before KYC/KYB</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                    <div class="glass-panel rounded-2xl p-5">
-                        <div class="text-xs font-mono text-yellow-400 mb-2">01 / MODULE</div>
-                        <h3 class="font-bold text-base text-white mb-1" data-i18n="m1">Wallet Connect</h3>
-                        <p class="text-xs text-purple-300" data-i18n="m1d">Testnet & Mainnet wallet link</p>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-5">
-                        <div class="text-xs font-mono text-yellow-400 mb-2">02 / MODULE</div>
-                        <h3 class="font-bold text-base text-white mb-1" data-i18n="m2">Transfer</h3>
-                        <p class="text-xs text-purple-300" data-i18n="m2d">Instant cross-border transfers</p>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-5">
-                        <div class="text-xs font-mono text-yellow-400 mb-2">03 / MODULE</div>
-                        <h3 class="font-bold text-base text-white mb-1" data-i18n="m3">Payment</h3>
-                        <p class="text-xs text-purple-300" data-i18n="m3d">Global merchant & QR payment</p>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-5">
-                        <div class="text-xs font-mono text-yellow-400 mb-2">04 / MODULE</div>
-                        <h3 class="font-bold text-base text-white mb-1" data-i18n="m4">Deposit</h3>
-                        <p class="text-xs text-purple-300" data-i18n="m4d">Flexible term deposits & vault</p>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-5">
-                        <div class="text-xs font-mono text-yellow-400 mb-2">05 / MODULE</div>
-                        <h3 class="font-bold text-base text-white mb-1" data-i18n="m5">Rewards</h3>
-                        <p class="text-xs text-purple-300" data-i18n="m5d">Ecosystem participation rewards</p>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-5">
-                        <div class="text-xs font-mono text-yellow-400 mb-2">06 / MODULE</div>
-                        <h3 class="font-bold text-base text-white mb-1" data-i18n="m6">UBI Basic Income</h3>
-                        <p class="text-xs text-purple-300" data-i18n="m6d">30% net profit allocation pool</p>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-5">
-                        <div class="text-xs font-mono text-yellow-400 mb-2">07 / MODULE</div>
-                        <h3 class="font-bold text-base text-white mb-1" data-i18n="m7">Swap</h3>
-                        <p class="text-xs text-purple-300" data-i18n="m7d">Rapid digital asset conversion</p>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-5">
-                        <div class="text-xs font-mono text-yellow-400 mb-2">08 / MODULE</div>
-                        <h3 class="font-bold text-base text-white mb-1" data-i18n="m8">DEX Swap</h3>
-                        <p class="text-xs text-purple-300" data-i18n="m8d">Decentralized liquidity exchange</p>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-5">
-                        <div class="text-xs font-mono text-yellow-400 mb-2">09 / MODULE</div>
-                        <h3 class="font-bold text-base text-white mb-1" data-i18n="m9">LP Staking</h3>
-                        <p class="text-xs text-purple-300" data-i18n="m9d">Liquidity pool staking & yield</p>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-5">
-                        <div class="text-xs font-mono text-yellow-400 mb-2">10 / MODULE</div>
-                        <h3 class="font-bold text-base text-white mb-1" data-i18n="m10">Pi Balance</h3>
-                        <p class="text-xs text-purple-300" data-i18n="m10d">Pi holding & ledger tracking</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- OTP & 보안 안내 모달 -->
-    <div id="otpModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-        <div class="glass-panel max-w-md w-full rounded-3xl p-6 sm:p-8 border border-yellow-400/40">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-xl font-bold text-yellow-300" data-i18n="modalTitle">Digital OTP & Verification</h3>
-                <button type="button" onclick="closeOtpModal()" class="text-purple-300 hover:text-white text-xl">&times;</button>
-            </div>
-            <p class="text-sm text-purple-200 leading-relaxed mb-4" data-i18n="modalBody">
-                Transactions require KYC/KYB verification. Unverified visitors may browse in read-only mode. Live 6-digit OTP code:
-            </p>
-            <div class="bg-purple-950/90 border border-yellow-400/50 rounded-2xl p-4 text-center mb-6">
-                <div class="text-xs text-purple-300 mb-1">HKWB DIGITAL OTP</div>
-                <div id="otpCodeDisplay" class="text-3xl font-mono font-black tracking-[0.35em] text-yellow-300">849 204</div>
-            </div>
-            <div class="flex justify-end gap-3">
-                <button type="button" onclick="closeOtpModal()" class="px-5 py-2.5 rounded-xl bg-purple-800/70 hover:bg-purple-700 text-sm font-semibold text-white">
-                    Close
-                </button>
-                <a href="https://ljw2358.github.io/HK-BANK3/" class="px-5 py-2.5 rounded-xl btn-imperial text-sm font-bold text-white">
-                    Go to HK-BANK3
-                </a>
-            </div>
-        </div>
+    <div class="notice-box" id="statusMessage">
+      안내: '인터넷 뱅킹 진입하기' 버튼을 누르면 설정된 인터넷 뱅킹 페이지로 이동합니다.
     </div>
+  </div>
 
-    <!-- 하단 푸터 -->
-    <footer class="border-t border-purple-900/50 bg-[#070314]/90 px-4 sm:px-8 py-6">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-purple-300">
-            <div>
-                <span class="font-bold text-yellow-400">HKWB</span> · <span data-i18n="footerSupport">Support:</span> <span class="text-white">support@hkwb.world</span>
-            </div>
-            <div data-i18n="footerRights">
-                © 2026 HKWB Global Internet Banking. All rights reserved.
-            </div>
-        </div>
-    </footer>
+  <script>
+    // 이동할 인터넷 뱅킹 주소를 이곳에 입력하세요.
+    const BANK_URL = "https://ljw2358.github.io/HK-BANK/";
 
-    <script>
-        // 60개국 대표 언어 목록 (코드, 표시 이름)
-        const LANGUAGES_60 = [
-            ['ko', '한국어 (Korean)'],
-            ['en', 'English (영어)'],
-            ['zh', '中文简体 (Chinese)'],
-            ['ja', '日本語 (Japanese)'],
-            ['es', 'Español (Spanish)'],
-            ['fr', 'Français (French)'],
-            ['de', 'Deutsch (German)'],
-            ['pt', 'Português (Portuguese)'],
-            ['ru', 'Русский (Russian)'],
-            ['ar', 'العربية (Arabic)'],
-            ['hi', 'हिन्दी (Hindi)'],
-            ['vi', 'Tiếng Việt (Vietnamese)'],
-            ['id', 'Bahasa Indonesia'],
-            ['th', 'ไทย (Thai)'],
-            ['tl', 'Tagalog / Filipino'],
-            ['ms', 'Bahasa Melayu'],
-            ['tr', 'Türkçe (Turkish)'],
-            ['it', 'Italiano (Italian)'],
-            ['nl', 'Nederlands (Dutch)'],
-            ['pl', 'Polski (Polish)'],
-            ['uk', 'Українська (Ukrainian)'],
-            ['sv', 'Svenska (Swedish)'],
-            ['no', 'Norsk (Norwegian)'],
-            ['da', 'Dansk (Danish)'],
-            ['fi', 'Suomi (Finnish)'],
-            ['cs', 'Čeština (Czech)'],
-            ['hu', 'Magyar (Hungarian)'],
-            ['ro', 'Română (Romanian)'],
-            ['el', 'Ελληνικά (Greek)'],
-            ['he', 'עברית (Hebrew)'],
-            ['fa', 'فارسی (Persian)'],
-            ['bn', 'বাংলা (Bengali)'],
-            ['ur', 'اردو (Urdu)'],
-            ['ta', 'தமிழ் (Tamil)'],
-            ['te', 'తెలుగు (Telugu)'],
-            ['mr', 'मराठी (Marathi)'],
-            ['gu', 'ગુજરાતી (Gujarati)'],
-            ['kn', 'ಕನ್ನಡ (Kannada)'],
-            ['ml', 'മലയാളം (Malayalam)'],
-            ['pa', 'ਪੰਜਾਬੀ (Punjabi)'],
-            ['sw', 'Kiswahili (Swahili)'],
-            ['am', 'አማርኛ (Amharic)'],
-            ['ha', 'Hausa'],
-            ['yo', 'Yorùbá'],
-            ['zu', 'isiZulu'],
-            ['af', 'Afrikaans'],
-            ['sk', 'Slovenčina (Slovak)'],
-            ['sl', 'Slovenščina (Slovenian)'],
-            ['hr', 'Hrvatski (Croatian)'],
-            ['sr', 'Српски (Serbian)'],
-            ['bg', 'Български (Bulgarian)'],
-            ['lt', 'Lietuvių (Lithuanian)'],
-            ['lv', 'Latviešu (Latvian)'],
-            ['et', 'Eesti (Estonian)'],
-            ['ka', 'ქართული (Georgian)'],
-            ['hy', 'Հայերեն (Armenian)'],
-            ['az', 'Azərbaycan (Azerbaijani)'],
-            ['kk', 'Қазақ тілі (Kazakh)'],
-            ['uz', 'Oʻzbek (Uzbek)'],
-            ['mn', 'Монгол (Mongolian)']
-        ];
+    const MODULES = [
+      "지갑 연결",
+      "송금",
+      "결제",
+      "예치",
+      "보상",
+      "기본소득 (UBI)",
+      "스왑",
+      "덱스 스왑 (DEX Swap)",
+      "LP 스테이킹",
+      "파이 수량"
+    ];
 
-        // 주요 언어 사전 (영어 기본 + 핵심 다국어 번역)
-        const BASE_EN = {
-            tagline: 'Global Digital Internet Banking & Web3 Core',
-            badgeStatus: 'Digital OTP & Internet Banking Gateway Ready · KYC/KYB Protected',
-            heroLine1: 'Borderless Digital Banking',
-            heroLine2: 'For 60 Global Nations',
-            heroDesc: 'Connect seamlessly with HKWB Internet Banking and HK-BANK3. Built for global pioneers with Digital OTP security, AGI/ASI dynamic yield intelligence, and transparent UBI & foundation governance.',
-            btnBanking: 'Enter Internet Banking (HK-BANK3)',
-            btnOtp: 'Digital OTP & KYC/KYB Check',
-            stat1Label: 'Global Localization',
-            stat1Unit: 'Languages',
-            stat2Label: 'Net Profit Allocation',
-            stat2Value: '30% UBI · 30% Ops · 30% Fund',
-            stat2Sub: 'Referral ljw2358 priority UBI · Foundation for strategic capital',
-            stat3Label: 'Dynamic Yield & Early Exit',
-            stat3Value: 'AGI/ASI Variable · 6%~8.5%',
-            stat3Sub: '6m / 1y / 2y / 3y terms · Early withdrawal rate 6%–8.5%',
-            modKicker: '10 DISTRIBUTED FINANCIAL MODULES',
-            modTitle: '10 Core Decentralized Banking Modules',
-            modNote: 'Testnet & Mainnet supported · Read-only preview before KYC/KYB',
-            m1: 'Wallet Connect', m1d: 'Testnet & Mainnet wallet link',
-            m2: 'Transfer', m2d: 'Instant cross-border transfers',
-            m3: 'Payment', m3d: 'Global merchant & QR payment',
-            m4: 'Deposit', m4d: 'Flexible term deposits & vault',
-            m5: 'Rewards', m5d: 'Ecosystem participation rewards',
-            m6: 'UBI Basic Income', m6d: '30% net profit allocation pool',
-            m7: 'Swap', m7d: 'Rapid digital asset conversion',
-            m8: 'DEX Swap', m8d: 'Decentralized liquidity exchange',
-            m9: 'LP Staking', m9d: 'Liquidity pool staking & yield',
-            m10: 'Pi Balance', m10d: 'Pi holding & ledger tracking',
-            modalTitle: 'Digital OTP & Verification',
-            modalBody: 'Transactions require KYC/KYB verification. Unverified visitors may browse in read-only mode. Live 6-digit OTP code:',
-            footerSupport: 'Support:',
-            footerRights: '© 2026 HKWB Global Internet Banking. All rights reserved.'
-        };
+    function renderModules() {
+      const grid = document.getElementById("modulesGrid");
+      grid.innerHTML = MODULES.map((name, idx) => {
+        const num = String(idx + 1).padStart(2, "0");
+        return `
+          <button type="button" class="module-btn" onclick="selectModule('${num}', '${name}')">
+            <span class="module-num">MODULE ${num}</span>
+            ${name}
+          </button>
+        `;
+      }).join("");
+    }
 
-        const TRANSLATIONS = {
-            en: BASE_EN,
-            ko: {
-                tagline: '글로벌 디지털 인터넷 뱅킹 & Web3 코어',
-                badgeStatus: '디지털 OTP & 인터넷 뱅킹 게이트웨이 준비 완료 · KYC/KYB 필수',
-                heroLine1: '60개국으로 뻗어나가는',
-                heroLine2: 'HKWB 차세대 인터넷 뱅킹',
-                heroDesc: 'HKWB 인터넷 뱅킹과 HK-BANK3를 하나로 연결합니다. 디지털 OTP 보안, AGI/ASI 가변 금리 엔진, 투명한 UBI 및 재단 거버넌스로 글로벌 개척자들과 함께합니다.',
-                btnBanking: '인터넷 뱅킹 진입하기 (HK-BANK3)',
-                btnOtp: '디지털 OTP & KYC/KYB 확인',
-                stat1Label: '글로벌 다국어 지원',
-                stat1Unit: '개국어',
-                stat2Label: '순이익 배분 원칙',
-                stat2Value: 'UBI 30% · 경영비 30% · 재단 최대 30%',
-                stat2Sub: '추천인 ljw2358 UBI 우선 배분 · 전략 투자자본은 HK 사회재단 활용',
-                stat3Label: '가변 이율 & 중도 해지',
-                stat3Value: 'AGI/ASI 가변 · 6%~8.5%',
-                stat3Sub: '6개월·1년·2년·3년 예치/스테이킹 · 중도 해지 이율 6%~8.5%',
-                modKicker: '10대 분산 금융 연동망',
-                modTitle: '10대 핵심 분산 금융 모듈',
-                modNote: '테스트넷 & 정식 지갑 지원 · 미인증 방문자는 둘러보기 모드 제공',
-                m1: '지갑 연결', m1d: '테스트넷 & 정식 지갑 연동',
-                m2: '송금', m2d: '실시간 초고속 자금 전송',
-                m3: '결제', m3d: '글로벌 가맹점 & 간편 결제',
-                m4: '예치', m4d: '기간별 예치 및 자산 운용',
-                m5: '보상', m5d: '생태계 참여 리워드 지급',
-                m6: '기본소득 (UBI)', m6d: '순이익 30% 기본소득 재원',
-                m7: '스왑', m7d: '빠른 디지털 자산 스왑',
-                m8: '덱스 스왑', m8d: '탈중앙 유동성 스왑',
-                m9: 'LP 스테이킹', m9d: '유동성 풀 스테이킹 수익',
-                m10: '파이 수량', m10d: '보유 파이 수량 및 원장 조회',
-                modalTitle: '디지털 OTP & 인증 안내',
-                modalBody: '금융 거래는 KYC/KYB 인증 후 이용 가능하며, 미인증 방문자는 둘러보기 모드로 이용할 수 있습니다. 실시간 6자리 OTP 코드:',
-                footerSupport: '고객문의:',
-                footerRights: '© 2026 HKWB Global Internet Banking. All rights reserved.'
-            },
-            ja: {
-                tagline: 'グローバル・デジタル・インターネットバンキング',
-                badgeStatus: 'デジタルOTP＆インターネットバンキング準備完了・KYC/KYB認証必須',
-                heroLine1: '60カ国へ広がる',
-                heroLine2: 'HKWB 次世代バンキング',
-                heroDesc: 'HKWBインターネットバンキングとHK-BANK3をシームレスに連携。デジタルOTPセキュリティとAGI/ASI可変金利でグローバルな資産運用を実現します。',
-                btnBanking: 'インターネットバンキングへ (HK-BANK3)',
-                btnOtp: 'デジタルOTP＆KYC/KYB確認',
-                stat1Label: 'グローバル多言語対応',
-                stat1Unit: '言語',
-                stat2Label: '純利益配分ルール',
-                stat2Value: 'UBI 30% · 運営 30% · 財団最大 30%',
-                stat2Sub: '紹介コード ljw2358 優先UBI配分 · 戦略投資はHK社会財団で管理',
-                stat3Label: '可変金利＆中途解約',
-                stat3Value: 'AGI/ASI 可変 · 6%~8.5%',
-                stat3Sub: '6ヶ月・1年・2年・3年プラン · 中途解約利率 6%〜8.5%',
-                modKicker: '10大分散金融モジュール',
-                modTitle: '10のコア分散型バンキング機能',
-                modNote: 'テストネット＆メインネット対応 · 未認証時は閲覧モード',
-                m1: 'ウォレット接続', m1d: 'テスト＆本番ウォレット連携',
-                m2: '送金', m2d: '即時グローバル送金',
-                m3: '決済', m3d: 'スマート決済＆QR決済',
-                m4: '預金', m4d: '期間別預金＆資産保管',
-                m5: '報酬', m5d: 'エコシステム報酬プログラム',
-                m6: 'ベーシックインカム', m6d: '純利益30%のUBIプール',
-                m7: 'スワップ', m7d: '高速デジタル資産交換',
-                m8: 'DEXスワップ', m8d: '分散型流動性スワップ',
-                m9: 'LPステーキング', m9d: '流動性プール運用利回り',
-                m10: 'Pi保有量', m10d: 'Pi残高＆台帳トラッキング',
-                modalTitle: 'デジタルOTP＆認証確認',
-                modalBody: '取引にはKYC/KYB認証が必要です。未認証時は閲覧モードとなります。リアルタイム6桁OTPコード：',
-                footerSupport: 'サポート:',
-                footerRights: '© 2026 HKWB Global Internet Banking. All rights reserved.'
-            },
-            zh: {
-                tagline: '全球数字网上银行与 Web3 核心',
-                badgeStatus: '数字OTP与网上银行已就绪 · 需完成 KYC/KYB 认证',
-                heroLine1: '迈向60个国家的',
-                heroLine2: 'HKWB 新一代数字银行',
-                heroDesc: '连接 HKWB 网上银行与 HK-BANK3。配备数字 OTP 安全验证、AGI/ASI 动态利率与透明的 UBI 分配机制，服务全球先锋用户。',
-                btnBanking: '进入网上银行 (HK-BANK3)',
-                btnOtp: '数字 OTP 与 KYC/KYB 状态',
-                stat1Label: '全球多语言支持',
-                stat1Unit: '种语言',
-                stat2Label: '净利润分配机制',
-                stat2Value: 'UBI 30% · 运营 30% · 基金会最高 30%',
-                stat2Sub: '推荐码 ljw2358 享 UBI 优先分配 · 战略资本由 HK 社会基金会管理',
-                stat3Label: '动态利率与提前支取',
-                stat3Value: 'AGI/ASI 浮动 · 6%~8.5%',
-                stat3Sub: '6个月/1年/2年/3年期 · 提前支取利率 6%–8.5%',
-                modKicker: '十大分布式金融模块',
-                modTitle: '十大核心去中心化银行模块',
-                modNote: '支持测试网与主网 · 未认证访客为只读浏览模式',
-                m1: '钱包连接', m1d: '测试网与主网钱包连接',
-                m2: '转账', m2d: '极速跨境资金转账',
-                m3: '支付', m3d: '全球商户与便捷支付',
-                m4: '存款', m4d: '多期限存款与资金托管',
-                m5: '奖励', m5d: '生态参与奖励机制',
-                m6: '基础收入 (UBI)', m6d: '30% 净利润全民基础收入',
-                m7: '兑换 (Swap)', m7d: '快速数字资产兑换',
-                m8: 'DEX 兑换', m8d: '去中心化流动性兑换',
-                m9: 'LP 质押', m9d: '流动性池质押与收益',
-                m10: 'Pi 数量', m10d: 'Pi 持仓与账本查询',
-                modalTitle: '数字 OTP 与身份验证',
-                modalBody: '执行交易需完成 KYC/KYB 认证，未认证用户可浏览界面。实时 6 位 OTP 验证码：',
-                footerSupport: '客服邮箱:',
-                footerRights: '© 2026 HKWB Global Internet Banking. All rights reserved.'
-            },
-            vi: {
-                tagline: 'Ngân Hàng Số Toàn Cầu & Web3 Core',
-                badgeStatus: 'Sẵn sàng OTP Số & Internet Banking · Yêu cầu KYC/KYB',
-                heroLine1: 'Ngân Hàng Số Vươn Tầm',
-                heroLine2: '60 Quốc Gia Cùng HKWB',
-                heroDesc: 'Kết nối liền mạch HKWB Internet Banking và HK-BANK3 với bảo mật OTP số, lãi suất linh hoạt AGI/ASI và cơ chế phân bổ UBI minh bạch.',
-                btnBanking: 'Vào Internet Banking (HK-BANK3)',
-                btnOtp: 'Kiểm Tra OTP Số & KYC/KYB',
-                stat1Label: 'Bản Địa Hóa Toàn Cầu',
-                stat1Unit: 'Ngôn Ngữ',
-                stat2Label: 'Phân Bổ Lợi Nhuận Ròng',
-                stat2Value: '30% UBI · 30% Vận Hành · Tối Đa 30% Quỹ',
-                stat2Sub: 'Mã giới thiệu ljw2358 ưu tiên UBI · Vốn chiến lược qua HK Social Foundation',
-                stat3Label: 'Lãi Suất Linh Hoạt & Rút Sớm',
-                stat3Value: 'AGI/ASI Linh Hoạt · 6%~8.5%',
-                stat3Sub: 'Kỳ hạn 6th / 1n / 2n / 3n · Rút trước hạn 6%–8.5%',
-                modKicker: '10 MÔ-ĐUN TÀI CHÍNH PHÂN TÁN',
-                modTitle: '10 Mô-Đun Ngân Hàng Cốt Lõi',
-                modNote: 'Hỗ trợ Testnet & Mainnet · Chế độ xem trước khi xác thực KYC/KYB',
-                m1: 'Kết Nối Ví', m1d: 'Liên kết ví Testnet & Mainnet',
-                m2: 'Chuyển Tiền', m2d: 'Chuyển khoản siêu tốc tức thì',
-                m3: 'Thanh Toán', m3d: 'Thanh toán toàn cầu & QR',
-                m4: 'Tiền Gửi', m4d: 'Gửi kỳ hạn & lưu ký an toàn',
-                m5: 'Phần Thưởng', m5d: 'Thưởng tham gia hệ sinh thái',
-                m6: 'Thu Nhập Cơ Bản (UBI)', m6d: 'Quỹ UBI 30% lợi nhuận ròng',
-                m7: 'Hoán Đổi (Swap)', m7d: 'Quy đổi tài sản số nhanh chóng',
-                m8: 'DEX Swap', m8d: 'Hoán đổi thanh khoản phi tập trung',
-                m9: 'LP Staking', m9d: 'Stake thanh khoản & nhận lãi',
-                m10: 'Số Dư Pi', m10d: 'Theo dõi số lượng & sổ cái Pi',
-                modalTitle: 'OTP Số & Xác Thực',
-                modalBody: 'Cần xác thực KYC/KYB để giao dịch; khách chưa xác thực chỉ xem ở chế độ đọc. Mã OTP 6 số:',
-                footerSupport: 'Hỗ trợ:',
-                footerRights: '© 2026 HKWB Global Internet Banking. All rights reserved.'
-            },
-            es: {
-                tagline: 'Banca Digital Global y Núcleo Web3',
-                badgeStatus: 'OTP Digital y Banca en Línea Listos · KYC/KYB Requerido',
-                heroLine1: 'Banca Digital Sin Fronteras',
-                heroLine2: 'Para 60 Naciones con HKWB',
-                heroDesc: 'Conecta HKWB Internet Banking con HK-BANK3 mediante seguridad OTP digital, tasas dinámicas AGI/ASI y distribución transparente de UBI.',
-                btnBanking: 'Entrar a Banca en Línea (HK-BANK3)',
-                btnOtp: 'Verificar OTP Digital y KYC/KYB',
-                stat1Label: 'Localización Global',
-                stat1Unit: 'Idiomas',
-                stat2Label: 'Distribución de Utilidad Neta',
-                stat2Value: '30% UBI · 30% Op. · Hasta 30% Fundación',
-                stat2Sub: 'Referido ljw2358 prioridad UBI · Capital estratégico en HK Social Foundation',
-                stat3Label: 'Rendimiento Dinámico y Retiro Anticipado',
-                stat3Value: 'Variable AGI/ASI · 6%~8.5%',
-                stat3Sub: 'Plazos 6m / 1a / 2a / 3a · Retiro anticipado 6%–8.5%',
-                modKicker: '10 MÓDULOS FINANCIEROS DISTRIBUIDOS',
-                modTitle: '10 Módulos Clave de Banca Descentralizada',
-                modNote: 'Compatible con Testnet y Mainnet · Solo lectura sin KYC/KYB',
-                m1: 'Conectar Billetera', m1d: 'Enlace Testnet y Mainnet',
-                m2: 'Transferencia', m2d: 'Transferencias instantáneas',
-                m3: 'Pago', m3d: 'Pagos globales y comercios',
-                m4: 'Depósito', m4d: 'Depósitos a plazo y bóveda',
-                m5: 'Recompensas', m5d: 'Recompensas del ecosistema',
-                m6: 'Ingreso Básico (UBI)', m6d: 'Fondo UBI del 30% de utilidad',
-                m7: 'Swap', m7d: 'Intercambio rápido de activos',
-                m8: 'DEX Swap', m8d: 'Intercambio de liquidez DEX',
-                m9: 'LP Staking', m9d: 'Staking en pools de liquidez',
-                m10: 'Balance Pi', m10d: 'Seguimiento de saldo Pi',
-                modalTitle: 'OTP Digital y Verificación',
-                modalBody: 'Se requiere KYC/KYB para operar; sin verificación solo modo lectura. Código OTP de 6 dígitos:',
-                footerSupport: 'Soporte:',
-                footerRights: '© 2026 HKWB Global Internet Banking. All rights reserved.'
-            }
-        };
+    function enterInternetBanking() {
+      if (!BANK_URL || BANK_URL === "#") {
+        document.getElementById("statusMessage").textContent =
+          "BANK_URL 주소가 아직 지정되지 않았습니다. 코드 상단의 BANK_URL에 이동할 주소를 넣어주세요.";
+        return;
+      }
+      window.location.href = BANK_URL;
+    }
 
-        const selectEl = document.getElementById('languageSelect');
-        const activeLangCountEl = document.getElementById('activeLangCount');
-        const currentLangBannerEl = document.getElementById('currentLangBanner');
+    function showKycNotice() {
+      document.getElementById("statusMessage").textContent =
+        "미인증 방문자는 둘러보기 모드로 열람되며, 실거래 및 계좌 기능 이용 시 KYC/KYB 인증이 필요합니다.";
+    }
 
-        function populateLanguages() {
-            selectEl.innerHTML = '';
-            LANGUAGES_60.forEach(([code, label], idx) => {
-                const opt = document.createElement('option');
-                opt.value = code;
-                opt.textContent = `${String(idx + 1).padStart(2, '0')}. ${label}`;
-                selectEl.appendChild(opt);
-            });
-            activeLangCountEl.textContent = LANGUAGES_60.length;
-        }
+    function selectModule(num, name) {
+      document.getElementById("statusMessage").textContent =
+        `[${num}] ${name} 모듈이 선택되었습니다. (테스트넷/정식 지갑 연동 및 KYC/KYB 확인 후 이용 가능)`;
+    }
 
-        function applyLanguage(langCode) {
-            const validCodes = LANGUAGES_60.map(([c]) => c);
-            const chosen = validCodes.includes(langCode) ? langCode : 'ko';
-            const dict = TRANSLATIONS[chosen] || BASE_EN;
-
-            document.querySelectorAll('[data-i18n]').forEach((el) => {
-                const key = el.getAttribute('data-i18n');
-                if (dict[key]) {
-                    el.textContent = dict[key];
-                } else if (BASE_EN[key]) {
-                    el.textContent = BASE_EN[key];
-                }
-            });
-
-            const found = LANGUAGES_60.find(([c]) => c === chosen);
-            const displayLabel = found ? found[1] : '한국어 (Korean)';
-            currentLangBannerEl.textContent = `Active Language (${chosen.toUpperCase()}): ${displayLabel}`;
-            document.documentElement.lang = chosen;
-            localStorage.setItem('hkwb_lang', chosen);
-            selectEl.value = chosen;
-        }
-
-        function openOtpModal() {
-            const code = Math.floor(100000 + Math.random() * 900000).toString();
-            document.getElementById('otpCodeDisplay').textContent = `${code.slice(0, 3)} ${code.slice(3)}`;
-            const modal = document.getElementById('otpModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeOtpModal() {
-            const modal = document.getElementById('otpModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        selectEl.addEventListener('change', (e) => {
-            applyLanguage(e.target.value);
-        });
-
-        populateLanguages();
-        const savedLang = localStorage.getItem('hkwb_lang') || 'ko';
-        applyLanguage(savedLang);
-    </script>
+    renderModules();
+  </script>
 </body>
 </html>
