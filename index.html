@@ -1,357 +1,870 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> HKWB</title>
-    <style>
-        :root {
-            --bg-dark: #070b14;
-            --bg-card: #111829;
-            --bg-box: #182238;
-            --gold: #f6cf68;
-            --gold-bright: #ffe599;
-            --purple: #9333ea;
-            --purple-soft: #d8b4fe;
-            --text: #ffffff;
-            --sub: #a8b4c9;
-            --line: rgba(147, 51, 234, 0.35);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-            background: radial-gradient(circle at top, #1a1038 0%, var(--bg-dark) 68%);
-            color: var(--text);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 18px;
-        }
-
-        .wrap {
-            width: 100%;
-            max-width: 480px;
-            background: rgba(17, 24, 41, 0.94);
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            padding: 24px 20px;
-            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.72), 0 0 30px rgba(147, 51, 234, 0.22);
-        }
-
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 22px;
-        }
-
-        .id-pill {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--purple-soft);
-            background: rgba(147, 51, 234, 0.2);
-            border: 1px solid rgba(216, 180, 254, 0.4);
-            padding: 6px 12px;
-            border-radius: 999px;
-        }
-
-        .ref-text {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--gold);
-        }
-
-        .hero {
-            text-align: center;
-            padding: 8px 0 22px;
-        }
-
-        .brand {
-            font-size: 40px;
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #ffffff 25%, var(--gold) 85%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: var(--sub);
-            margin-bottom: 22px;
-        }
-
-        .enter-btn {
-            width: 100%;
-            padding: 17px 22px;
-            border: none;
-            border-radius: 15px;
-            background: linear-gradient(135deg, var(--gold), #dfa928);
-            color: #090d16;
-            font-size: 17px;
-            font-weight: 800;
-            cursor: pointer;
-            box-shadow: 0 12px 28px rgba(246, 207, 104, 0.34);
-            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-        }
-
-        .enter-btn:hover {
-            background: linear-gradient(135deg, var(--gold-bright), var(--gold));
-            transform: translateY(-2px);
-            box-shadow: 0 16px 34px rgba(246, 207, 104, 0.48);
-        }
-
-        .enter-btn:active {
-            transform: translateY(1px);
-        }
-
-        .section {
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 16px;
-        }
-
-        .toggle-btn {
-            width: 100%;
-            background: var(--bg-box);
-            color: var(--text);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 13px;
-            padding: 13px 15px;
-            font-size: 14px;
-            font-weight: 700;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .toggle-btn:hover {
-            border-color: var(--purple-soft);
-        }
-
-        .mod-grid {
-            display: none;
-            margin-top: 12px;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-        }
-
-        .mod-grid.open {
-            display: grid;
-        }
-
-        .mod-btn {
-            background: #0b111e;
-            color: var(--text);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 13px 10px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: border-color 0.18s ease, background 0.18s ease;
-        }
-
-        .mod-btn:hover {
-            border-color: var(--gold);
-            background: rgba(147, 51, 234, 0.18);
-        }
-
-        .sim-box {
-            display: none;
-            margin-top: 12px;
-            background: rgba(147, 51, 234, 0.14);
-            border: 1px solid rgba(216, 180, 254, 0.35);
-            border-radius: 13px;
-            padding: 14px;
-            font-size: 13px;
-            line-height: 1.55;
-            color: #f5ecff;
-        }
-
-        .sim-box.show {
-            display: block;
-        }
-
-        .sim-title {
-            font-weight: 800;
-            color: var(--gold);
-            margin-bottom: 6px;
-        }
-
-        .sim-step {
-            color: #e9d5ff;
-            margin-bottom: 10px;
-        }
-
-        .sim-actions {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .sim-btn {
-            border: none;
-            border-radius: 9px;
-            padding: 8px 12px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .sim-next {
-            background: var(--gold);
-            color: #090d16;
-        }
-
-        .sim-go {
-            background: var(--purple);
-            color: #ffffff;
-        }
-
-        .foot {
-            margin-top: 20px;
-            padding-top: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            color: var(--sub);
-        }
-
-        .sns a {
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 700;
-            margin-left: 12px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HKWB 뱅킹 시스템</title>
+  <style>
+    * { box-sizing: border-box; font-family: "Segoe UI", Malgun Gothic, sans-serif; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #14121d;
+      color: #f4f2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px;
+    }
+    .panel {
+      width: 100%;
+      max-width: 560px;
+      background: #231f36;
+      border: 2px solid #5a4b8c;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: #c8bfe8;
+    }
+    .lang-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    select, input {
+      padding: 9px 10px;
+      border-radius: 6px;
+      border: 1px solid #5a4b8c;
+      background: #181526;
+      color: #fff;
+      font-size: 13px;
+    }
+    select { cursor: pointer; max-width: 240px; }
+    input { width: 100%; background: #231f36; font-size: 14px; }
+    .balance-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .balance-box {
+      background: #181526;
+      border: 1px solid #45396e;
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .balance-label { font-size: 12px; color: #b2a7d6; }
+    .balance-amount { font-size: 22px; font-weight: 700; margin-top: 6px; color: #7ef9c8; }
+    .deposit-amount { font-size: 22px; font-weight: 700; margin-top: 6px; color: #ffd166; }
+    .grid-menu {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    button {
+      padding: 11px 12px;
+      border: none;
+      border-radius: 8px;
+      background: #362f54;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { background: #4b4175; }
+    button.primary { background: #2b8a68; font-size: 14px; }
+    button.primary:hover { background: #35a37b; }
+    button.accent { background: #6b46c1; }
+    button.accent:hover { background: #7e57d5; }
+    .box {
+      background: #181526;
+      border: 1px solid #45396e;
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+    .rate-info {
+      font-size: 12px;
+      color: #d6ceff;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      background: #231f36;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px dashed #5a4b8c;
+    }
+    .msg { min-height: 20px; font-size: 13px; color: #ffd166; margin-bottom: 8px; }
+    ul { list-style: none; padding: 0; margin: 0; max-height: 190px; overflow-y: auto; }
+    li {
+      padding: 8px 0;
+      border-bottom: 1px solid #2e2847;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    li:last-child { border-bottom: none; }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #968bc0;
+      margin-top: 8px;
+    }
+  </style>
 </head>
 <body>
-    <main class="wrap">
-        <div class="top-bar">
-            <span class="id-pill">ID: ljw2358</span>
-            <span class="ref-text">추천인 ljw2358 · UBI 우선</span>
-        </div>
+  <div class="panel">
+    <div class="top-bar">
+      <div>
+        <strong id="brandTitle">HKWB 시스템</strong> · <span>ID: ljw2358</span>
+      </div>
+      <div class="lang-wrap">
+        <label for="langSelect" id="langLabel">언어</label>
+        <select id="langSelect" onchange="changeLanguage(this.value)"></select>
+      </div>
+    </div>
 
-        <section class="hero">
-            <h1 class="brand">HK Bank 3</h1>
-            <p class="subtitle">단순하고 빠르게, 고객이 성공하는 금융 진입</p>
-            <button type="button" class="enter-btn" onclick="goBank()">
-                초고속 진입하기
-            </button>
-        </section>
+    <div class="balance-grid">
+      <div class="balance-box">
+        <div class="balance-label" id="balanceLabel">현재 보유 잔액</div>
+        <div class="balance-amount" id="balanceDisplay">1,000,000원</div>
+      </div>
+      <div class="balance-box">
+        <div class="balance-label" id="depositedLabel">총 예치 잔액</div>
+        <div class="deposit-amount" id="depositedDisplay">0원</div>
+      </div>
+    </div>
 
-        <section class="section">
-            <button type="button" class="toggle-btn" onclick="toggleModules()">
-                <span>6대 핵심 모듈 시뮬레이션 열기</span>
-                <span id="arrow">+</span>
-            </button>
+    <div class="grid-menu">
+      <button onclick="focusTransfer()" id="btnMenuTransfer">송금</button>
+      <button onclick="claimBasicIncome()" id="btnMenuUbi">기본소득 (+100,000)</button>
+      <button onclick="quickDeposit()" id="btnMenuDeposit">빠른 예치 (-50,000)</button>
+      <button onclick="makePayment()" id="btnMenuPay">결제 (-30,000)</button>
+    </div>
 
-            <div class="mod-grid" id="modGrid">
-                <button type="button" class="mod-btn" onclick="startSim('지갑 연결')">지갑 연결</button>
-                <button type="button" class="mod-btn" onclick="startSim('송금')">송금</button>
-                <button type="button" class="mod-btn" onclick="startSim('결제')">결제</button>
-                <button type="button" class="mod-btn" onclick="startSim('예치')">예치</button>
-                <button type="button" class="mod-btn" onclick="startSim('보상')">보상</button>
-                <button type="button" class="mod-btn" onclick="startSim('기본소득')">기본소득</button>
-            </div>
+    <div class="box">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+        <strong id="depositSectionTitle">예치 이율 · 만기 계산 (가변)</strong>
+        <button class="accent" onclick="adjustRatesByAsi()" id="btnAsiRate">AGI/ASI 이율 조정</button>
+      </div>
+      <div class="row-2">
+        <select id="termSelect" onchange="updateRatePreview()">
+          <option value="6">6개월</option>
+          <option value="12" selected>1년 (12개월)</option>
+          <option value="24">2년 (24개월)</option>
+          <option value="36">3년 (36개월)</option>
+        </select>
+        <input type="number" id="depositAmountInput" value="100000" min="1000" oninput="updateRatePreview()" />
+      </div>
+      <div class="rate-info" id="ratePreview"></div>
+      <button class="primary" style="width:100%" onclick="executeTermDeposit()" id="btnExecDeposit">선택 조건으로 예치 실행</button>
+    </div>
 
-            <div class="sim-box" id="simBox">
-                <div class="sim-title" id="simTitle"></div>
-                <div class="sim-step" id="simStep"></div>
-                <div class="sim-actions">
-                    <button type="button" class="sim-btn sim-next" onclick="nextSimStep()">다음 단계 시뮬레이션</button>
-                    <button type="button" class="sim-btn sim-go" onclick="goBank()">바로 진입하기</button>
-                </div>
-            </div>
-        </section>
+    <div class="box">
+      <strong id="transferTitle">실시간 송금</strong>
+      <input type="text" id="recipientInput" style="margin-top:8px; margin-bottom:8px;" />
+      <input type="number" id="amountInput" min="1" style="margin-bottom:10px;" />
+      <div class="msg" id="statusMsg"></div>
+      <button class="primary" style="width:100%" onclick="sendMoney()" id="btnSendExec">송금 실행</button>
+    </div>
 
-        <footer class="foot">
-            <span>&copy; 2026 HKWB</span>
-            <div class="sns">
-                <a href="https://www.youtube.com/@Hyekong2026" target="_blank" rel="noopener noreferrer">YouTube</a>
-                <a href="https://www.tiktok.com/@Hyekong2026" target="_blank" rel="noopener noreferrer">TikTok</a>
-            </div>
-        </footer>
-    </main>
+    <div class="box">
+      <strong id="historyTitle">거래 내역 / 명세</strong>
+      <ul id="historyList"></ul>
+    </div>
 
-    <script>
-        const flows = {
-            "지갑 연결": [
-                "1단계: 인증 상태를 확인하고 지갑 연결을 준비합니다.",
-                "2단계: 추천인 ljw2358 혜택을 확인하고 지갑을 연결합니다.",
-                "3단계: 연결 완료! 바로 HKWB 뱅킹으로 이동할 수 있습니다."
-            ],
-            "송금": [
-                "1단계: 받을 주소와 보낼 금액을 간단히 입력합니다.",
-                "2단계: 수수료와 내역을 한눈에 확인하고 승인합니다.",
-                "3단계: 송금 완료! 거래 내역이 즉시 반영됩니다."
-            ],
-            "결제": [
-                "1단계: 결제할 금액과 결제 수단을 선택합니다.",
-                "2단계: 한 번의 확인으로 결제를 진행합니다.",
-                "3단계: 결제 완료! 영수증과 적립 내역을 확인합니다."
-            ],
-            "예치": [
-                "1단계: 예치할 금액과 기간을 선택합니다.",
-                "2단계: 안내된 조건을 확인하고 예치를 확정합니다.",
-                "3단계: 예치 완료! 자산 현황에서 바로 관리할 수 있습니다."
-            ],
-            "보상": [
-                "1단계: 참여 활동과 보상 적립 내역을 확인합니다.",
-                "2단계: 수령 가능한 보상을 선택합니다.",
-                "3단계: 보상 수령 완료! 잔액에 반영됩니다."
-            ],
-            "기본소득": [
-                "1단계: 추천인 ljw2358 우선 대상 및 지급 자격을 확인합니다.",
-                "2단계: 기본소득 지급 일정을 확인합니다.",
-                "3단계: 지급 준비 완료! HKWB에서 바로 확인하세요."
-            ]
-        };
+    <div class="footer">
+      <span>© 2026 HKWB</span>
+      <span id="txCount">총 0건</span>
+    </div>
+  </div>
 
-        let currentMod = "지갑 연결";
-        let currentIdx = 0;
+  <script>
+    const LANGUAGES_LIST = [
+      { code: "ko", name: "한글 (한국어 / Korean)" },
+      { code: "en", name: "영어 (English)" },
+      { code: "zh", name: "중국어 (中文 / Chinese)" },
+      { code: "ja", name: "일본어 (日本語 / Japanese)" },
+      { code: "ru", name: "러시아어 (Русский / Russian)" },
+      { code: "vi", name: "베트남어 (Tiếng Việt / Vietnamese)" },
+      { code: "th", name: "태국어 (ไทย / Thai)" },
+      { code: "id", name: "인도네시아어 (Bahasa Indonesia)" },
+      { code: "ps-ar", name: "팔레스타인어·아랍어 (العربية / Palestine)" },
+      { code: "de", name: "독일어 (Deutsch / German)" },
+      { code: "it", name: "이태리어 (Italiano / Italian)" },
+      { code: "fr", name: "프랑스어 (Français / French)" },
+      { code: "ng-en", name: "나이지리아 (Nigeria · English/Yoruba)" },
+      { code: "cm-fr", name: "카메룬 (Cameroon · Français/English)" },
+      { code: "za-en", name: "남아공 (South Africa · English/Zulu)" },
+      { code: "hi", name: "힌디어 (हिन्दी / Hindi)" },
+      { code: "es", name: "스페인어 (Español / Spanish)" },
+      { code: "pt-br", name: "브라질어 (Português do Brasil)" },
+      { code: "uk", name: "우크라이나어 (Українська / Ukrainian)" },
+      { code: "ur-pk", name: "파키스탄어·우르두어 (اردو / Pakistan)" },
+      { code: "bn-wb", name: "뱅갈어 (বাংলা / Bengali)" },
+      { code: "bn-bd", name: "방글라데시어 (বাংলা / Bangladesh)" },
+      { code: "uz", name: "우즈베키스탄어 (Oʻzbek / Uzbek)" },
+      { code: "tl", name: "필리핀어 (Filipino / Tagalog)" },
+      { code: "pt", name: "Português" },
+      { code: "ar", name: "العربية" },
+      { code: "ur", name: "اردو" },
+      { code: "bn", name: "বাংলা" },
+      { code: "ms", name: "Bahasa Melayu" },
+      { code: "tr", name: "Türkçe" },
+      { code: "pl", name: "Polski" },
+      { code: "nl", name: "Nederlands" },
+      { code: "sv", name: "Svenska" },
+      { code: "no", name: "Norsk" },
+      { code: "da", name: "Dansk" },
+      { code: "fi", name: "Suomi" },
+      { code: "cs", name: "Čeština" },
+      { code: "el", name: "Ελληνικά" },
+      { code: "he", name: "עברית" },
+      { code: "ro", name: "Română" },
+      { code: "hu", name: "Magyar" },
+      { code: "ta", name: "தமிழ்" },
+      { code: "te", name: "తెలుగు" },
+      { code: "mr", name: "मराठी" },
+      { code: "gu", name: "ગુજરાતી" },
+      { code: "kn", name: "ಕನ್ನಡ" },
+      { code: "ml", name: "മലയാളം" },
+      { code: "pa", name: "ਪੰਜਾਬੀ" },
+      { code: "fa", name: "فارسی" },
+      { code: "sw", name: "Kiswahili" },
+      { code: "am", name: "አማርኛ" },
+      { code: "km", name: "ខ្មែរ" },
+      { code: "lo", name: "ລາວ" },
+      { code: "my", name: "မြန်မာ" },
+      { code: "ne", name: "नेपाली" },
+      { code: "si", name: "සිංහල" },
+      { code: "mn", name: "Монгол" },
+      { code: "ka", name: "ქართული" },
+      { code: "hy", name: "Հայերեն" },
+      { code: "az", name: "Azərbaycan" }
+    ];
 
-        function goBank() {
-            window.location.href = "https://hkwb.world";
-        }
+    const KO_BASE = {
+      brandTitle: "HKWB 시스템",
+      langLabel: "언어",
+      balanceLabel: "현재 보유 잔액",
+      depositedLabel: "총 예치 잔액",
+      currencySuffix: "원",
+      btnMenuTransfer: "송금",
+      btnMenuUbi: "기본소득 (+100,000)",
+      btnMenuDeposit: "빠른 예치 (-50,000)",
+      btnMenuPay: "결제 (-30,000)",
+      depositSectionTitle: "예치 이율 · 만기 계산 (가변)",
+      btnAsiRate: "AGI/ASI 이율 조정",
+      btnExecDeposit: "선택 조건으로 예치 실행",
+      transferTitle: "실시간 송금",
+      recipientPlaceholder: "받는 사람 / 계좌 (예: 홍길동)",
+      amountPlaceholder: "송금할 금액",
+      btnSendExec: "송금 실행",
+      historyTitle: "거래 내역 / 명세",
+      emptyHistory: "거래 내역이 없습니다.",
+      txCount: (n) => `총 ${n}건`,
+      focusPrompt: "받는 사람과 금액을 입력한 뒤 송금 실행을 누르세요.",
+      errRecipient: "받는 사람을 입력해 주세요.",
+      errAmount: "0보다 큰 금액을 입력해 주세요.",
+      errBalance: "잔액이 부족합니다.",
+      typeTransfer: "송금",
+      typeUbi: "기본소득",
+      typeDeposit: "예치",
+      typePay: "결제",
+      detailTransfer: (to) => `${to}에게 송금`,
+      detailUbi: "기본소득 지급",
+      detailDeposit: (mo, rate) => `${mo}개월 예치 (연 ${rate}%)`,
+      detailPay: "결제 출금",
+      okTransfer: (to, amt) => `${to}님께 ${amt} 송금이 완료되었습니다.`,
+      okUbi: (amt) => `기본소득 ${amt}가 입금되었습니다.`,
+      okDeposit: (amt, mo, rate) => `${mo}개월(연 ${rate}%) 조건으로 ${amt}가 예치되었습니다.`,
+      okPay: (amt) => `${amt} 결제가 완료되었습니다.`,
+      rateSummary: (mo, rate, interest, total, earlyRate) =>
+        `적용 가변 이율: <strong>연 ${rate}%</strong> (${mo}개월) · 예상 이자: <strong>${interest}</strong> · 예상 만기 수령액: <strong>${total}</strong><br/>※ 시장 상황에 따라 AGI/ASI가 가변 조정하며, 중도 해지 시 연 ${earlyRate}% 적용`
+    };
 
-        function toggleModules() {
-            const grid = document.getElementById("modGrid");
-            const arrow = document.getElementById("arrow");
-            const opened = grid.classList.toggle("open");
-            arrow.textContent = opened ? "-" : "+";
-        }
+    const EN_BASE = {
+      brandTitle: "HKWB System",
+      langLabel: "Language",
+      balanceLabel: "Current Balance",
+      depositedLabel: "Total Deposited",
+      currencySuffix: " KRW",
+      btnMenuTransfer: "Transfer",
+      btnMenuUbi: "Basic Income (+100,000)",
+      btnMenuDeposit: "Quick Deposit (-50,000)",
+      btnMenuPay: "Payment (-30,000)",
+      depositSectionTitle: "Deposit APY & Maturity (Variable)",
+      btnAsiRate: "AGI/ASI Rate Adjust",
+      btnExecDeposit: "Execute Deposit",
+      transferTitle: "Real-Time Transfer",
+      recipientPlaceholder: "Recipient / Account (e.g. Alex)",
+      amountPlaceholder: "Amount to send",
+      btnSendExec: "Execute Transfer",
+      historyTitle: "Transaction History",
+      emptyHistory: "No transactions yet.",
+      txCount: (n) => `${n} tx`,
+      focusPrompt: "Enter recipient and amount, then click Execute Transfer.",
+      errRecipient: "Please enter a recipient.",
+      errAmount: "Please enter an amount greater than 0.",
+      errBalance: "Insufficient balance.",
+      typeTransfer: "Transfer",
+      typeUbi: "UBI",
+      typeDeposit: "Deposit",
+      typePay: "Payment",
+      detailTransfer: (to) => `Sent to ${to}`,
+      detailUbi: "UBI credit",
+      detailDeposit: (mo, rate) => `${mo}M deposit (${rate}% APY)`,
+      detailPay: "Payment debit",
+      okTransfer: (to, amt) => `Sent ${amt} to ${to}.`,
+      okUbi: (amt) => `Received UBI ${amt}.`,
+      okDeposit: (amt, mo, rate) => `Deposited ${amt} for ${mo}M at ${rate}% APY.`,
+      okPay: (amt) => `Paid ${amt}.`,
+      rateSummary: (mo, rate, interest, total, earlyRate) =>
+        `Variable Rate: <strong>${rate}% APY</strong> (${mo}M) · Est. Interest: <strong>${interest}</strong> · Est. Maturity: <strong>${total}</strong><br/>※ Dynamically adjusted by AGI/ASI; early withdrawal applies ${earlyRate}%`
+    };
 
-        function renderSim() {
-            const steps = flows[currentMod] || flows["지갑 연결"];
-            document.getElementById("simTitle").textContent = currentMod + " 시뮬레이션";
-            document.getElementById("simStep").textContent = steps[currentIdx];
-            document.getElementById("simBox").classList.add("show");
-        }
+    const I18N = {
+      ko: KO_BASE,
+      en: EN_BASE,
+      "ng-en": EN_BASE,
+      "za-en": EN_BASE,
+      ja: {
+        ...KO_BASE,
+        brandTitle: "HKWB システム",
+        langLabel: "言語",
+        balanceLabel: "現在の残高",
+        depositedLabel: "総預置残高",
+        currencySuffix: "ウォン",
+        btnMenuTransfer: "送金",
+        btnMenuUbi: "基本所得 (+100,000)",
+        btnMenuDeposit: "クイック預置 (-50,000)",
+        btnMenuPay: "決済 (-30,000)",
+        depositSectionTitle: "預置金利・満期計算（変動）",
+        btnAsiRate: "AGI/ASI 金利調整",
+        btnExecDeposit: "選択条件で預置実行",
+        transferTitle: "リアルタイム送金",
+        recipientPlaceholder: "受取人 / 口座（例：山田太郎）",
+        amountPlaceholder: "送金額",
+        btnSendExec: "送金実行",
+        historyTitle: "取引履歴 / 明細",
+        emptyHistory: "取引履歴はありません。",
+        txCount: (n) => `全${n}件`,
+        focusPrompt: "受取人と金額を入力して送金実行を押してください。",
+        errRecipient: "受取人を入力してください。",
+        errAmount: "0より大きい金額を入力してください。",
+        errBalance: "残高が不足しています。",
+        detailTransfer: (to) => `${to}へ送金`,
+        detailDeposit: (mo, rate) => `${mo}ヶ月預置（年${rate}%）`,
+        okTransfer: (to, amt) => `${to}へ${amt}送金しました。`,
+        okUbi: (amt) => `基本所得${amt}が入金されました。`,
+        okDeposit: (amt, mo, rate) => `${mo}ヶ月・年${rate}%条件で${amt}を預置しました。`,
+        okPay: (amt) => `${amt}の決済が完了しました。`,
+        rateSummary: (mo, rate, interest, total, earlyRate) =>
+          `変動金利: <strong>年${rate}%</strong>（${mo}ヶ月）・予想利息: <strong>${interest}</strong>・予想満期額: <strong>${total}</strong><br/>※ AGI/ASIが市場状況に応じて変動調整、中途解約時は年${earlyRate}%適用`
+      },
+      zh: {
+        ...KO_BASE,
+        brandTitle: "HKWB 系统",
+        langLabel: "语言",
+        balanceLabel: "当前余额",
+        depositedLabel: "累计存入余额",
+        currencySuffix: "韩元",
+        btnMenuTransfer: "转账",
+        btnMenuUbi: "基本收入 (+100,000)",
+        btnMenuDeposit: "快速存入 (-50,000)",
+        btnMenuPay: "支付 (-30,000)",
+        depositSectionTitle: "存入利率与到期计算（浮动）",
+        btnAsiRate: "AGI/ASI 利率调整",
+        btnExecDeposit: "按所选条件存入",
+        transferTitle: "实时转账",
+        recipientPlaceholder: "收款人 / 账户（如：张三）",
+        amountPlaceholder: "转账金额",
+        btnSendExec: "执行转账",
+        historyTitle: "交易记录 / 明细",
+        emptyHistory: "暂无交易记录。",
+        txCount: (n) => `共${n}笔`,
+        focusPrompt: "请输入收款人和金额，然后点击执行转账。",
+        errRecipient: "请输入收款人。",
+        errAmount: "请输入大于0的金额。",
+        errBalance: "余额不足。",
+        detailTransfer: (to) => `转账给 ${to}`,
+        detailDeposit: (mo, rate) => `${mo}个月存入（年化 ${rate}%）`,
+        okTransfer: (to, amt) => `已向 ${to} 转账 ${amt}。`,
+        okUbi: (amt) => `已入账基本收入 ${amt}。`,
+        okDeposit: (amt, mo, rate) => `已按 ${mo}个月（年化 ${rate}%）存入 ${amt}。`,
+        okPay: (amt) => `已完成支付 ${amt}。`,
+        rateSummary: (mo, rate, interest, total, earlyRate) =>
+          `浮动年化: <strong>${rate}%</strong>（${mo}个月）· 预估利息: <strong>${interest}</strong> · 预估到期: <strong>${total}</strong><br/>※ 由 AGI/ASI 根据市场动态调整，提前支取适用年化 ${earlyRate}%`
+      },
+      es: {
+        ...EN_BASE,
+        langLabel: "Idioma",
+        balanceLabel: "Saldo actual",
+        depositedLabel: "Total depositado",
+        btnMenuTransfer: "Transferir",
+        btnMenuUbi: "Renta básica (+100,000)",
+        btnMenuDeposit: "Depósito rápido (-50,000)",
+        btnMenuPay: "Pago (-30,000)",
+        btnSendExec: "Ejecutar transferencia",
+        historyTitle: "Historial de transacciones",
+        emptyHistory: "Sin transacciones."
+      },
+      fr: {
+        ...EN_BASE,
+        langLabel: "Langue",
+        balanceLabel: "Solde actuel",
+        depositedLabel: "Total déposé",
+        btnMenuTransfer: "Transférer",
+        btnMenuUbi: "Revenu de base (+100,000)",
+        btnMenuDeposit: "Dépôt rapide (-50,000)",
+        btnMenuPay: "Paiement (-30,000)",
+        btnSendExec: "Exécuter le virement",
+        historyTitle: "Historique des transactions",
+        emptyHistory: "Aucune transaction."
+      },
+      "cm-fr": {
+        ...EN_BASE,
+        langLabel: "Langue",
+        balanceLabel: "Solde actuel",
+        depositedLabel: "Total déposé",
+        btnMenuTransfer: "Transférer",
+        btnMenuUbi: "Revenu de base (+100,000)",
+        btnMenuDeposit: "Dépôt rapide (-50,000)",
+        btnMenuPay: "Paiement (-30,000)",
+        btnSendExec: "Exécuter le virement",
+        historyTitle: "Historique des transactions",
+        emptyHistory: "Aucune transaction."
+      },
+      de: {
+        ...EN_BASE,
+        langLabel: "Sprache",
+        balanceLabel: "Aktueller Kontostand",
+        depositedLabel: "Gesamteinlage",
+        btnMenuTransfer: "Überweisen",
+        btnMenuUbi: "Grundeinkommen (+100,000)",
+        btnMenuDeposit: "Schnelleinlage (-50,000)",
+        btnMenuPay: "Zahlung (-30,000)",
+        btnSendExec: "Überweisung ausführen",
+        historyTitle: "Transaktionsverlauf",
+        emptyHistory: "Keine Transaktionen."
+      },
+      it: {
+        ...EN_BASE,
+        langLabel: "Lingua",
+        balanceLabel: "Saldo attuale",
+        depositedLabel: "Totale depositato",
+        btnMenuTransfer: "Trasferisci",
+        btnMenuUbi: "Reddito di base (+100,000)",
+        btnMenuDeposit: "Deposito rapido (-50,000)",
+        btnMenuPay: "Pagamento (-30,000)",
+        btnSendExec: "Esegui bonifico",
+        historyTitle: "Cronologia transazioni",
+        emptyHistory: "Nessuna transazione."
+      },
+      "pt-br": {
+        ...EN_BASE,
+        langLabel: "Idioma",
+        balanceLabel: "Saldo atual",
+        depositedLabel: "Total depositado",
+        btnMenuTransfer: "Transferir",
+        btnMenuUbi: "Renda básica (+100,000)",
+        btnMenuDeposit: "Depósito rápido (-50,000)",
+        btnMenuPay: "Pagamento (-30,000)",
+        btnSendExec: "Executar transferência",
+        historyTitle: "Histórico de transações",
+        emptyHistory: "Nenhuma transação."
+      },
+      ru: {
+        ...EN_BASE,
+        langLabel: "Язык",
+        balanceLabel: "Текущий баланс",
+        depositedLabel: "Всего на депозите",
+        btnMenuTransfer: "Перевод",
+        btnMenuUbi: "Базовый доход (+100,000)",
+        btnMenuDeposit: "Быстрый вклад (-50,000)",
+        btnMenuPay: "Оплата (-30,000)",
+        btnSendExec: "Выполнить перевод",
+        historyTitle: "История операций",
+        emptyHistory: "Операций пока нет."
+      },
+      vi: {
+        ...EN_BASE,
+        langLabel: "Ngôn ngữ",
+        balanceLabel: "Số dư hiện tại",
+        depositedLabel: "Tổng tiền gửi",
+        btnMenuTransfer: "Chuyển tiền",
+        btnMenuUbi: "Thu nhập cơ bản (+100,000)",
+        btnMenuDeposit: "Gửi nhanh (-50,000)",
+        btnMenuPay: "Thanh toán (-30,000)",
+        btnSendExec: "Thực hiện chuyển",
+        historyTitle: "Lịch sử giao dịch",
+        emptyHistory: "Chưa có giao dịch."
+      },
+      th: {
+        ...EN_BASE,
+        langLabel: "ภาษา",
+        balanceLabel: "ยอดคงเหลือปัจจุบัน",
+        depositedLabel: "ยอดฝากรวม",
+        btnMenuTransfer: "โอนเงิน",
+        btnMenuUbi: "รายได้พื้นฐาน (+100,000)",
+        btnMenuDeposit: "ฝากด่วน (-50,000)",
+        btnMenuPay: "ชำระเงิน (-30,000)",
+        btnSendExec: "ดำเนินการโอน",
+        historyTitle: "ประวัติรายการ",
+        emptyHistory: "ยังไม่มีรายการ"
+      },
+      id: {
+        ...EN_BASE,
+        langLabel: "Bahasa",
+        balanceLabel: "Saldo saat ini",
+        depositedLabel: "Total deposito",
+        btnMenuTransfer: "Transfer",
+        btnMenuUbi: "Pendapatan dasar (+100,000)",
+        btnMenuDeposit: "Deposit cepat (-50,000)",
+        btnMenuPay: "Pembayaran (-30,000)",
+        btnSendExec: "Kirim transfer",
+        historyTitle: "Riwayat transaksi",
+        emptyHistory: "Belum ada transaksi."
+      },
+      "ps-ar": {
+        ...EN_BASE,
+        langLabel: "اللغة",
+        balanceLabel: "الرصيد الحالي",
+        depositedLabel: "إجمالي الودائع",
+        btnMenuTransfer: "تحويل",
+        btnMenuUbi: "الدخل الأساسي (+100,000)",
+        btnMenuDeposit: "إيداع سريع (-50,000)",
+        btnMenuPay: "دفع (-30,000)",
+        btnSendExec: "تنفيذ التحويل",
+        historyTitle: "سجل المعاملات",
+        emptyHistory: "لا توجد معاملات."
+      },
+      hi: {
+        ...EN_BASE,
+        langLabel: "भाषा",
+        balanceLabel: "वर्तमान शेष",
+        depositedLabel: "कुल जमा",
+        btnMenuTransfer: "स्थानांतरण",
+        btnMenuUbi: "बुनियादी आय (+100,000)",
+        btnMenuDeposit: "त्वरित जमा (-50,000)",
+        btnMenuPay: "भुगतान (-30,000)",
+        btnSendExec: "भेजें",
+        historyTitle: "लेन-देन इतिहास",
+        emptyHistory: "कोई लेन-देन नहीं।"
+      },
+      uk: {
+        ...EN_BASE,
+        langLabel: "Мова",
+        balanceLabel: "Поточний баланс",
+        depositedLabel: "Усього на депозиті",
+        btnMenuTransfer: "Переказ",
+        btnMenuUbi: "Базовий дохід (+100,000)",
+        btnMenuDeposit: "Швидкий внесок (-50,000)",
+        btnMenuPay: "Оплата (-30,000)",
+        btnSendExec: "Виконати переказ",
+        historyTitle: "Історія операцій",
+        emptyHistory: "Операцій немає."
+      },
+      "ur-pk": {
+        ...EN_BASE,
+        langLabel: "زبان",
+        balanceLabel: "موجودہ بیلنس",
+        depositedLabel: "کل جمع",
+        btnMenuTransfer: "منتقلی",
+        btnMenuUbi: "بنیادی آمدنی (+100,000)",
+        btnMenuDeposit: "فوری جمع (-50,000)",
+        btnMenuPay: "ادائیگی (-30,000)",
+        btnSendExec: "منتقل کریں",
+        historyTitle: "لین دین کی تاریخ",
+        emptyHistory: "کوئی لین دین نہیں۔"
+      },
+      "bn-wb": {
+        ...EN_BASE,
+        langLabel: "ভাষা",
+        balanceLabel: "বর্তমান ব্যালেন্স",
+        depositedLabel: "মোট জমা",
+        btnMenuTransfer: "ট্রান্সফার",
+        btnMenuUbi: "মৌলিক আয় (+100,000)",
+        btnMenuDeposit: "দ্রুত জমা (-50,000)",
+        btnMenuPay: "পেমেন্ট (-30,000)",
+        btnSendExec: "পাঠান",
+        historyTitle: "লেনদেনের ইতিহাস",
+        emptyHistory: "কোনো লেনদেন নেই।"
+      },
+      "bn-bd": {
+        ...EN_BASE,
+        langLabel: "ভাষা",
+        balanceLabel: "বর্তমান ব্যালেন্স",
+        depositedLabel: "মোট জমা",
+        btnMenuTransfer: "ট্রান্সফার",
+        btnMenuUbi: "মৌলিক আয় (+100,000)",
+        btnMenuDeposit: "দ্রুত জমা (-50,000)",
+        btnMenuPay: "পেমেন্ট (-30,000)",
+        btnSendExec: "পাঠান",
+        historyTitle: "লেনদেনের ইতিহাস",
+        emptyHistory: "কোনো লেনদেন নেই।"
+      },
+      uz: {
+        ...EN_BASE,
+        langLabel: "Til",
+        balanceLabel: "Joriy balans",
+        depositedLabel: "Jami omonat",
+        btnMenuTransfer: "O‘tkazma",
+        btnMenuUbi: "Asosiy daromad (+100,000)",
+        btnMenuDeposit: "Tezkor omonat (-50,000)",
+        btnMenuPay: "To‘lov (-30,000)",
+        btnSendExec: "O‘tkazish",
+        historyTitle: "Tranzaksiyalar tarixi",
+        emptyHistory: "Tranzaksiyalar yo‘q."
+      },
+      tl: {
+        ...EN_BASE,
+        langLabel: "Wika",
+        balanceLabel: "Kasalukuyang balanse",
+        depositedLabel: "Kabuuang naideposito",
+        btnMenuTransfer: "Magpadala",
+        btnMenuUbi: "Batayang kita (+100,000)",
+        btnMenuDeposit: "Mabilis na deposito (-50,000)",
+        btnMenuPay: "Bayad (-30,000)",
+        btnSendExec: "Ipadala",
+        historyTitle: "Kasaysayan ng transaksyon",
+        emptyHistory: "Walang transaksyon."
+      }
+    };
 
-        function startSim(name) {
-            currentMod = name;
-            currentIdx = 0;
-            renderSim();
-        }
+    const state = {
+      lang: "ko",
+      balance: 1000000,
+      deposited: 0,
+      ratesByTerm: {
+        6: 4.5,
+        12: 5.8,
+        24: 7.2,
+        36: 8.5
+      },
+      earlyRate: 6.0,
+      history: []
+    };
 
-        function nextSimStep() {
-            const steps = flows[currentMod] || flows["지갑 연결"];
-            currentIdx = (currentIdx + 1) % steps.length;
-            renderSim();
-        }
-    </script>
+    function t(code = state.lang) {
+      return I18N[code] || EN_BASE;
+    }
+
+    function initLangSelect() {
+      const sel = document.getElementById("langSelect");
+      sel.innerHTML = LANGUAGES_LIST.map(item =>
+        `<option value="${item.code}" ${item.code === state.lang ? "selected" : ""}>${item.name}</option>`
+      ).join("");
+    }
+
+    function changeLanguage(code) {
+      state.lang = code;
+      render();
+    }
+
+    function formatMoney(num) {
+      const loc = state.lang === "ko" ? "ko-KR" : state.lang === "ja" ? "ja-JP" : state.lang === "zh" ? "zh-CN" : "en-US";
+      return Math.round(Number(num)).toLocaleString(loc) + t().currencySuffix;
+    }
+
+    function addHistory(kind, delta, extra = {}) {
+      const now = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+      state.history.unshift({ time: now, kind, delta, ...extra });
+      render();
+    }
+
+    function formatHistoryEntry(item) {
+      const dict = t();
+      const mapKind = {
+        transfer: [dict.typeTransfer, dict.detailTransfer(item.recipient)],
+        ubi: [dict.typeUbi, dict.detailUbi],
+        deposit: [dict.typeDeposit, dict.detailDeposit(item.months, item.rate)],
+        pay: [dict.typePay, dict.detailPay]
+      };
+      const [label, desc] = mapKind[item.kind] || [item.kind, ""];
+      return `[${item.time}] ${label} - ${desc}`;
+    }
+
+    function setMessage(text, isError = false) {
+      const el = document.getElementById("statusMsg");
+      el.style.color = isError ? "#ff6b6b" : "#7ef9c8";
+      el.textContent = text;
+    }
+
+    function calcInterest(principal, months, annualRate) {
+      return principal * (annualRate / 100) * (months / 12);
+    }
+
+    function updateRatePreview() {
+      const months = Number(document.getElementById("termSelect").value);
+      const principal = Math.max(0, Number(document.getElementById("depositAmountInput").value) || 0);
+      const rate = state.ratesByTerm[months];
+      const interest = calcInterest(principal, months, rate);
+      const total = principal + interest;
+
+      document.getElementById("ratePreview").innerHTML = t().rateSummary(
+        months,
+        rate.toFixed(1),
+        formatMoney(interest),
+        formatMoney(total),
+        state.earlyRate.toFixed(1)
+      );
+    }
+
+    function adjustRatesByAsi() {
+      const delta = Number(((Math.random() * 1.2) - 0.5).toFixed(1));
+      [6, 12, 24, 36].forEach((m, idx) => {
+        const minR = 2.5 + idx * 0.8;
+        const maxR = 7.0 + idx * 1.5;
+        const next = Math.min(maxR, Math.max(minR, Number((state.ratesByTerm[m] + delta).toFixed(1))));
+        state.ratesByTerm[m] = next;
+      });
+      state.earlyRate = Math.random() < 0.5 ? 6.0 : 8.5;
+      updateRatePreview();
+      setMessage(`AGI/ASI 가변 이율 조정 완료 (${delta >= 0 ? "+" : ""}${delta}%p)`);
+    }
+
+    function executeTermDeposit() {
+      const dict = t();
+      const months = Number(document.getElementById("termSelect").value);
+      const amount = Number(document.getElementById("depositAmountInput").value);
+      const rate = state.ratesByTerm[months];
+
+      if (!Number.isFinite(amount) || amount <= 0) {
+        setMessage(dict.errAmount, true);
+        return;
+      }
+      if (amount > state.balance) {
+        setMessage(dict.errBalance, true);
+        return;
+      }
+
+      state.balance -= amount;
+      state.deposited += amount;
+      addHistory("deposit", -amount, { months, rate: rate.toFixed(1) });
+      setMessage(dict.okDeposit(formatMoney(amount), months, rate.toFixed(1)));
+    }
+
+    function quickDeposit() {
+      document.getElementById("depositAmountInput").value = 50000;
+      executeTermDeposit();
+    }
+
+    function focusTransfer() {
+      document.getElementById("recipientInput").focus();
+      setMessage(t().focusPrompt);
+    }
+
+    function sendMoney() {
+      const dict = t();
+      const recipient = document.getElementById("recipientInput").value.trim();
+      const amount = Number(document.getElementById("amountInput").value);
+
+      if (!recipient) {
+        setMessage(dict.errRecipient, true);
+        return;
+      }
+      if (!Number.isFinite(amount) || amount <= 0) {
+        setMessage(dict.errAmount, true);
+        return;
+      }
+      if (amount > state.balance) {
+        setMessage(dict.errBalance, true);
+        return;
+      }
+
+      state.balance -= amount;
+      addHistory("transfer", -amount, { recipient });
+      setMessage(dict.okTransfer(recipient, formatMoney(amount)));
+      document.getElementById("amountInput").value = "";
+    }
+
+    function claimBasicIncome() {
+      const dict = t();
+      const amount = 100000;
+      state.balance += amount;
+      addHistory("ubi", amount);
+      setMessage(dict.okUbi(formatMoney(amount)));
+    }
+
+    function makePayment() {
+      const dict = t();
+      const amount = 30000;
+      if (state.balance < amount) {
+        setMessage(dict.errBalance, true);
+        return;
+      }
+      state.balance -= amount;
+      addHistory("pay", -amount);
+      setMessage(dict.okPay(formatMoney(amount)));
+    }
+
+    function render() {
+      const dict = t();
+      document.title = dict.brandTitle;
+      document.getElementById("brandTitle").textContent = dict.brandTitle;
+      document.getElementById("langLabel").textContent = dict.langLabel;
+      document.getElementById("balanceLabel").textContent = dict.balanceLabel;
+      document.getElementById("depositedLabel").textContent = dict.depositedLabel;
+      document.getElementById("balanceDisplay").textContent = formatMoney(state.balance);
+      document.getElementById("depositedDisplay").textContent = formatMoney(state.deposited);
+
+      document.getElementById("btnMenuTransfer").textContent = dict.btnMenuTransfer;
+      document.getElementById("btnMenuUbi").textContent = dict.btnMenuUbi;
+      document.getElementById("btnMenuDeposit").textContent = dict.btnMenuDeposit;
+      document.getElementById("btnMenuPay").textContent = dict.btnMenuPay;
+
+      document.getElementById("depositSectionTitle").textContent = dict.depositSectionTitle;
+      document.getElementById("btnAsiRate").textContent = dict.btnAsiRate;
+      document.getElementById("btnExecDeposit").textContent = dict.btnExecDeposit;
+
+      document.getElementById("transferTitle").textContent = dict.transferTitle;
+      document.getElementById("recipientInput").placeholder = dict.recipientPlaceholder;
+      document.getElementById("amountInput").placeholder = dict.amountPlaceholder;
+      document.getElementById("btnSendExec").textContent = dict.btnSendExec;
+
+      document.getElementById("historyTitle").textContent = dict.historyTitle;
+      document.getElementById("txCount").textContent = dict.txCount(state.history.length);
+
+      updateRatePreview();
+
+      const list = document.getElementById("historyList");
+      if (state.history.length === 0) {
+        list.innerHTML = `<li><span>${dict.emptyHistory}</span><span>-</span></li>`;
+        return;
+      }
+
+      list.innerHTML = state.history.map(item => {
+        const sign = item.delta > 0 ? "+" : "";
+        const color = item.delta > 0 ? "#7ef9c8" : "#ff9f80";
+        return `
+          <li>
+            <span>${formatHistoryEntry(item)}</span>
+            <strong style="color:${color}">${sign}${formatMoney(item.delta)}</strong>
+          </li>
+        `;
+      }).join("");
+    }
+
+    initLangSelect();
+    render();
+  </script>
 </body>
 </html>
