@@ -327,15 +327,17 @@
       </div>
       <div class="cta-group">
         <a
-          href="https://ljw2358.github.io/HK-WORLDBANK/"
+          id="web3BankBtn"
+          href="https://ljw2358.github.io/HKWB/"
           class="btn-gold"
-          onclick="goInternetBank(event)"
-        >인터넷 뱅킹 진입하기</a>
+          onclick="goBank(event)"
+        >웹3 디지털 은행 진입하기</a>
         <a
-          href="https://ljw2358.github.io/HK-WORLDBANK/"
+          id="internetBankBtn"
+          href="https://ljw2358.github.io/HKWB/"
           class="btn-dark"
-          onclick="goInternetBank(event)"
-        >HK-WORLDBANK 열기</a>
+          onclick="goBank(event)"
+        >인터넷 뱅킹 진입하기</a>
       </div>
     </div>
 
@@ -353,7 +355,7 @@
     </div>
 
     <div class="status-bar" id="statusBar">
-      준비 완료 · 인터넷 뱅킹 진입 시 HK-WORLDBANK로 이동합니다.
+      준비 완료 · 버튼 클릭 시 HKWB로 이동합니다.
     </div>
   </div>
 
@@ -363,9 +365,9 @@
       <span>홈</span>
     </button>
     <a
-      href="https://ljw2358.github.io/HK-WORLDBANK/"
+      href="https://ljw2358.github.io/HKWB/"
       class="tab-btn"
-      onclick="goInternetBank(event)"
+      onclick="goBank(event)"
     >
       <span>🏦</span>
       <span>인터넷 뱅킹</span>
@@ -381,7 +383,7 @@
   </nav>
 
   <script>
-    const TARGET_URL = "https://ljw2358.github.io/HK-WORLDBANK/";
+    const HKWB_URL = "https://ljw2358.github.io/HKWB/";
     let balance = 1250000;
     let mode = "송금";
 
@@ -389,7 +391,7 @@
       { icon: "💸", name: "송금" },
       { icon: "🏛️", name: "예치" },
       { icon: "🌍", name: "환전" },
-      { icon: "🌐", name: "월드뱅크" }
+      { icon: "🌐", name: "HKWB" }
     ];
 
     function renderQuickMenu() {
@@ -403,8 +405,8 @@
     }
 
     function pickMode(name) {
-      if (name === "월드뱅크") {
-        goInternetBank();
+      if (name === "HKWB") {
+        goBank();
         return;
       }
       mode = name;
@@ -443,10 +445,10 @@
       document.getElementById("balanceText").textContent = balance.toLocaleString() + "원";
     }
 
-    function goInternetBank(e) {
+    function goBank(e) {
       if (e) e.preventDefault();
-      setMsg("HK-WORLDBANK로 이동합니다...");
-      window.location.assign(TARGET_URL);
+      setMsg("HKWB로 이동합니다...");
+      window.location.href = HKWB_URL;
     }
 
     function setTab(btn, label) {
