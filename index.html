@@ -3,422 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HKWB - 인터넷 뱅킹</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>HK Bank 3</title>
     <style>
         :root {
-            --bg-dark: #0a0e17;
-            --bg-card: #121929;
-            --bg-box: #182238;
-            --purple: #9d4edd;
-            --gold: #f7d070;
-            --gold-bright: #ffe396;
+            --bg-main: #070b14;
+            --bg-card: #101829;
+            --bg-pill: #18233b;
+            --gold: #f6cf68;
+            --gold-bright: #ffe499;
+            --purple: #9333ea;
+            --purple-soft: #d8b4fe;
             --text: #ffffff;
-            --sub: #a8b3c7;
-            --line: #28354f;
+            --sub: #a8b4c9;
+            --line: rgba(147, 51, 234, 0.35);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text);
             min-height: 100vh;
+            background: radial-gradient(circle at top, #181033 0%, var(--bg-main) 65%);
+            color: var(--text);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 18px;
+            padding: 20px;
         }
 
-        .wrap {
+        .frame {
             width: 100%;
-            max-width: 500px;
-            background: var(--bg-card);
-            border: 1px solid rgba(157, 78, 221, 0.35);
-            border-radius: 18px;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65), 0 0 24px rgba(157, 78, 221, 0.25);
-            overflow: hidden;
+            max-width: 480px;
+            background: rgba(16, 24, 41, 0.92);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 26px 22px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 32px rgba(147, 51, 234, 0.22);
         }
 
-        .top-bar {
-            padding: 16px 20px;
-            background: #0e1422;
-            border-bottom: 1px solid var(--line);
+        .top-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 10px;
+            margin-bottom: 28px;
         }
 
-        .brand-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .brand-name {
-            font-size: 21px;
+        .id-badge {
+            font-size: 13px;
             font-weight: 700;
-            color: var(--gold);
-            letter-spacing: 1px;
-        }
-
-        .user-tag {
-            font-size: 12px;
-            font-weight: 600;
-            color: #e9d5ff;
-            background: rgba(157, 78, 221, 0.2);
-            border: 1px solid var(--purple);
-            padding: 4px 10px;
+            color: var(--purple-soft);
+            background: rgba(147, 51, 234, 0.18);
+            border: 1px solid rgba(216, 180, 254, 0.4);
+            padding: 6px 12px;
             border-radius: 999px;
         }
 
-        .lang-box select {
-            background: var(--bg-box);
-            color: var(--text);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 7px 10px;
-            font-size: 13px;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .main-body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .hero-card {
-            background: linear-gradient(145deg, rgba(157, 78, 221, 0.2), rgba(18, 25, 41, 0.95));
-            border: 1px solid rgba(247, 208, 112, 0.4);
-            border-radius: 14px;
-            padding: 20px;
-        }
-
-        .hero-meta {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 6px;
+        .ref-badge {
             font-size: 12px;
-            color: var(--sub);
-            margin-bottom: 8px;
-        }
-
-        .hero-balance {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .hero-balance span {
-            color: var(--gold);
-        }
-
-        .enter-btn {
-            width: 100%;
-            padding: 15px 18px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(90deg, var(--gold), #e5b636);
-            color: #0b0f19;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: 0 6px 18px rgba(247, 208, 112, 0.32);
-            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-        }
-
-        .enter-btn:hover {
-            background: linear-gradient(90deg, var(--gold-bright), var(--gold));
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(247, 208, 112, 0.48);
-        }
-
-        .section-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-            color: var(--sub);
-            margin-bottom: 10px;
-        }
-
-        .section-head small {
-            color: #d8b4fe;
-            font-size: 11px;
-        }
-
-        .mod-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-        }
-
-        .mod-item {
-            background: var(--bg-box);
-            border: 1px solid var(--line);
-            border-radius: 11px;
-            padding: 12px 4px;
-            color: var(--text);
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            transition: border-color 0.2s, background 0.2s, transform 0.2s;
-        }
-
-        .mod-item i {
-            font-size: 16px;
-            color: #c084fc;
-        }
-
-        .mod-item span {
-            font-size: 11px;
             font-weight: 600;
+            color: var(--gold);
         }
 
-        .mod-item:hover {
-            border-color: var(--purple);
-            background: rgba(157, 78, 221, 0.18);
+        .hero {
+            text-align: center;
+            padding: 12px 0 26px;
+        }
+
+        .brand {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 30%, var(--gold) 85%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .lead {
+            font-size: 15px;
+            color: var(--sub);
+            margin-bottom: 28px;
+        }
+
+        .go-btn {
+            width: 100%;
+            padding: 18px 24px;
+            border: none;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--gold), #dfa928);
+            color: #090d16;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 12px 28px rgba(246, 207, 104, 0.32);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .go-btn:hover {
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold));
             transform: translateY(-2px);
+            box-shadow: 0 16px 36px rgba(246, 207, 104, 0.48);
         }
 
-        .foot-bar {
-            padding: 14px 20px;
-            background: #080c14;
-            border-top: 1px solid var(--line);
+        .go-btn:active {
+            transform: translateY(1px);
+        }
+
+        .layer-box {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 18px;
+        }
+
+        .toggle-btn {
+            width: 100%;
+            background: var(--bg-pill);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 14px 16px;
+            font-size: 14px;
+            font-weight: 700;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            cursor: pointer;
         }
 
-        .sns-group {
-            display: flex;
-            gap: 10px;
+        .toggle-btn:hover {
+            border-color: var(--purple-soft);
         }
 
-        .sns-link {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--bg-box);
-            border: 1px solid var(--line);
-            color: var(--sub);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s, color 0.2s, border-color 0.2s;
-        }
-
-        .sns-link.yt:hover {
-            color: #ff4d4d;
-            border-color: #ff4d4d;
-            transform: translateY(-2px);
-        }
-
-        .sns-link.tt:hover {
-            color: #22d3ee;
-            border-color: #22d3ee;
-            transform: translateY(-2px);
-        }
-
-        .copy-text {
-            font-size: 11px;
-            color: var(--sub);
-        }
-
-        .modal-bg {
+        .modules-panel {
             display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.72);
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
+            margin-top: 12px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
         }
 
-        .modal-box {
-            width: 90%;
-            max-width: 350px;
-            background: var(--bg-card);
-            border: 1px solid var(--purple);
-            border-radius: 14px;
-            padding: 22px;
+        .modules-panel.open {
+            display: grid;
+        }
+
+        .mod-btn {
+            background: #0b111e;
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 12px;
+            padding: 12px 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             text-align: center;
+            transition: border-color 0.2s ease, background 0.2s ease;
         }
 
-        .modal-box h3 {
-            color: var(--gold);
-            margin-bottom: 10px;
-            font-size: 17px;
+        .mod-btn:hover {
+            border-color: var(--gold);
+            background: rgba(147, 51, 234, 0.16);
         }
 
-        .modal-box p {
-            color: var(--sub);
+        .info-box {
+            display: none;
+            margin-top: 12px;
+            background: rgba(147, 51, 234, 0.14);
+            border: 1px solid rgba(216, 180, 254, 0.35);
+            border-radius: 12px;
+            padding: 14px;
             font-size: 13px;
             line-height: 1.5;
-            margin-bottom: 18px;
+            color: #f3e8ff;
         }
 
-        .modal-close {
-            background: var(--purple);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            padding: 9px 22px;
-            font-size: 13px;
+        .info-box.show {
+            display: block;
+        }
+
+        .foot {
+            margin-top: 22px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--sub);
+        }
+
+        .foot a {
+            color: var(--gold);
+            text-decoration: none;
             font-weight: 600;
-            cursor: pointer;
-        }
-
-        @media (max-width: 440px) {
-            .mod-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            margin-left: 12px;
         }
     </style>
 </head>
 <body>
-    <div class="wrap">
-        <div class="top-bar">
-            <div class="brand-group">
-                <span class="brand-name">HKWB</span>
-                <span class="user-tag">ID: ljw2358</span>
-            </div>
-            <div class="lang-box">
-                <select id="langSelect" onchange="changeLang(this.value)">
-                    <option value="ko">한국어 (KO)</option>
-                    <option value="en">English (EN)</option>
-                    <option value="ja">日本語 (JA)</option>
-                    <option value="zh">中文 (ZH)</option>
-                    <option value="es">Español (ES)</option>
-                    <option value="vi">Tiếng Việt (VI)</option>
-                </select>
-            </div>
+    <main class="frame">
+        <div class="top-row">
+            <span class="id-badge">ID: ljw2358</span>
+            <span class="ref-badge">추천인 ljw2358 · UBI 우선</span>
         </div>
 
-        <div class="main-body">
-            <div class="hero-card">
-                <div class="hero-meta">
-                    <span>HKWB 간편 잔액</span>
-                    <span>추천인 ljw2358 (UBI 우선)</span>
-                </div>
-                <div class="hero-balance">
-                    <span>1,250,000</span> KRW
-                </div>
-                <button type="button" class="enter-btn" onclick="goBank(event)">
-                    <i class="fa-solid fa-building-columns"></i>
-                    <span>인터넷 뱅크 진입하기</span>
-                </button>
+        <section class="hero">
+            <h1 class="brand">HK Bank 3</h1>
+            <p class="lead">단순하고 빠르게, 세련된 금융 진입</p>
+            <button type="button" class="go-btn" onclick="enterBank()">
+                초고속 진입하기
+            </button>
+        </section>
+
+        <section class="layer-box">
+            <button type="button" class="toggle-btn" onclick="toggleModules()">
+                <span>10대 핵심 모듈 펼치기</span>
+                <span id="arrow">+</span>
+            </button>
+
+            <div class="modules-panel" id="modulesPanel">
+                <button type="button" class="mod-btn" onclick="selectModule('지갑 연결')">지갑 연결</button>
+                <button type="button" class="mod-btn" onclick="selectModule('송금')">송금</button>
+                <button type="button" class="mod-btn" onclick="selectModule('결제')">결제</button>
+                <button type="button" class="mod-btn" onclick="selectModule('예치')">예치</button>
+                <button type="button" class="mod-btn" onclick="selectModule('보상')">보상</button>
+                <button type="button" class="mod-btn" onclick="selectModule('기본소득 (UBI)')">기본소득 (UBI)</button>
+                <button type="button" class="mod-btn" onclick="selectModule('스왑')">스왑</button>
+                <button type="button" class="mod-btn" onclick="selectModule('덱스 스왑')">덱스 스왑</button>
+                <button type="button" class="mod-btn" onclick="selectModule('LP 스테이킹')">LP 스테이킹</button>
+                <button type="button" class="mod-btn" onclick="selectModule('파이 수량')">파이 수량</button>
             </div>
 
+            <div class="info-box" id="infoBox"></div>
+        </section>
+
+        <footer class="foot">
+            <span>&copy; 2026 HKWB</span>
             <div>
-                <div class="section-head">
-                    <span>10대 핵심 모듈</span>
-                    <small>Mainnet / Testnet</small>
-                </div>
-                <div class="mod-grid">
-                    <button type="button" class="mod-item" onclick="showMod('지갑 연결')">
-                        <i class="fa-solid fa-wallet"></i>
-                        <span>지갑 연결</span>
-                    </button>
-                    <button type="button" class="mod-item" onclick="showMod('송금')">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span>송금</span>
-                    </button>
-                    <button type="button" class="mod-item" onclick="showMod('결제')">
-                        <i class="fa-solid fa-credit-card"></i>
-                        <span>결제</span>
-                    </button>
-                    <button type="button" class="mod-item" onclick="showMod('예치')">
-                        <i class="fa-solid fa-vault"></i>
-                        <span>예치</span>
-                    </button>
-                    <button type="button" class="mod-item" onclick="showMod('보상')">
-                        <i class="fa-solid fa-gift"></i>
-                        <span>보상</span>
-                    </button>
-                    <button type="button" class="mod-item" onclick="showMod('기본소득 (UBI)')">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
-                        <span>기본소득</span>
-                    </button>
-                    <button type="button" class="mod-item" onclick="showMod('스왑')">
-                        <i class="fa-solid fa-right-left"></i>
-                        <span>스왑</span>
-                    </button>
-                    <button type="button" class="mod-item" onclick="showMod('덱스 스왑')">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <span>덱스 스왑</span>
-                    </button>
-                    <button type="button" class="mod-item" onclick="showMod('LP 스테이킹')">
-                        <i class="fa-solid fa-coins"></i>
-                        <span>LP 스테이킹</span>
-                    </button>
-                    <button type="button" class="mod-item" onclick="showMod('파이 수량')">
-                        <i class="fa-solid fa-cubes"></i>
-                        <span>파이 수량</span>
-                    </button>
-                </div>
+                <a href="https://www.youtube.com/@Hyekong2026" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <a href="https://www.tiktok.com/@Hyekong2026" target="_blank" rel="noopener noreferrer">TikTok</a>
             </div>
-        </div>
-
-        <div class="foot-bar">
-            <div class="sns-group">
-                <a href="https://www.youtube.com/@Hyekong2026" target="_blank" rel="noopener noreferrer" class="sns-link yt" title="YouTube">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.tiktok.com/@Hyekong2026" target="_blank" rel="noopener noreferrer" class="sns-link tt" title="TikTok">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-            </div>
-            <div class="copy-text">&copy; 2026 HKWB</div>
-        </div>
-    </div>
-
-    <div class="modal-bg" id="modModal">
-        <div class="modal-box">
-            <h3 id="modTitle">모듈 안내</h3>
-            <p id="modDesc"></p>
-            <button type="button" class="modal-close" onclick="closeMod()">확인</button>
-        </div>
-    </div>
+        </footer>
+    </main>
 
     <script>
-        function goBank(e) {
-            if (e) e.preventDefault();
+        function enterBank() {
             window.location.href = "https://hkwb.world";
         }
 
-        function showMod(name) {
-            document.getElementById("modTitle").textContent = name;
-            document.getElementById("modDesc").innerHTML =
-                "<strong>" + name + "</strong> 모듈을 불러왔습니다.<br>인증 상태 확인 후 이용 가능합니다.";
-            document.getElementById("modModal").style.display = "flex";
+        function toggleModules() {
+            const panel = document.getElementById("modulesPanel");
+            const arrow = document.getElementById("arrow");
+            const isOpen = panel.classList.toggle("open");
+            arrow.textContent = isOpen ? "-" : "+";
         }
 
-        function closeMod() {
-            document.getElementById("modModal").style.display = "none";
-        }
-
-        function changeLang(code) {
-            console.log("Language:", code);
+        function selectModule(name) {
+            const box = document.getElementById("infoBox");
+            box.innerHTML = "<strong>" + name + "</strong> 선택됨 · KYC/KYB 인증 및 Mainnet/Testnet 연결 대기 중입니다.";
+            box.classList.add("show");
         }
     </script>
 </body>
