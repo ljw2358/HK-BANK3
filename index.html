@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HKWB - 간편 인터넷 뱅킹</title>
-    <!-- Google Fonts & Font Awesome Icons -->
+    <title>HKWB - 인터넷 뱅킹</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
             --bg-dark: #0a0e17;
             --bg-card: #121929;
             --bg-input: #1a233a;
             --purple-neon: #9d4edd;
-            --purple-glow: rgba(157, 78, 221, 0.4);
+            --purple-glow: rgba(157, 78, 221, 0.35);
             --gold-primary: #f7d070;
             --gold-hover: #ffe29a;
             --text-main: #ffffff;
             --text-sub: #a0aec0;
             --border-color: #2d3748;
-            --radius-main: 16px;
+            --radius-main: 18px;
         }
 
         * {
@@ -40,33 +38,33 @@
             padding: 20px;
         }
 
-        /* 메인 컨테이너 */
         .app-container {
             width: 100%;
-            max-width: 480px;
+            max-width: 520px;
             background-color: var(--bg-card);
             border-radius: var(--radius-main);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--purple-glow);
-            border: 1px solid rgba(157, 78, 221, 0.2);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 24px var(--purple-glow);
+            border: 1px solid rgba(157, 78, 221, 0.28);
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        /* 헤더 영역 */
         header {
-            padding: 20px;
+            padding: 18px 20px;
             background: linear-gradient(135deg, #161f33 0%, #0d1322 100%);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
         }
 
         .header-title {
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .logo-text {
@@ -77,8 +75,8 @@
         }
 
         .user-id-badge {
-            background-color: rgba(157, 78, 221, 0.15);
-            color: var(--purple-neon);
+            background-color: rgba(157, 78, 221, 0.16);
+            color: #d8b4fe;
             border: 1px solid var(--purple-neon);
             padding: 4px 10px;
             border-radius: 20px;
@@ -86,43 +84,40 @@
             font-weight: 600;
         }
 
-        /* 60개국 언어 선택기 */
         .lang-select-wrapper select {
             background-color: var(--bg-input);
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            padding: 6px 10px;
+            padding: 7px 12px;
             border-radius: 8px;
             font-size: 13px;
             outline: none;
             cursor: pointer;
         }
 
-        /* 메인 콘텐츠 영역 */
         .content {
-            padding: 24px 20px;
+            padding: 22px 20px;
             display: flex;
-            flex-direction: flex-direction;
-            gap: 20px;
-            flex: 1;
+            flex-direction: column;
+            gap: 18px;
         }
 
-        /* 잔액 카트 카드 */
         .balance-card {
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.2) 0%, rgba(20, 28, 47, 0.8) 100%);
-            border: 1px solid rgba(247, 208, 112, 0.3);
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.2) 0%, rgba(20, 28, 47, 0.9) 100%);
+            border: 1px solid rgba(247, 208, 112, 0.35);
             border-radius: 14px;
             padding: 20px;
-            position: relative;
-            box-shadow: inset 0 0 15px rgba(157, 78, 221, 0.1);
+            box-shadow: inset 0 0 16px rgba(157, 78, 221, 0.12);
         }
 
         .balance-header {
             display: flex;
             justify-content: space-between;
+            gap: 8px;
             color: var(--text-sub);
-            font-size: 13px;
+            font-size: 12px;
             margin-bottom: 8px;
+            flex-wrap: wrap;
         }
 
         .balance-amount {
@@ -136,19 +131,18 @@
             color: var(--gold-primary);
         }
 
-        /* 메인 인터넷 뱅크 진입 버튼 */
         .btn-go-bank {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(90deg, var(--gold-primary) 0%, #e6b800 100%);
-            color: #000;
-            font-size: 16px;
+            padding: 14px 16px;
+            background: linear-gradient(90deg, var(--gold-primary) 0%, #e5b73b 100%);
+            color: #0b0f19;
+            font-size: 15px;
             font-weight: 700;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(247, 208, 112, 0.3);
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(247, 208, 112, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -158,15 +152,12 @@
         .btn-go-bank:hover {
             background: linear-gradient(90deg, var(--gold-hover) 0%, var(--gold-primary) 100%);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(247, 208, 112, 0.5);
+            box-shadow: 0 6px 22px rgba(247, 208, 112, 0.45);
         }
 
-        /* 10대 핵심 모듈 그리드 */
         .module-section-title {
             font-size: 14px;
             color: var(--text-sub);
-            margin-bottom: 12px;
-            margin-top: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -182,7 +173,7 @@
             background-color: var(--bg-input);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 12px 6px;
+            padding: 13px 6px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -194,28 +185,26 @@
         }
 
         .module-btn i {
-            font-size: 18px;
-            color: var(--purple-neon);
+            font-size: 17px;
+            color: #c084fc;
         }
 
         .module-btn span {
             font-size: 11px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .module-btn:hover {
             border-color: var(--purple-neon);
-            background-color: rgba(157, 78, 221, 0.1);
+            background-color: rgba(157, 78, 221, 0.16);
             transform: translateY(-2px);
         }
 
-        /* 송금 입력 폼 */
         .transfer-form {
-            background-color: rgba(26, 35, 58, 0.5);
+            background-color: rgba(26, 35, 58, 0.55);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 16px;
-            margin-top: 10px;
         }
 
         .form-group {
@@ -223,6 +212,10 @@
             flex-direction: column;
             gap: 6px;
             margin-bottom: 12px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
         }
 
         .form-group label {
@@ -244,7 +237,6 @@
             border-color: var(--purple-neon);
         }
 
-        /* 하단 소셜 및 푸터 */
         footer {
             padding: 16px 20px;
             background-color: #080c14;
@@ -252,11 +244,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
         }
 
         .social-links {
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
 
         .social-icon {
@@ -270,20 +263,20 @@
             align-items: center;
             color: var(--text-sub);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
 
         .social-icon.youtube:hover {
-            color: #ff0000;
-            border-color: #ff0000;
-            background-color: rgba(255, 0, 0, 0.1);
+            color: #ff4d4d;
+            border-color: #ff4d4d;
+            background-color: rgba(255, 77, 77, 0.12);
             transform: translateY(-2px);
         }
 
         .social-icon.tiktok:hover {
-            color: #00f2fe;
-            border-color: #00f2fe;
-            background-color: rgba(0, 242, 254, 0.1);
+            color: #22d3ee;
+            border-color: #22d3ee;
+            background-color: rgba(34, 211, 238, 0.12);
             transform: translateY(-2px);
         }
 
@@ -292,15 +285,11 @@
             color: var(--text-sub);
         }
 
-        /* 모달 알림창 */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
             backdrop-filter: blur(4px);
             justify-content: center;
             align-items: center;
@@ -315,36 +304,40 @@
             max-width: 360px;
             width: 90%;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
         }
 
         .modal-content h3 {
             color: var(--gold-primary);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .modal-content p {
             color: var(--text-sub);
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             line-height: 1.5;
         }
 
         .modal-btn {
             background-color: var(--purple-neon);
-            color: white;
+            color: #ffffff;
             border: none;
             padding: 10px 24px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
         }
+
+        @media (max-width: 460px) {
+            .module-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
-
     <div class="app-container">
-        <!-- 헤더 -->
         <header>
             <div class="header-title">
                 <span class="logo-text">HKWB</span>
@@ -358,14 +351,11 @@
                     <option value="zh">中文 (ZH)</option>
                     <option value="es">Español (ES)</option>
                     <option value="vi">Tiếng Việt (VI)</option>
-                    <!-- 60개국 언어 지원 생략 확장 가능 -->
                 </select>
             </div>
         </header>
 
-        <!-- 메인 콘텐츠 -->
         <div class="content">
-            <!-- 잔액 및 이동 카드 -->
             <div class="balance-card">
                 <div class="balance-header">
                     <span>HKWB 간편 잔액</span>
@@ -374,61 +364,59 @@
                 <div class="balance-amount">
                     <span>1,250,000</span> KRW
                 </div>
-                <!-- 인터넷 뱅크 진입 버튼 (Line 451 이동 로직 포함) -->
-                <button class="btn-go-bank" onclick="goBank(event)">
+                <button type="button" class="btn-go-bank" onclick="goBank(event)">
                     <i class="fa-solid fa-building-columns"></i> 인터넷 뱅크 진입하기
                 </button>
             </div>
 
-            <!-- 10대 핵심 분산 연동망 모듈 -->
             <div class="module-section-title">
                 <span>10대 핵심 모듈 연동</span>
-                <span style="font-size:11px; color:var(--purple-neon);">Mainnet / Testnet</span>
+                <span style="font-size:11px; color:#c084fc;">Mainnet / Testnet</span>
             </div>
+
             <div class="module-grid">
-                <button class="module-btn" onclick="openModule('지갑 연결')">
+                <button type="button" class="module-btn" onclick="openModule('지갑 연결')">
                     <i class="fa-solid fa-wallet"></i>
                     <span>지갑</span>
                 </button>
-                <button class="module-btn" onclick="openModule('송금')">
+                <button type="button" class="module-btn" onclick="openModule('송금')">
                     <i class="fa-solid fa-paper-plane"></i>
                     <span>송금</span>
                 </button>
-                <button class="module-btn" onclick="openModule('결제')">
+                <button type="button" class="module-btn" onclick="openModule('결제')">
                     <i class="fa-solid fa-credit-card"></i>
                     <span>결제</span>
                 </button>
-                <button class="module-btn" onclick="openModule('예치')">
+                <button type="button" class="module-btn" onclick="openModule('예치')">
                     <i class="fa-solid fa-vault"></i>
                     <span>예치</span>
                 </button>
-                <button class="module-btn" onclick="openModule('보상')">
+                <button type="button" class="module-btn" onclick="openModule('보상')">
                     <i class="fa-solid fa-gift"></i>
                     <span>보상</span>
                 </button>
-                <button class="module-btn" onclick="openModule('기본소득 (UBI)')">
+                <button type="button" class="module-btn" onclick="openModule('기본소득 (UBI)')">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
                     <span>UBI</span>
                 </button>
-                <button class="module-btn" onclick="openModule('스왑')">
+                <button type="button" class="module-btn" onclick="openModule('스왑')">
                     <i class="fa-solid fa-right-left"></i>
                     <span>스왑</span>
                 </button>
-                <button class="module-btn" onclick="openModule('DEX 스왑')">
+                <button type="button" class="module-btn" onclick="openModule('DEX 스왑')">
                     <i class="fa-solid fa-chart-line"></i>
                     <span>DEX</span>
                 </button>
-                <button class="module-btn" onclick="openModule('LP 스테이킹')">
+                <button type="button" class="module-btn" onclick="openModule('LP 스테이킹')">
                     <i class="fa-solid fa-coins"></i>
                     <span>LP</span>
                 </button>
-                <button class="module-btn" onclick="openModule('파이 수량 확인')">
+                <button type="button" class="module-btn" onclick="openModule('파이 수량 확인')">
                     <i class="fa-solid fa-cubes"></i>
                     <span>파이</span>
                 </button>
             </div>
 
-            <!-- 간편 송금 폼 -->
             <div class="transfer-form">
                 <div class="form-group">
                     <label for="targetId">받는 분 또는 계좌 ID</label>
@@ -441,13 +429,12 @@
             </div>
         </div>
 
-        <!-- 푸터 영역 (소셜 미디어 포함) -->
         <footer>
             <div class="social-links">
-                <a href="https://www.youtube.com/@Hyekong2026" target="_blank" class="social-icon youtube" title="YouTube Official">
+                <a href="https://www.youtube.com/@Hyekong2026" target="_blank" rel="noopener noreferrer" class="social-icon youtube" title="YouTube Official">
                     <i class="fa-brands fa-youtube"></i>
                 </a>
-                <a href="https://www.tiktok.com/@Hyekong2026" target="_blank" class="social-icon tiktok" title="TikTok Official">
+                <a href="https://www.tiktok.com/@Hyekong2026" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" title="TikTok Official">
                     <i class="fa-brands fa-tiktok"></i>
                 </a>
             </div>
@@ -457,32 +444,27 @@
         </footer>
     </div>
 
-    <!-- 모달 알림창 -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content">
             <h3 id="modalTitle">모듈 안내</h3>
             <p id="modalDesc">선택한 모듈을 실행합니다.</p>
-            <button class="modal-btn" onclick="closeModal()">확인</button>
+            <button type="button" class="modal-btn" onclick="closeModal()">확인</button>
         </div>
     </div>
 
     <script>
-        // Line 451: 인터넷 뱅크 진입 함수 (소문자 주소 적용)
+        const HKWB_BANK_URL = "https://hkwb.world";
+
         function goBank(e) {
             if (e) e.preventDefault();
-            
-            // 소문자 hkwb 사이트로 안전 이동
-            window.location.href = "https://hkwb.world";
+            window.location.href = HKWB_BANK_URL;
         }
 
-        // 10대 모듈 대화상자 오픈
         function openModule(moduleName) {
             const title = document.getElementById("modalTitle");
             const desc = document.getElementById("modalDesc");
-            
             title.innerText = moduleName + " 모듈";
-            desc.innerHTML = `[${moduleName}] 연동이 호출되었습니다.<br>보안 KYC/KYB 인증 상태를 확인하는 중입니다.`;
-            
+            desc.innerHTML = `[${moduleName}] 연동이 호출되었습니다.<br>KYC/KYB 인증 및 둘러보기 상태를 확인하는 중입니다.`;
             document.getElementById("modalOverlay").style.display = "flex";
         }
 
@@ -490,7 +472,6 @@
             document.getElementById("modalOverlay").style.display = "none";
         }
 
-        // 언어 변경 처리
         function changeLanguage(langCode) {
             console.log("Selected language: " + langCode);
         }
