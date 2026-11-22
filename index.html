@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HKWB 차세대 글로벌 인터넷 뱅킹</title>
+  <title>HKWB 글로벌 자율 금융 플랫폼</title>
   <style>
     :root {
-      --bg-page: #f4f7fb;
-      --bg-card: #ffffff;
-      --bg-soft: #eef4fc;
-      --blue-main: #1d4ed8;
-      --blue-dark: #1e3a8a;
-      --blue-light: #dbeafe;
-      --blue-border: #bfdbfe;
-      --text-title: #0f172a;
-      --text-body: #334155;
-      --text-muted: #64748b;
+      --bg-white: #ffffff;
+      --bg-mist: #f8fafd;
+      --blue-soft: #eff6ff;
+      --blue-line: #bfdbfe;
+      --blue-accent: #2563eb;
+      --blue-deep: #1e40af;
+      --ink-dark: #0f172a;
+      --ink-sub: #475569;
     }
 
     * {
@@ -26,8 +24,8 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "Pretendard", sans-serif;
-      background-color: var(--bg-page);
-      color: var(--text-title);
+      background-color: var(--bg-white);
+      color: var(--ink-dark);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -46,11 +44,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--bg-card);
-      padding: 12px 18px;
-      border-radius: 16px;
-      border: 1px solid var(--blue-border);
-      box-shadow: 0 4px 14px rgba(29, 78, 216, 0.06);
+      background: var(--bg-white);
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--blue-line);
       position: relative;
       z-index: 50;
     }
@@ -62,24 +59,24 @@
     }
 
     .status-dot {
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: #2563eb;
+      background: var(--blue-accent);
     }
 
     .user-id {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 800;
-      color: var(--blue-dark);
+      color: var(--ink-dark);
     }
 
     .hamburger-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: var(--bg-soft);
-      border: 1px solid var(--blue-border);
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--bg-mist);
+      border: 1px solid var(--blue-line);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -89,23 +86,23 @@
     }
 
     .hamburger-btn span {
-      width: 18px;
+      width: 17px;
       height: 2px;
-      background: var(--blue-dark);
+      background: var(--blue-deep);
       border-radius: 2px;
     }
 
     .menu-dropdown {
       display: none;
       position: absolute;
-      top: 62px;
+      top: 58px;
       right: 0;
-      width: 245px;
-      background: var(--bg-card);
-      border: 1px solid var(--blue-border);
+      width: 240px;
+      background: var(--bg-white);
+      border: 1px solid var(--blue-line);
       border-radius: 14px;
       padding: 8px;
-      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.14);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1);
       z-index: 60;
     }
 
@@ -117,27 +114,26 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px;
-      color: var(--text-title);
+      padding: 11px 12px;
+      color: var(--ink-dark);
       text-decoration: none;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 700;
       border-radius: 10px;
     }
 
     .menu-item:hover {
-      background: var(--bg-soft);
-      color: var(--blue-main);
+      background: var(--blue-soft);
+      color: var(--blue-accent);
     }
 
     .whitepaper-box {
       display: none;
-      background: var(--bg-card);
-      border: 1px solid var(--blue-main);
-      border-radius: 18px;
-      padding: 18px;
+      background: var(--bg-mist);
+      border: 1px solid var(--blue-line);
+      border-radius: 16px;
+      padding: 16px;
       line-height: 1.55;
-      box-shadow: 0 4px 14px rgba(29, 78, 216, 0.06);
     }
 
     .whitepaper-box.active {
@@ -145,52 +141,51 @@
     }
 
     .whitepaper-box h3 {
-      color: var(--blue-main);
-      font-size: 1.05rem;
+      color: var(--blue-deep);
+      font-size: 1rem;
       margin-bottom: 8px;
     }
 
     .whitepaper-box p {
-      color: var(--text-body);
+      color: var(--ink-sub);
       font-size: 0.88rem;
       margin-bottom: 6px;
     }
 
     .hero-card {
-      background: var(--bg-card);
-      border: 1px solid var(--blue-border);
-      border-radius: 24px;
-      padding: 24px 20px;
-      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.07);
+      background: var(--bg-white);
+      border: 1px solid var(--blue-line);
+      border-radius: 20px;
+      padding: 22px 18px;
     }
 
     .global-badge {
       display: inline-block;
-      background: var(--blue-light);
-      color: var(--blue-main);
-      padding: 5px 12px;
+      background: var(--blue-soft);
+      color: var(--blue-accent);
+      padding: 5px 11px;
       border-radius: 999px;
       font-size: 0.78rem;
       font-weight: 800;
-      margin-bottom: 12px;
-    }
-
-    .hero-title {
-      font-size: 1.65rem;
-      font-weight: 900;
-      line-height: 1.25;
-      color: var(--text-title);
       margin-bottom: 10px;
     }
 
+    .hero-title {
+      font-size: 1.55rem;
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--ink-dark);
+      margin-bottom: 8px;
+    }
+
     .hero-title span {
-      color: var(--blue-main);
+      color: var(--blue-accent);
     }
 
     .hero-desc {
-      font-size: 0.92rem;
-      line-height: 1.55;
-      color: var(--text-body);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--ink-sub);
       margin-bottom: 18px;
     }
 
@@ -202,34 +197,34 @@
 
     .btn-primary {
       width: 100%;
-      background: var(--blue-main);
+      background: var(--blue-accent);
       color: #ffffff;
       border: none;
-      padding: 15px 18px;
-      border-radius: 14px;
-      font-size: 1rem;
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-size: 0.98rem;
       font-weight: 800;
       cursor: pointer;
     }
 
     .btn-primary:hover {
-      background: var(--blue-dark);
+      background: var(--blue-deep);
     }
 
     .btn-secondary {
       width: 100%;
-      background: #ffffff;
-      color: var(--blue-main);
-      border: 1.5px solid var(--blue-main);
-      padding: 14px 16px;
-      border-radius: 14px;
-      font-size: 0.94rem;
+      background: var(--bg-white);
+      color: var(--blue-deep);
+      border: 1px solid var(--blue-line);
+      padding: 13px 16px;
+      border-radius: 12px;
+      font-size: 0.92rem;
       font-weight: 800;
       cursor: pointer;
     }
 
     .btn-secondary:hover {
-      background: var(--bg-soft);
+      background: var(--blue-soft);
     }
 
     .summary-grid {
@@ -239,10 +234,10 @@
     }
 
     .summary-card {
-      background: var(--bg-card);
-      border: 1px solid var(--blue-border);
-      border-radius: 18px;
-      padding: 15px;
+      background: var(--bg-white);
+      border: 1px solid var(--blue-line);
+      border-radius: 16px;
+      padding: 14px;
     }
 
     .summary-card.span-full {
@@ -250,108 +245,107 @@
     }
 
     .summary-label {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 6px;
+      color: var(--ink-sub);
+      margin-bottom: 4px;
     }
 
     .summary-value {
-      font-size: 1.06rem;
+      font-size: 1.02rem;
       font-weight: 900;
-      color: var(--blue-dark);
+      color: var(--blue-deep);
     }
 
     .summary-subtext {
-      font-size: 0.78rem;
-      color: var(--text-body);
-      margin-top: 4px;
+      font-size: 0.76rem;
+      color: var(--ink-sub);
+      margin-top: 3px;
     }
 
     .modules-section {
-      background: var(--bg-card);
-      border: 1px solid var(--blue-border);
-      border-radius: 22px;
-      padding: 18px 14px;
+      background: var(--bg-white);
+      border: 1px solid var(--blue-line);
+      border-radius: 18px;
+      padding: 16px 14px;
     }
 
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
-      padding: 0 4px;
+      margin-bottom: 12px;
     }
 
     .section-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 900;
-      color: var(--text-title);
+      color: var(--ink-dark);
     }
 
     .status-badge {
-      background: var(--blue-light);
-      color: var(--blue-main);
+      background: var(--blue-soft);
+      color: var(--blue-accent);
       padding: 4px 10px;
       border-radius: 999px;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 800;
     }
 
     .module-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      gap: 9px;
     }
 
     .module-btn {
-      background: #ffffff;
-      border: 1px solid var(--blue-border);
-      border-radius: 14px;
-      padding: 14px;
+      background: var(--bg-white);
+      border: 1px solid var(--blue-line);
+      border-radius: 12px;
+      padding: 12px;
       text-align: left;
       cursor: pointer;
     }
 
     .module-btn:hover {
-      background: var(--bg-soft);
-      border-color: var(--blue-main);
+      background: var(--blue-soft);
+      border-color: var(--blue-accent);
     }
 
     .mod-number {
       display: block;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
-      color: var(--blue-main);
-      margin-bottom: 4px;
+      color: var(--blue-accent);
+      margin-bottom: 3px;
     }
 
     .mod-name {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 800;
-      color: var(--text-title);
+      color: var(--ink-dark);
     }
 
     .console-container {
-      background: var(--bg-card);
-      border: 1px solid var(--blue-border);
-      border-radius: 16px;
-      padding: 14px 16px;
+      background: var(--bg-mist);
+      border: 1px solid var(--blue-line);
+      border-radius: 14px;
+      padding: 12px 14px;
     }
 
     .console-header {
       display: flex;
       justify-content: space-between;
       font-family: monospace;
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
+      font-size: 0.72rem;
+      color: var(--ink-sub);
+      margin-bottom: 5px;
     }
 
     #liveConsole {
       font-family: monospace;
-      font-size: 0.86rem;
-      color: var(--blue-main);
+      font-size: 0.84rem;
+      color: var(--blue-deep);
       font-weight: 700;
       word-break: break-all;
     }
@@ -376,9 +370,9 @@
           <span>📖</span>
           <span>백서 (Whitepaper)</span>
         </a>
-        <a href="https://ljw2358.github.io/HK-BANK/" class="menu-item">
+        <a href="https://ljw2358.github.io/HK-BANK/" class="menu-item" data-platform-link>
           <span>🏦</span>
-          <span>HK-BANK 바로가기</span>
+          <span>글로벌 금융 플랫폼 연결</span>
         </a>
         <a href="#modulesSection" class="menu-item" onclick="closeMenu()">
           <span>⚡</span>
@@ -404,15 +398,15 @@
     </section>
 
     <section class="hero-card">
-      <div class="global-badge">글로벌 자율 금융 플랫폼</div>
-      <h1 class="hero-title"><span>HKWB</span> 차세대<br>인터넷 뱅킹</h1>
+      <div class="global-badge">기술 기반 글로벌 자율 금융 플랫폼</div>
+      <h1 class="hero-title"><span>HKWB</span> 글로벌<br>자율 금융 플랫폼</h1>
       <p class="hero-desc">
-        전 세계 60개국을 연결하는 AI 가변 금리 엔진과 UBI 분배 시스템이 탑재된 차세대 디지털 금융 공간입니다.
+        전 세계 60개국을 연결하는 AI 가변 금리 엔진과 UBI 분배 시스템이 탑재된 디지털 금융 공간입니다.
       </p>
 
       <div class="btn-group">
         <button class="btn-primary" onclick="executeBankLogin()">
-          인터넷 뱅킹 진입하기 →
+          글로벌 금융 플랫폼 연결하기 →
         </button>
         <button class="btn-secondary" onclick="openSecureVault()">
           디지털 OTP 및 KYC/KYB 검증
@@ -433,7 +427,7 @@
       </div>
       <div class="summary-card span-full">
         <div class="summary-label">글로벌 네트워크 상태</div>
-        <div class="summary-value" style="color: var(--blue-main);">60개국 언어팩 활성화 완료 · 동기화 성공</div>
+        <div class="summary-value" style="color: var(--blue-accent);">60개국 언어팩 활성화 완료 · 동기화 성공</div>
       </div>
     </div>
 
@@ -455,7 +449,7 @@
   </div>
 
   <script>
-    const TARGET_BANK_URL = "https://ljw2358.github.io/HK-BANK/";
+    const PLATFORM_CONNECT_URL = "https://ljw2358.github.io/HK-BANK/";
 
     const modulesData = [
       { num: "01", name: "지갑 연결" },
@@ -469,6 +463,12 @@
       { num: "09", name: "LP 스테이킹" },
       { num: "10", name: "파이 수량" }
     ];
+
+    function syncPlatformLinks() {
+      document.querySelectorAll("[data-platform-link]").forEach((el) => {
+        el.setAttribute("href", PLATFORM_CONNECT_URL);
+      });
+    }
 
     function renderModules() {
       const container = document.getElementById("moduleGridContainer");
@@ -504,8 +504,8 @@
     });
 
     function executeBankLogin() {
-      logConsole("인터넷 뱅킹망으로 이동합니다...");
-      window.location.href = TARGET_BANK_URL;
+      logConsole("글로벌 금융 플랫폼으로 연결 중...");
+      window.location.href = PLATFORM_CONNECT_URL;
     }
 
     function interactWithModule(num, name) {
@@ -532,6 +532,7 @@
       document.getElementById("liveConsole").textContent = "> " + message;
     }
 
+    syncPlatformLinks();
     renderModules();
   </script>
 </body>
