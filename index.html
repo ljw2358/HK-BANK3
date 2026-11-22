@@ -6,37 +6,32 @@
   <title>HKWB 차세대 글로벌 디지털 뱅킹</title>
   <style>
     :root {
-      --bg-deep: #05020a;
-      --bg-surface: #0e091b;
-      --bg-elevated: #18112c;
-      --neon-purple: #8b5cf6;
-      --neon-blue: #06b6d4;
-      --neon-gold: #f59e0b;
-      --text-main: #f8fafc;
-      --text-sub: #94a3b8;
-      --border-glow: rgba(139, 92, 246, 0.4);
-      --glass-bg: rgba(14, 9, 27, 0.75);
+      --bg-deep: #070510;
+      --bg-surface: #110d22;
+      --bg-elevated: #1a1433;
+      --accent-purple: #7c3aed;
+      --accent-violet: #a855f7;
+      --accent-gold: #fbbf24;
+      --accent-cyan: #38bdf8;
+      --text-main: #ffffff;
+      --text-sub: #cbd5e1;
+      --border-line: rgba(168, 85, 247, 0.45);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      -webkit-font-smoothing: antialiased;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg-deep);
-      background-image:
-        radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.18) 0%, transparent 50%),
-        radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.05) 0%, transparent 70%);
+      font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "Pretendard", sans-serif;
+      background: radial-gradient(circle at top, #1e133d 0%, var(--bg-deep) 70%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 24px 16px 60px;
+      padding: 16px 14px 48px;
     }
 
     .app-container {
@@ -44,87 +39,75 @@
       max-width: 520px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 14px;
     }
 
+    /* 상단 헤더 */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      padding: 16px 22px;
-      border-radius: 20px;
-      border: 1px solid var(--border-glow);
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);
-      position: sticky;
-      top: 10px;
-      z-index: 100;
+      background: var(--bg-surface);
+      padding: 12px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border-line);
+      position: relative;
+      z-index: 50;
     }
 
     .user-badge {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .status-dot {
-      width: 10px;
-      height: 10px;
-      background-color: #10b981;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      box-shadow: 0 0 10px #10b981;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
     }
 
     .user-id {
-      font-size: 1.15rem;
+      font-size: 1rem;
       font-weight: 800;
-      color: var(--neon-gold);
-      letter-spacing: 0.5px;
+      color: var(--accent-gold);
     }
 
     .hamburger-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
       background: var(--bg-elevated);
-      border: 1px solid var(--border-glow);
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
+      border: 1px solid var(--border-line);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       cursor: pointer;
-      transition: all 0.2s ease;
     }
 
     .hamburger-btn span {
-      display: block;
-      width: 20px;
+      width: 18px;
       height: 2px;
-      background-color: var(--text-main);
+      background: #ffffff;
       border-radius: 2px;
-      transition: transform 0.2s;
-    }
-
-    .hamburger-btn:hover {
-      border-color: var(--neon-blue);
-      transform: scale(1.05);
     }
 
     .menu-dropdown {
       display: none;
       position: absolute;
-      top: 75px;
-      right: 16px;
-      width: 250px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-glow);
-      border-radius: 16px;
-      padding: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.9);
-      z-index: 101;
-      animation: fadeIn 0.2s ease;
+      top: 62px;
+      right: 0;
+      width: 240px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--accent-violet);
+      border-radius: 14px;
+      padding: 8px;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.75);
+      z-index: 60;
     }
 
     .menu-dropdown.active {
@@ -134,33 +117,27 @@
     .menu-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 14px;
-      color: var(--text-main);
+      gap: 10px;
+      padding: 12px;
+      color: #ffffff;
       text-decoration: none;
+      font-size: 0.92rem;
       font-weight: 700;
-      font-size: 0.95rem;
       border-radius: 10px;
-      transition: background 0.2s;
     }
 
     .menu-item:hover {
-      background: var(--bg-elevated);
-      color: var(--neon-blue);
-    }
-
-    .menu-icon {
-      font-size: 1.2rem;
+      background: rgba(124, 58, 237, 0.28);
+      color: var(--accent-gold);
     }
 
     .whitepaper-box {
       display: none;
       background: var(--bg-surface);
-      border: 1px solid var(--border-glow);
-      border-radius: 24px;
-      padding: 22px;
-      line-height: 1.6;
-      animation: fadeIn 0.2s ease;
+      border: 1px solid var(--accent-gold);
+      border-radius: 18px;
+      padding: 18px;
+      line-height: 1.55;
     }
 
     .whitepaper-box.active {
@@ -168,130 +145,113 @@
     }
 
     .whitepaper-box h3 {
-      color: var(--neon-gold);
-      margin-bottom: 10px;
-      font-size: 1.15rem;
+      color: var(--accent-gold);
+      font-size: 1.05rem;
+      margin-bottom: 8px;
     }
 
     .whitepaper-box p {
       color: var(--text-sub);
-      font-size: 0.92rem;
-      margin-bottom: 8px;
+      font-size: 0.88rem;
+      margin-bottom: 6px;
     }
 
+    /* 히어로 카드 */
     .hero-card {
-      background: linear-gradient(135deg, var(--bg-surface), #26164d);
-      border: 2px solid var(--border-glow);
-      border-radius: 32px;
-      padding: 32px 24px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(139, 92, 246, 0.25);
-    }
-
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.2), transparent 70%);
-      pointer-events: none;
+      background: linear-gradient(160deg, #1a1233 0%, #0f0a1f 100%);
+      border: 1px solid var(--border-line);
+      border-radius: 24px;
+      padding: 22px 18px;
     }
 
     .global-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(6, 182, 212, 0.15);
-      color: var(--neon-blue);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(6, 182, 212, 0.3);
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.14);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 12px;
     }
 
     .hero-title {
-      font-size: 2rem;
+      font-size: 1.65rem;
       font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 14px;
-      background: linear-gradient(90deg, #ffffff, #cbd5e1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      line-height: 1.25;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      color: var(--accent-gold);
     }
 
     .hero-desc {
-      color: var(--text-sub);
-      font-size: 1rem;
+      font-size: 0.92rem;
       line-height: 1.5;
-      margin-bottom: 28px;
+      color: var(--text-sub);
+      margin-bottom: 18px;
     }
 
     .btn-group {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-    }
-
-    .btn-primary {
-      width: 100%;
-      background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue));
-      color: #ffffff;
-      border: none;
-      padding: 18px;
-      border-radius: 18px;
-      font-size: 1.1rem;
-      font-weight: 900;
-      cursor: pointer;
-      box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.5);
-      transition: all 0.3s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       gap: 10px;
     }
 
+    /* 가독성 최우선 버튼 스타일 */
+    .btn-primary {
+      width: 100%;
+      background: #4c1d95;
+      color: #ffffff;
+      border: 2px solid #a855f7;
+      padding: 15px 18px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    }
+
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px -5px rgba(6, 182, 212, 0.6);
-      filter: brightness(1.1);
+      background: #5b21b6;
+      border-color: var(--accent-gold);
     }
 
     .btn-secondary {
       width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-main);
-      border: 1px solid rgba(139, 92, 246, 0.5);
-      padding: 16px;
-      border-radius: 18px;
-      font-size: 1rem;
+      background: #140f26;
+      color: var(--accent-gold);
+      border: 1px solid rgba(251, 191, 36, 0.55);
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-size: 0.94rem;
       font-weight: 800;
       cursor: pointer;
-      transition: all 0.2s ease;
     }
 
     .btn-secondary:hover {
-      background: rgba(139, 92, 246, 0.2);
-      border-color: var(--neon-purple);
+      background: #20183d;
     }
 
+    /* 요약 카드 */
     .summary-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 10px;
     }
 
     .summary-card {
       background: var(--bg-surface);
-      padding: 20px;
-      border-radius: 24px;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      position: relative;
+      border-radius: 18px;
+      padding: 15px;
     }
 
     .summary-card.span-full {
@@ -299,151 +259,125 @@
     }
 
     .summary-label {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--text-sub);
-      margin-bottom: 8px;
-      letter-spacing: 0.5px;
+      margin-bottom: 6px;
     }
 
     .summary-value {
-      font-size: 1.25rem;
+      font-size: 1.08rem;
       font-weight: 900;
-      color: var(--neon-gold);
+      color: var(--accent-gold);
     }
 
     .summary-subtext {
-      font-size: 0.82rem;
-      color: #64748b;
-      margin-top: 6px;
+      font-size: 0.78rem;
+      color: #94a3b8;
+      margin-top: 4px;
     }
 
+    /* 10대 금융 모듈 */
     .modules-section {
       background: var(--bg-surface);
-      border-radius: 28px;
-      padding: 26px 20px;
-      border: 1px solid var(--border-glow);
+      border: 1px solid var(--border-line);
+      border-radius: 22px;
+      padding: 18px 14px;
     }
 
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
+      padding: 0 4px;
     }
 
     .section-title {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       font-weight: 900;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      color: #ffffff;
     }
 
     .status-badge {
-      background: rgba(16, 185, 129, 0.15);
-      color: #10b981;
+      background: rgba(34, 197, 94, 0.16);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.35);
       padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 0.75rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
       font-weight: 800;
-      border: 1px solid rgba(16, 185, 129, 0.3);
     }
 
     .module-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
 
     .module-btn {
       background: var(--bg-elevated);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 18px;
-      padding: 20px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 14px;
       text-align: left;
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .module-btn::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 4px; height: 100%;
-      background: var(--neon-purple);
-      opacity: 0;
-      transition: opacity 0.2s;
     }
 
     .module-btn:hover {
-      border-color: var(--neon-blue);
-      background: #21153e;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5);
-    }
-
-    .module-btn:hover::before {
-      opacity: 1;
+      border-color: var(--accent-gold);
+      background: #241b47;
     }
 
     .mod-number {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--neon-blue);
       display: block;
-      margin-bottom: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      margin-bottom: 4px;
     }
 
     .mod-name {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 800;
-      color: var(--text-main);
+      color: #ffffff;
     }
 
+    /* 상태 콘솔 */
     .console-container {
-      background: #05020a;
-      border: 1px solid #334155;
-      border-radius: 18px;
-      padding: 16px 20px;
+      background: #090614;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 16px;
+      padding: 14px 16px;
     }
 
     .console-header {
-      font-family: monospace;
-      font-size: 0.75rem;
-      color: #64748b;
-      margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
+      font-family: monospace;
+      font-size: 0.74rem;
+      color: #94a3b8;
+      margin-bottom: 6px;
     }
 
     #liveConsole {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 0.9rem;
-      color: #34d399;
+      font-family: monospace;
+      font-size: 0.86rem;
+      color: #4ade80;
       font-weight: 700;
-      min-height: 24px;
       word-break: break-all;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-
   <div class="app-container">
     <header class="header">
       <div class="user-badge">
-        <div class="status-dot"></div>
+        <span class="status-dot"></span>
         <span class="user-id">ID: ljw2358</span>
       </div>
 
-      <button class="hamburger-btn" onclick="toggleMenu()" aria-label="메뉴 열기">
+      <button class="hamburger-btn" onclick="toggleMenu(event)" aria-label="메뉴 열기">
         <span></span>
         <span></span>
         <span></span>
@@ -451,23 +385,23 @@
 
       <nav class="menu-dropdown" id="menuDropdown">
         <a href="#whitepaperBox" class="menu-item" onclick="openWhitepaper(event)">
-          <span class="menu-icon">📖</span>
+          <span>📖</span>
           <span>백서 (Whitepaper)</span>
         </a>
         <a href="https://ljw2358.github.io/HK-BANK/" class="menu-item">
-          <span class="menu-icon">🏦</span>
-          <span>인터넷 뱅킹 바로가기</span>
+          <span>🏦</span>
+          <span>HK-BANK 바로가기</span>
         </a>
-        <a href="#modulesSection" class="menu-item" onclick="toggleMenu()">
-          <span class="menu-icon">⚡</span>
+        <a href="#modulesSection" class="menu-item" onclick="closeMenu()">
+          <span>⚡</span>
           <span>10대 금융 모듈</span>
         </a>
         <a href="#" class="menu-item" onclick="triggerSecurityCheck(event)">
-          <span class="menu-icon">🛡️</span>
+          <span>🛡️</span>
           <span>보안 인증 센터</span>
         </a>
         <a href="#" class="menu-item" onclick="changeLanguageGlobal(event)">
-          <span class="menu-icon">🌐</span>
+          <span>🌐</span>
           <span>60개국어 글로벌 모드</span>
         </a>
       </nav>
@@ -482,18 +416,15 @@
     </section>
 
     <section class="hero-card">
-      <div class="global-badge">
-        <span>🌍</span> 글로벌 자율 금융 플랫폼
-      </div>
-      <h1 class="hero-title">HKWB 차세대<br>디지털 뱅킹</h1>
+      <div class="global-badge">🌍 글로벌 자율 금융 플랫폼</div>
+      <h1 class="hero-title"><span>HKWB</span> 차세대<br>디지털 뱅킹</h1>
       <p class="hero-desc">
-        전 세계 60개국을 연결하는 초고속 AI 가변 금리 엔진과 UBI 분배 시스템이 탑재된 통합 금융 공간입니다.
+        전 세계 60개국을 연결하는 AI 가변 금리 엔진과 UBI 분배 시스템이 탑재된 차세대 디지털 금융 공간입니다.
       </p>
 
       <div class="btn-group">
         <button class="btn-primary" onclick="executeBankLogin()">
-          <span>인터넷 뱅킹 진입하기</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span>인터넷 뱅킹 진입하기 →</span>
         </button>
         <button class="btn-secondary" onclick="openSecureVault()">
           디지털 OTP 및 KYC/KYB 검증
@@ -508,21 +439,19 @@
         <div class="summary-subtext">추천인 ljw2358 우선 배정</div>
       </div>
       <div class="summary-card">
-        <div class="summary-label">예치 & LP 수익률</div>
+        <div class="summary-label">예치 &amp; LP 수익률</div>
         <div class="summary-value">6% ~ 8.5% 가변</div>
         <div class="summary-subtext">실시간 AI 복리 연동</div>
       </div>
       <div class="summary-card span-full">
         <div class="summary-label">글로벌 네트워크 상태</div>
-        <div class="summary-value" style="color: var(--neon-blue); font-size: 1.15rem;">60개국 언어팩 활성화 완료 · 동기화 성공</div>
+        <div class="summary-value" style="color: var(--accent-cyan);">60개국 언어팩 활성화 완료 · 동기화 성공</div>
       </div>
     </div>
 
     <section class="modules-section" id="modulesSection">
       <div class="section-header">
-        <h2 class="section-title">
-          <span>10대 핵심 금융 모듈</span>
-        </h2>
+        <h2 class="section-title">10대 핵심 금융 모듈</h2>
         <span class="status-badge">오토 인터랙티브</span>
       </div>
       <div class="module-grid" id="moduleGridContainer"></div>
@@ -533,7 +462,7 @@
         <span>SYSTEM LIVE FEED</span>
         <span>STATUS: ONLINE</span>
       </div>
-      <div id="liveConsole">&gt; 시스템이 준비되었습니다. 원하시는 작업을 선택하세요.</div>
+      <div id="liveConsole">&gt; 시스템이 준비되었습니다. 원하시는 메뉴나 모듈을 선택하세요.</div>
     </div>
   </div>
 
@@ -554,70 +483,68 @@
     ];
 
     function renderModules() {
-      const container = document.getElementById('moduleGridContainer');
-      container.innerHTML = modulesData.map(mod => `
+      const container = document.getElementById("moduleGridContainer");
+      container.innerHTML = modulesData.map((mod) => `
         <button class="module-btn" onclick="interactWithModule('${mod.num}', '${mod.name}')">
           <span class="mod-number">MOD-${mod.num}</span>
           <span class="mod-name">${mod.name}</span>
         </button>
-      `).join('');
+      `).join("");
     }
 
-    function toggleMenu() {
-      const dropdown = document.getElementById('menuDropdown');
-      dropdown.classList.toggle('active');
+    function toggleMenu(event) {
+      if (event) event.stopPropagation();
+      document.getElementById("menuDropdown").classList.toggle("active");
+    }
+
+    function closeMenu() {
+      document.getElementById("menuDropdown").classList.remove("active");
     }
 
     function openWhitepaper(event) {
       event.preventDefault();
-      toggleMenu();
-      const box = document.getElementById('whitepaperBox');
-      box.classList.toggle('active');
+      closeMenu();
+      const box = document.getElementById("whitepaperBox");
+      box.classList.toggle("active");
       logConsole("백서(Whitepaper) 내용을 열었습니다.");
     }
 
-    window.onclick = function(event) {
-      if (!event.target.closest('.header')) {
-        const dropdown = document.getElementById('menuDropdown');
-        if (dropdown.classList.contains('active')) {
-          dropdown.classList.remove('active');
-        }
+    document.addEventListener("click", function (event) {
+      if (!event.target.closest(".header")) {
+        closeMenu();
       }
-    };
+    });
 
     function executeBankLogin() {
-      logConsole("인터넷 뱅킹망으로 라우팅 중...");
+      logConsole("인터넷 뱅킹망으로 이동합니다...");
       window.location.href = TARGET_BANK_URL;
     }
 
     function interactWithModule(num, name) {
       logConsole(`[모듈 ${num}] ${name} 시스템이 활성화되었습니다.`);
-      navigator.vibrate && navigator.vibrate(50);
     }
 
     function openSecureVault() {
-      logConsole("디지털 안전 금고 및 KYC/KYB 인증 모듈을 로드합니다.");
+      logConsole("디지털 OTP 및 KYC/KYB 인증 모듈을 준비했습니다.");
     }
 
     function triggerSecurityCheck(event) {
       event.preventDefault();
-      toggleMenu();
-      logConsole("보안 프로토콜을 강제 실행합니다.");
+      closeMenu();
+      logConsole("보안 프로토콜 점검을 실행했습니다.");
     }
 
     function changeLanguageGlobal(event) {
       event.preventDefault();
-      toggleMenu();
-      logConsole("60개국어 자동 번역 엔진이 가동되었습니다.");
+      closeMenu();
+      logConsole("60개국어 글로벌 번역 모드가 활성화되었습니다.");
     }
 
     function logConsole(message) {
-      const consoleDiv = document.getElementById('liveConsole');
-      consoleDiv.textContent = "> " + message;
+      document.getElementById("liveConsole").textContent = "> " + message;
     }
 
-    window.onload = renderModules;
+    renderModules();
   </script>
 </body>
 </html>
-
