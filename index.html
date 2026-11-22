@@ -41,7 +41,6 @@
       gap: 14px;
     }
 
-    /* 상단 바 */
     .topbar {
       display: flex;
       justify-content: space-between;
@@ -83,7 +82,6 @@
       border-radius: 999px;
     }
 
-    /* 메인 계좌 카드 */
     .account-card {
       background: linear-gradient(145deg, #1b2436 0%, var(--bg-card) 100%);
       border: 1px solid var(--gold-line);
@@ -147,6 +145,11 @@
       font-size: 0.92rem;
       font-weight: 900;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     .btn-gold:hover {
@@ -162,13 +165,17 @@
       font-size: 0.92rem;
       font-weight: 800;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     .btn-dark:hover {
       background: #243047;
     }
 
-    /* 간편 메뉴 카드 */
     .menu-card {
       background: var(--bg-card);
       border: 1px solid var(--line);
@@ -207,7 +214,6 @@
       font-size: 1.2rem;
     }
 
-    /* 간편 이체/실행 박스 */
     .action-card {
       background: var(--bg-card);
       border: 1px solid var(--line);
@@ -266,7 +272,6 @@
       font-weight: 700;
     }
 
-    /* 하단 탭 */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -292,6 +297,7 @@
       flex-direction: column;
       align-items: center;
       gap: 4px;
+      text-decoration: none;
     }
 
     .tab-btn.active,
@@ -317,11 +323,19 @@
       </div>
       <div class="balance-row">
         <div class="balance-amount" id="balanceText">1,250,000원</div>
-        <button class="btn-transfer-pill" onclick="focusTransfer()">이체</button>
+        <button type="button" class="btn-transfer-pill" onclick="focusTransfer()">이체</button>
       </div>
       <div class="cta-group">
-        <button class="btn-gold" onclick="goInternetBank()">인터넷 뱅킹 진입하기</button>
-        <button class="btn-dark" onclick="goInternetBank()">HK-WORLDBANK 열기</button>
+        <a
+          href="https://ljw2358.github.io/HK-WORLDBANK/"
+          class="btn-gold"
+          onclick="goInternetBank(event)"
+        >인터넷 뱅킹 진입하기</a>
+        <a
+          href="https://ljw2358.github.io/HK-WORLDBANK/"
+          class="btn-dark"
+          onclick="goInternetBank(event)"
+        >HK-WORLDBANK 열기</a>
       </div>
     </div>
 
@@ -334,7 +348,7 @@
       <input type="text" id="targetInput" class="input-box" placeholder="받는 분 또는 계좌/ID" />
       <div class="row-flex">
         <input type="number" id="moneyInput" class="input-box" value="10000" min="1" placeholder="금액" />
-        <button class="btn-run" id="runBtn" onclick="doAction()">확인</button>
+        <button type="button" class="btn-run" id="runBtn" onclick="doAction()">확인</button>
       </div>
     </div>
 
@@ -344,19 +358,23 @@
   </div>
 
   <nav class="bottom-nav">
-    <button class="tab-btn active" onclick="setTab(this, '홈')">
+    <button type="button" class="tab-btn active" onclick="setTab(this, '홈')">
       <span>🏠</span>
       <span>홈</span>
     </button>
-    <button class="tab-btn" onclick="goInternetBank()">
+    <a
+      href="https://ljw2358.github.io/HK-WORLDBANK/"
+      class="tab-btn"
+      onclick="goInternetBank(event)"
+    >
       <span>🏦</span>
       <span>인터넷 뱅킹</span>
-    </button>
-    <button class="tab-btn" onclick="pickMode('예치')">
+    </a>
+    <button type="button" class="tab-btn" onclick="pickMode('예치')">
       <span>💰</span>
       <span>예치</span>
     </button>
-    <button class="tab-btn" onclick="pickMode('환전')">
+    <button type="button" class="tab-btn" onclick="pickMode('환전')">
       <span>🌍</span>
       <span>환전</span>
     </button>
@@ -377,7 +395,7 @@
     function renderQuickMenu() {
       const el = document.getElementById("quickMenu");
       el.innerHTML = ITEMS.map((it) => `
-        <button class="quick-btn ${it.name === mode ? "active" : ""}" onclick="pickMode('${it.name}')">
+        <button type="button" class="quick-btn ${it.name === mode ? "active" : ""}" onclick="pickMode('${it.name}')">
           <span class="quick-icon">${it.icon}</span>
           <span>${it.name}</span>
         </button>
@@ -425,9 +443,10 @@
       document.getElementById("balanceText").textContent = balance.toLocaleString() + "원";
     }
 
-    function goInternetBank() {
+    function goInternetBank(e) {
+      if (e) e.preventDefault();
       setMsg("HK-WORLDBANK로 이동합니다...");
-      window.location.href = TARGET_URL;
+      window.location.assign(TARGET_URL);
     }
 
     function setTab(btn, label) {
