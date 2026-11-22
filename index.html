@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK Bank 3</title>
+    <title>HK Bank 3 - HKWB</title>
     <style>
         :root {
-            --bg-main: #070b14;
-            --bg-card: #101829;
-            --bg-pill: #18233b;
+            --bg-dark: #070b14;
+            --bg-card: #111829;
+            --bg-box: #182238;
             --gold: #f6cf68;
-            --gold-bright: #ffe499;
+            --gold-bright: #ffe599;
             --purple: #9333ea;
             --purple-soft: #d8b4fe;
             --text: #ffffff;
@@ -27,43 +27,43 @@
 
         body {
             min-height: 100vh;
-            background: radial-gradient(circle at top, #181033 0%, var(--bg-main) 65%);
+            background: radial-gradient(circle at top, #1a1038 0%, var(--bg-dark) 68%);
             color: var(--text);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 18px;
         }
 
-        .frame {
+        .wrap {
             width: 100%;
             max-width: 480px;
-            background: rgba(16, 24, 41, 0.92);
+            background: rgba(17, 24, 41, 0.94);
             border: 1px solid var(--line);
-            border-radius: 24px;
-            padding: 26px 22px;
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 32px rgba(147, 51, 234, 0.22);
+            border-radius: 22px;
+            padding: 24px 20px;
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.72), 0 0 30px rgba(147, 51, 234, 0.22);
         }
 
-        .top-row {
+        .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 28px;
+            gap: 8px;
+            margin-bottom: 22px;
         }
 
-        .id-badge {
-            font-size: 13px;
+        .id-pill {
+            font-size: 12px;
             font-weight: 700;
             color: var(--purple-soft);
-            background: rgba(147, 51, 234, 0.18);
+            background: rgba(147, 51, 234, 0.2);
             border: 1px solid rgba(216, 180, 254, 0.4);
             padding: 6px 12px;
             border-radius: 999px;
         }
 
-        .ref-badge {
+        .ref-text {
             font-size: 12px;
             font-weight: 600;
             color: var(--gold);
@@ -71,61 +71,61 @@
 
         .hero {
             text-align: center;
-            padding: 12px 0 26px;
+            padding: 8px 0 22px;
         }
 
         .brand {
-            font-size: 42px;
+            font-size: 40px;
             font-weight: 900;
             letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #ffffff 30%, var(--gold) 85%);
+            background: linear-gradient(135deg, #ffffff 25%, var(--gold) 85%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .lead {
-            font-size: 15px;
+        .subtitle {
+            font-size: 14px;
             color: var(--sub);
-            margin-bottom: 28px;
+            margin-bottom: 22px;
         }
 
-        .go-btn {
+        .enter-btn {
             width: 100%;
-            padding: 18px 24px;
+            padding: 17px 22px;
             border: none;
-            border-radius: 16px;
+            border-radius: 15px;
             background: linear-gradient(135deg, var(--gold), #dfa928);
             color: #090d16;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 12px 28px rgba(246, 207, 104, 0.32);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            box-shadow: 0 12px 28px rgba(246, 207, 104, 0.34);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
         }
 
-        .go-btn:hover {
+        .enter-btn:hover {
             background: linear-gradient(135deg, var(--gold-bright), var(--gold));
             transform: translateY(-2px);
-            box-shadow: 0 16px 36px rgba(246, 207, 104, 0.48);
+            box-shadow: 0 16px 34px rgba(246, 207, 104, 0.48);
         }
 
-        .go-btn:active {
+        .enter-btn:active {
             transform: translateY(1px);
         }
 
-        .layer-box {
+        .section {
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 18px;
+            padding-top: 16px;
         }
 
         .toggle-btn {
             width: 100%;
-            background: var(--bg-pill);
+            background: var(--bg-box);
             color: var(--text);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
-            padding: 14px 16px;
+            border-radius: 13px;
+            padding: 13px 15px;
             font-size: 14px;
             font-weight: 700;
             display: flex;
@@ -138,53 +138,88 @@
             border-color: var(--purple-soft);
         }
 
-        .modules-panel {
+        .mod-grid {
             display: none;
             margin-top: 12px;
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
         }
 
-        .modules-panel.open {
+        .mod-grid.open {
             display: grid;
         }
 
         .mod-btn {
             background: #0b111e;
             color: var(--text);
-            border: 1px solid rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 12px 10px;
+            padding: 13px 10px;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            text-align: center;
-            transition: border-color 0.2s ease, background 0.2s ease;
+            transition: border-color 0.18s ease, background 0.18s ease;
         }
 
         .mod-btn:hover {
             border-color: var(--gold);
-            background: rgba(147, 51, 234, 0.16);
+            background: rgba(147, 51, 234, 0.18);
         }
 
-        .info-box {
+        .sim-box {
             display: none;
             margin-top: 12px;
             background: rgba(147, 51, 234, 0.14);
             border: 1px solid rgba(216, 180, 254, 0.35);
-            border-radius: 12px;
+            border-radius: 13px;
             padding: 14px;
             font-size: 13px;
-            line-height: 1.5;
-            color: #f3e8ff;
+            line-height: 1.55;
+            color: #f5ecff;
         }
 
-        .info-box.show {
+        .sim-box.show {
             display: block;
         }
 
+        .sim-title {
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .sim-step {
+            color: #e9d5ff;
+            margin-bottom: 10px;
+        }
+
+        .sim-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .sim-btn {
+            border: none;
+            border-radius: 9px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .sim-next {
+            background: var(--gold);
+            color: #090d16;
+        }
+
+        .sim-go {
+            background: var(--purple);
+            color: #ffffff;
+        }
+
         .foot {
-            margin-top: 22px;
+            margin-top: 20px;
             padding-top: 14px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
@@ -194,54 +229,57 @@
             color: var(--sub);
         }
 
-        .foot a {
+        .sns a {
             color: var(--gold);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             margin-left: 12px;
         }
     </style>
 </head>
 <body>
-    <main class="frame">
-        <div class="top-row">
-            <span class="id-badge">ID: ljw2358</span>
-            <span class="ref-badge">추천인 ljw2358 · UBI 우선</span>
+    <main class="wrap">
+        <div class="top-bar">
+            <span class="id-pill">ID: ljw2358</span>
+            <span class="ref-text">추천인 ljw2358 · UBI 우선</span>
         </div>
 
         <section class="hero">
             <h1 class="brand">HK Bank 3</h1>
-            <p class="lead">단순하고 빠르게, 세련된 금융 진입</p>
-            <button type="button" class="go-btn" onclick="enterBank()">
+            <p class="subtitle">단순하고 빠르게, 고객이 성공하는 금융 진입</p>
+            <button type="button" class="enter-btn" onclick="goBank()">
                 초고속 진입하기
             </button>
         </section>
 
-        <section class="layer-box">
+        <section class="section">
             <button type="button" class="toggle-btn" onclick="toggleModules()">
-                <span>10대 핵심 모듈 펼치기</span>
+                <span>6대 핵심 모듈 시뮬레이션 열기</span>
                 <span id="arrow">+</span>
             </button>
 
-            <div class="modules-panel" id="modulesPanel">
-                <button type="button" class="mod-btn" onclick="selectModule('지갑 연결')">지갑 연결</button>
-                <button type="button" class="mod-btn" onclick="selectModule('송금')">송금</button>
-                <button type="button" class="mod-btn" onclick="selectModule('결제')">결제</button>
-                <button type="button" class="mod-btn" onclick="selectModule('예치')">예치</button>
-                <button type="button" class="mod-btn" onclick="selectModule('보상')">보상</button>
-                <button type="button" class="mod-btn" onclick="selectModule('기본소득 (UBI)')">기본소득 (UBI)</button>
-                <button type="button" class="mod-btn" onclick="selectModule('스왑')">스왑</button>
-                <button type="button" class="mod-btn" onclick="selectModule('덱스 스왑')">덱스 스왑</button>
-                <button type="button" class="mod-btn" onclick="selectModule('LP 스테이킹')">LP 스테이킹</button>
-                <button type="button" class="mod-btn" onclick="selectModule('파이 수량')">파이 수량</button>
+            <div class="mod-grid" id="modGrid">
+                <button type="button" class="mod-btn" onclick="startSim('지갑 연결')">지갑 연결</button>
+                <button type="button" class="mod-btn" onclick="startSim('송금')">송금</button>
+                <button type="button" class="mod-btn" onclick="startSim('결제')">결제</button>
+                <button type="button" class="mod-btn" onclick="startSim('예치')">예치</button>
+                <button type="button" class="mod-btn" onclick="startSim('보상')">보상</button>
+                <button type="button" class="mod-btn" onclick="startSim('기본소득')">기본소득</button>
             </div>
 
-            <div class="info-box" id="infoBox"></div>
+            <div class="sim-box" id="simBox">
+                <div class="sim-title" id="simTitle"></div>
+                <div class="sim-step" id="simStep"></div>
+                <div class="sim-actions">
+                    <button type="button" class="sim-btn sim-next" onclick="nextSimStep()">다음 단계 시뮬레이션</button>
+                    <button type="button" class="sim-btn sim-go" onclick="goBank()">바로 진입하기</button>
+                </div>
+            </div>
         </section>
 
         <footer class="foot">
             <span>&copy; 2026 HKWB</span>
-            <div>
+            <div class="sns">
                 <a href="https://www.youtube.com/@Hyekong2026" target="_blank" rel="noopener noreferrer">YouTube</a>
                 <a href="https://www.tiktok.com/@Hyekong2026" target="_blank" rel="noopener noreferrer">TikTok</a>
             </div>
@@ -249,21 +287,70 @@
     </main>
 
     <script>
-        function enterBank() {
+        const flows = {
+            "지갑 연결": [
+                "1단계: 인증 상태를 확인하고 지갑 연결을 준비합니다.",
+                "2단계: 추천인 ljw2358 혜택을 확인하고 지갑을 연결합니다.",
+                "3단계: 연결 완료! 바로 HKWB 뱅킹으로 이동할 수 있습니다."
+            ],
+            "송금": [
+                "1단계: 받을 주소와 보낼 금액을 간단히 입력합니다.",
+                "2단계: 수수료와 내역을 한눈에 확인하고 승인합니다.",
+                "3단계: 송금 완료! 거래 내역이 즉시 반영됩니다."
+            ],
+            "결제": [
+                "1단계: 결제할 금액과 결제 수단을 선택합니다.",
+                "2단계: 한 번의 확인으로 결제를 진행합니다.",
+                "3단계: 결제 완료! 영수증과 적립 내역을 확인합니다."
+            ],
+            "예치": [
+                "1단계: 예치할 금액과 기간을 선택합니다.",
+                "2단계: 안내된 조건을 확인하고 예치를 확정합니다.",
+                "3단계: 예치 완료! 자산 현황에서 바로 관리할 수 있습니다."
+            ],
+            "보상": [
+                "1단계: 참여 활동과 보상 적립 내역을 확인합니다.",
+                "2단계: 수령 가능한 보상을 선택합니다.",
+                "3단계: 보상 수령 완료! 잔액에 반영됩니다."
+            ],
+            "기본소득": [
+                "1단계: 추천인 ljw2358 우선 대상 및 지급 자격을 확인합니다.",
+                "2단계: 기본소득 지급 일정을 확인합니다.",
+                "3단계: 지급 준비 완료! HKWB에서 바로 확인하세요."
+            ]
+        };
+
+        let currentMod = "지갑 연결";
+        let currentIdx = 0;
+
+        function goBank() {
             window.location.href = "https://hkwb.world";
         }
 
         function toggleModules() {
-            const panel = document.getElementById("modulesPanel");
+            const grid = document.getElementById("modGrid");
             const arrow = document.getElementById("arrow");
-            const isOpen = panel.classList.toggle("open");
-            arrow.textContent = isOpen ? "-" : "+";
+            const opened = grid.classList.toggle("open");
+            arrow.textContent = opened ? "-" : "+";
         }
 
-        function selectModule(name) {
-            const box = document.getElementById("infoBox");
-            box.innerHTML = "<strong>" + name + "</strong> 선택됨 · KYC/KYB 인증 및 Mainnet/Testnet 연결 대기 중입니다.";
-            box.classList.add("show");
+        function renderSim() {
+            const steps = flows[currentMod] || flows["지갑 연결"];
+            document.getElementById("simTitle").textContent = currentMod + " 시뮬레이션";
+            document.getElementById("simStep").textContent = steps[currentIdx];
+            document.getElementById("simBox").classList.add("show");
+        }
+
+        function startSim(name) {
+            currentMod = name;
+            currentIdx = 0;
+            renderSim();
+        }
+
+        function nextSimStep() {
+            const steps = flows[currentMod] || flows["지갑 연결"];
+            currentIdx = (currentIdx + 1) % steps.length;
+            renderSim();
         }
     </script>
 </body>
